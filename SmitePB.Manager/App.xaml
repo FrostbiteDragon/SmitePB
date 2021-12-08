@@ -2,8 +2,9 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:SmitePB.Manager"
-             StartupUri="Windows/MainWindow.xaml">
+             StartupUri="Windows/Display.xaml">
     <Application.Resources>
-         
+        <FontFamily x:Key="FontAwesome">/Fonts/FontAwesome.ttf#FontAwesome</FontFamily>
+        <FontFamily x:Key="IcoFont">/Fonts/icofont.ttf#IcoFont</FontFamily>
     </Application.Resources>
 </Application>

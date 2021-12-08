@@ -3,24 +3,127 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        WindowStyle="None"
+        AllowsTransparency="True"
         xmlns:local="clr-namespace:SmitePB.Manager"
         mc:Ignorable="d"
+        MouseDown="WindowMouseDown"
         Title="MainWindow" Height="450" Width="800">
+
+    <Window.Background>
+        <SolidColorBrush Color="#1e1e1e" Opacity=".9"/>
+    </Window.Background>
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="5*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="9*"/>
+            <RowDefinition Height="10"/>
 
         </Grid.RowDefinitions>
 
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="71*"/>
+                <RowDefinition Height="287*"/>
+            </Grid.RowDefinitions>
 
-        <Button Click="OpenScreen" Grid.Column="2">Open Screen</Button>
-        
+
+            <Label Grid.Column="0"
+                   Foreground="White"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   Content="TEAM 1"/>
+
+            <ComboBox Grid.Column="0"
+                      Height="20"
+                      VerticalAlignment="Center"
+                      SelectionChanged="OnTeamSelectionChanged"
+                      Tag="0"
+                      SelectedValue="{Binding SelectedTeam0, Mode=TwoWay}"
+                      ItemsSource="{Binding TeamSource}">
+
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel />
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+            </ComboBox>
+
+            <Button Grid.Column="1" Click="SwapTeamSides">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Label FontFamily="{StaticResource IcoFont}" 
+                               Foreground="White" 
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="30"
+                               Content="&#xef18;"/>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+            <Label Grid.Column="2"
+                   Foreground="White"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   Content="TEAM 2">
+
+            </Label>
+
+            <ComboBox Grid.Column="2"
+                      Height="20"
+                      VerticalAlignment="Center"
+                      SelectionChanged="OnTeamSelectionChanged"
+                      Tag="1"
+                      SelectedValue="{Binding SelectedTeam1, Mode=TwoWay}"
+                      ItemsSource="{Binding TeamSource}">
+
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel />
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+            </ComboBox>
+
+            <Separator Grid.ColumnSpan="3"
+                       Grid.Row="1"
+                       VerticalAlignment="Top"
+                       Foreground="White"/>
+
+        </Grid>
+
+
+        <!--<Button Click="CloseScreen" Grid.Column="2">Minimize</Button>-->
+
+        <!--<WrapPanel Grid.Row="1" Orientation="Horizontal">
+            <ComboBox Width="200"
+                      IsTextSearchEnabled="False"
+                      IsEditable="True"
+                      PreviewTextInput="OnPreviewTextInput"
+                      Tag="0"
+                      SelectionChanged="OnSelectionChanged"
+                      DropDownClosed="OnDropDownClosed"
+                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                      ItemsSource="{Binding Gods, Mode=OneWay}">
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel />
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+            </ComboBox>
+        </WrapPanel>-->
     </Grid>
 </Window>

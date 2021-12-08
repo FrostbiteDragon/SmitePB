@@ -14,31 +14,46 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ComponentModel;
+using SmitePB.Domain;
+using Path = System.IO.Path;
 
 namespace SmitePB.Manager.Windows
 {
     public partial class Display : Window, INotifyPropertyChanged
     {
-        public string Slot1 { get; private set; }
-        public string Slot2 { get; private set; }
-        public string Team1Colour { get; private set; }
-        public string Team2Colour { get; private set; }
+
+        public Team[] Teams { get; private set; }
+
+        public string[] Picks { get; private set; }
+        public Team Team0 { get; private set; }
+        public Team Team1 { get; private set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private string GetPickPath(string godName) => Path.Combine(Directory.GetCurrentDirectory(), "Assets", godName, "Pick.png");
+
         public Display()
         {
-            InitializeComponent();
+            Teams = TeamService.GetTeams().ToArray();
+
+            Picks = new string[10];
+            Picks = Picks.Select(x => GetPickPath("None")).ToArray();
+
             DataContext = this;
-            Slot1 = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "Assets", $"Pick.png");
-            SetTeam(0, new("", "#558de2"));
-            SetTeam(1, new("", "#55e269"));
+
+            Show();
+
+            //must be run before components are initialized
+            var window = new MainWindow(this, Teams);
+            window.Owner = this;
+
+            InitializeComponent();
         }
 
         public void SetGod(int slot, string god)
         {
-            Slot1 = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "Assets", $"{god}.png");
-            PropertyChanged?.Invoke(this, new(nameof(Slot1)));
+            Picks[slot] = GetPickPath(god ?? "None");
+            PropertyChanged?.Invoke(this, new(nameof(Picks)));
         }
 
         public void SetTeam(int slot, Team team)
@@ -46,13 +61,13 @@ namespace SmitePB.Manager.Windows
             switch (slot)
             {
                 case 0:
-                    Team1Colour = team.colour;
-                    PropertyChanged?.Invoke(this, new(nameof(Team1Colour)));
+                    Team0 = team;
+                    PropertyChanged?.Invoke(this, new(nameof(Team0)));
                     break;
 
                 case 1:
-                    Team2Colour = team.colour;
-                    PropertyChanged?.Invoke(this, new(nameof(Team2Colour)));
+                    Team1 = team;
+                    PropertyChanged?.Invoke(this, new(nameof(Team1)));
                     break;
             }
            

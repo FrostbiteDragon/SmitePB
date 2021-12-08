@@ -2,7 +2,7 @@
   "profiles": {
     "SmitePB.Manager": {
       "commandName": "Project",
-      "workingDirectory": "C:\\Users\\Cameron\\Documents\\Programming\\SmitePB\\SmitePB.Manager\\bin\\Debug\\net5.0-windows"
+      "workingDirectory": "C:\\Users\\Cameron\\Documents\\_Programming\\SmitePB\\SmitePB.Manager\\bin\\Debug\\net5.0-windows"
     }
   }
 }

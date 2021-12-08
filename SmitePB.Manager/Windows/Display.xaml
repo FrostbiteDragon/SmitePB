@@ -126,10 +126,15 @@
 
             <!--Bans-->
             <Rectangle Grid.Column="0" Grid.Row="2" Margin="5" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
+            <Image Grid.Column="0" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[0], Mode=OneWay }" />
             <Rectangle Grid.Column="1" Grid.Row="2" Margin="5" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
+            <Image Grid.Column="1" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[1], Mode=OneWay }" />
             <Rectangle Grid.Column="2" Grid.Row="2" Margin="5" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
+            <Image Grid.Column="2" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[2], Mode=OneWay }" />
             <Rectangle Grid.Column="3" Grid.Row="2" Margin="5" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
+            <Image Grid.Column="3" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[3], Mode=OneWay }" />
             <Rectangle Grid.Column="4" Grid.Row="2" Margin="5" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
+            <Image Grid.Column="4" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[4], Mode=OneWay }" />
         </Grid>
 
         <!--Bans Team 1-->
@@ -164,10 +169,15 @@
 
             <!--Bans-->
             <Rectangle Grid.Column="0" Grid.Row="2" Margin="5" Fill="{Binding Path=Team1.Colour, Mode=OneWay}"/>
+            <Image Grid.Column="0" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[5], Mode=OneWay }" />
             <Rectangle Grid.Column="1" Grid.Row="2" Margin="5" Fill="{Binding Path=Team1.Colour, Mode=OneWay}"/>
+            <Image Grid.Column="1" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[6], Mode=OneWay }" />
             <Rectangle Grid.Column="2" Grid.Row="2" Margin="5" Fill="{Binding Path=Team1.Colour, Mode=OneWay}"/>
+            <Image Grid.Column="2" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[7], Mode=OneWay }" />
             <Rectangle Grid.Column="3" Grid.Row="2" Margin="5" Fill="{Binding Path=Team1.Colour, Mode=OneWay}"/>
+            <Image Grid.Column="3" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[8], Mode=OneWay }" />
             <Rectangle Grid.Column="4" Grid.Row="2" Margin="5" Fill="{Binding Path=Team1.Colour, Mode=OneWay}"/>
+            <Image Grid.Column="4" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[9], Mode=OneWay }" />
         </Grid>
 
         <!--Picks Team 0-->

@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         WindowStyle="None"
         AllowsTransparency="True"
-        xmlns:local="clr-namespace:SmitePB.Manager"
         mc:Ignorable="d"
         MouseDown="WindowMouseDown"
         Title="MainWindow" Height="450" Width="800">
@@ -18,21 +17,24 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="10"/>
             <RowDefinition Height="5*"/>
-            <RowDefinition Height="1*"/>
             <RowDefinition Height="10"/>
 
         </Grid.RowDefinitions>
 
+        <!--teams-->
         <Grid Grid.Column="1" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width=".3*"/>
                 <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width=".3*"/>
                 <ColumnDefinition Width="2*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -62,7 +64,14 @@
                 </ComboBox.ItemsPanel>
             </ComboBox>
 
-            <Button Grid.Column="1" Click="SwapTeamSides">
+            <Label Grid.Column="1"
+                   Foreground="White"
+                   VerticalAlignment="Center"
+                   FontWeight="Bold"
+                   FontSize="20"
+                   Content="0"/>
+
+            <Button Grid.Column="2" Click="SwapTeamSides">
                 <Button.Template>
                     <ControlTemplate>
                         <Label FontFamily="{StaticResource IcoFont}" 
@@ -75,7 +84,14 @@
                 </Button.Template>
             </Button>
 
-            <Label Grid.Column="2"
+            <Label Grid.Column="3"
+                   Foreground="White"
+                   VerticalAlignment="Center"
+                   FontWeight="Bold"
+                   FontSize="20"
+                   Content="0"/>
+
+            <Label Grid.Column="4"
                    Foreground="White"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Top"
@@ -83,7 +99,7 @@
 
             </Label>
 
-            <ComboBox Grid.Column="2"
+            <ComboBox Grid.Column="4"
                       Height="20"
                       VerticalAlignment="Center"
                       SelectionChanged="OnTeamSelectionChanged"
@@ -98,32 +114,408 @@
                 </ComboBox.ItemsPanel>
             </ComboBox>
 
-            <Separator Grid.ColumnSpan="3"
+            <Separator Grid.ColumnSpan="5"
                        Grid.Row="1"
                        VerticalAlignment="Top"
                        Foreground="White"/>
 
         </Grid>
+        <!--Pick/Bans-->
+        <Grid Grid.Column="3" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <!--Bans-->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
 
+                </Grid.RowDefinitions>
 
-        <!--<Button Click="CloseScreen" Grid.Column="2">Minimize</Button>-->
+                <Label Foreground="White"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontWeight="Bold"
+                   FontSize="20"
+                   Content="BANS" Grid.ColumnSpan="2" />
 
-        <!--<WrapPanel Grid.Row="1" Orientation="Horizontal">
-            <ComboBox Width="200"
+                <WrapPanel Orientation="Horizontal" Grid.Row="1">
+                    <ComboBox Width="140"
                       IsTextSearchEnabled="False"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
                       Tag="0"
                       SelectionChanged="OnSelectionChanged"
-                      DropDownClosed="OnDropDownClosed"
+                      DropDownClosed="OnBanDropDownClosed"
                       Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
-                      ItemsSource="{Binding Gods, Mode=OneWay}">
-                <ComboBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel />
-                    </ItemsPanelTemplate>
-                </ComboBox.ItemsPanel>
-            </ComboBox>
-        </WrapPanel>-->
+                      ItemsSource="{Binding GodNames, Mode=OneWay}">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+                </WrapPanel>
+                <WrapPanel  Orientation="Horizontal" Grid.Row="2" Grid.Column="0">
+                    <ComboBox Width="140"
+                      IsTextSearchEnabled="False"
+                      IsEditable="True"
+                      PreviewTextInput="OnPreviewTextInput"
+                      Tag="1"
+                      SelectionChanged="OnSelectionChanged"
+                      DropDownClosed="OnBanDropDownClosed"
+                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                      ItemsSource="{Binding GodNames, Mode=OneWay}">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+                </WrapPanel>
+                <WrapPanel  Orientation="Horizontal" Grid.Row="3" Grid.Column="0">
+                    <ComboBox Width="140"
+                      IsTextSearchEnabled="False"
+                      IsEditable="True"
+                      PreviewTextInput="OnPreviewTextInput"
+                      Tag="2"
+                      SelectionChanged="OnSelectionChanged"
+                      DropDownClosed="OnBanDropDownClosed"
+                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                      ItemsSource="{Binding GodNames, Mode=OneWay}">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+                </WrapPanel>
+                <WrapPanel  Orientation="Horizontal" Grid.Row="4" Grid.Column="0">
+                    <ComboBox Width="140"
+                      IsTextSearchEnabled="False"
+                      IsEditable="True"
+                      PreviewTextInput="OnPreviewTextInput"
+                      Tag="3"
+                      SelectionChanged="OnSelectionChanged"
+                      DropDownClosed="OnBanDropDownClosed"
+                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                      ItemsSource="{Binding GodNames, Mode=OneWay}">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+                </WrapPanel>
+                <WrapPanel  Orientation="Horizontal" Grid.Row="5" Grid.Column="0">
+                    <ComboBox Width="140"
+                      IsTextSearchEnabled="False"
+                      IsEditable="True"
+                      PreviewTextInput="OnPreviewTextInput"
+                      Tag="4"
+                      SelectionChanged="OnSelectionChanged"
+                      DropDownClosed="OnBanDropDownClosed"
+                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                      ItemsSource="{Binding GodNames, Mode=OneWay}">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+                </WrapPanel>
+
+                <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+                    <ComboBox Width="140"
+                      IsTextSearchEnabled="False"
+                      IsEditable="True"
+                      PreviewTextInput="OnPreviewTextInput"
+                      Tag="5"
+                      SelectionChanged="OnSelectionChanged"
+                      DropDownClosed="OnBanDropDownClosed"
+                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                      ItemsSource="{Binding GodNames, Mode=OneWay}">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+                </WrapPanel>
+                <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
+                    <ComboBox Width="140"
+                      IsTextSearchEnabled="False"
+                      IsEditable="True"
+                      PreviewTextInput="OnPreviewTextInput"
+                      Tag="6"
+                      SelectionChanged="OnSelectionChanged"
+                      DropDownClosed="OnBanDropDownClosed"
+                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                      ItemsSource="{Binding GodNames, Mode=OneWay}">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+                </WrapPanel>
+                <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
+                    <ComboBox Width="140"
+                      IsTextSearchEnabled="False"
+                      IsEditable="True"
+                      PreviewTextInput="OnPreviewTextInput"
+                      Tag="7"
+                      SelectionChanged="OnSelectionChanged"
+                      DropDownClosed="OnBanDropDownClosed"
+                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                      ItemsSource="{Binding GodNames, Mode=OneWay}">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+                </WrapPanel>
+                <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="4" Grid.Column="1">
+                    <ComboBox Width="140"
+                      IsTextSearchEnabled="False"
+                      IsEditable="True"
+                      PreviewTextInput="OnPreviewTextInput"
+                      Tag="8"
+                      SelectionChanged="OnSelectionChanged"
+                      DropDownClosed="OnBanDropDownClosed"
+                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                      ItemsSource="{Binding GodNames, Mode=OneWay}">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+                </WrapPanel>
+                <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="5" Grid.Column="1">
+                    <ComboBox Width="140"
+                      IsTextSearchEnabled="False"
+                      IsEditable="True"
+                      PreviewTextInput="OnPreviewTextInput"
+                      Tag="9"
+                      SelectionChanged="OnSelectionChanged"
+                      DropDownClosed="OnBanDropDownClosed"
+                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                      ItemsSource="{Binding GodNames, Mode=OneWay}">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+                </WrapPanel>
+            </Grid>
+            <!--Picks-->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+
+                </Grid.RowDefinitions>
+
+                <Label Foreground="White"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   FontWeight="Bold"
+                   FontSize="20"
+                   Content="PICKS" Grid.ColumnSpan="2" Margin="162,0,0,0"/>
+
+                <WrapPanel  Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
+                    <ComboBox Width="140"
+                      IsTextSearchEnabled="False"
+                      IsEditable="True"
+                      PreviewTextInput="OnPreviewTextInput"
+                      Tag="0"
+                      SelectionChanged="OnSelectionChanged"
+                      DropDownClosed="OnPickDropDownClosed"
+                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                      ItemsSource="{Binding GodNames, Mode=OneWay}">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+                </WrapPanel>
+                <WrapPanel  Orientation="Horizontal" Grid.Row="2" Grid.Column="0">
+                    <ComboBox Width="140"
+                      IsTextSearchEnabled="False"
+                      IsEditable="True"
+                      PreviewTextInput="OnPreviewTextInput"
+                      Tag="1"
+                      SelectionChanged="OnSelectionChanged"
+                      DropDownClosed="OnPickDropDownClosed"
+                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                      ItemsSource="{Binding GodNames, Mode=OneWay}">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+                </WrapPanel>
+                <WrapPanel  Orientation="Horizontal" Grid.Row="3" Grid.Column="0">
+                    <ComboBox Width="140"
+                      IsTextSearchEnabled="False"
+                      IsEditable="True"
+                      PreviewTextInput="OnPreviewTextInput"
+                      Tag="2"
+                      SelectionChanged="OnSelectionChanged"
+                      DropDownClosed="OnPickDropDownClosed"
+                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                      ItemsSource="{Binding GodNames, Mode=OneWay}">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+                </WrapPanel>
+                <WrapPanel  Orientation="Horizontal" Grid.Row="4" Grid.Column="0">
+                    <ComboBox Width="140"
+                      IsTextSearchEnabled="False"
+                      IsEditable="True"
+                      PreviewTextInput="OnPreviewTextInput"
+                      Tag="3"
+                      SelectionChanged="OnSelectionChanged"
+                      DropDownClosed="OnPickDropDownClosed"
+                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                      ItemsSource="{Binding GodNames, Mode=OneWay}">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+                </WrapPanel>
+                <WrapPanel  Orientation="Horizontal" Grid.Row="5" Grid.Column="0">
+                    <ComboBox Width="140"
+                      IsTextSearchEnabled="False"
+                      IsEditable="True"
+                      PreviewTextInput="OnPreviewTextInput"
+                      Tag="4"
+                      SelectionChanged="OnSelectionChanged"
+                      DropDownClosed="OnPickDropDownClosed"
+                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                      ItemsSource="{Binding GodNames, Mode=OneWay}">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+                </WrapPanel>
+
+                <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+                    <ComboBox Width="140"
+                      IsTextSearchEnabled="False"
+                      IsEditable="True"
+                      PreviewTextInput="OnPreviewTextInput"
+                      Tag="5"
+                      SelectionChanged="OnSelectionChanged"
+                      DropDownClosed="OnPickDropDownClosed"
+                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                      ItemsSource="{Binding GodNames, Mode=OneWay}">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+                </WrapPanel>
+                <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
+                    <ComboBox Width="140"
+                      IsTextSearchEnabled="False"
+                      IsEditable="True"
+                      PreviewTextInput="OnPreviewTextInput"
+                      Tag="6"
+                      SelectionChanged="OnSelectionChanged"
+                      DropDownClosed="OnPickDropDownClosed"
+                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                      ItemsSource="{Binding GodNames, Mode=OneWay}">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+                </WrapPanel>
+                <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
+                    <ComboBox Width="140"
+                      IsTextSearchEnabled="False"
+                      IsEditable="True"
+                      PreviewTextInput="OnPreviewTextInput"
+                      Tag="7"
+                      SelectionChanged="OnSelectionChanged"
+                      DropDownClosed="OnPickDropDownClosed"
+                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                      ItemsSource="{Binding GodNames, Mode=OneWay}">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+                </WrapPanel>
+                <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="4" Grid.Column="1">
+                    <ComboBox Width="140"
+                      IsTextSearchEnabled="False"
+                      IsEditable="True"
+                      PreviewTextInput="OnPreviewTextInput"
+                      Tag="8"
+                      SelectionChanged="OnSelectionChanged"
+                      DropDownClosed="OnPickDropDownClosed"
+                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                      ItemsSource="{Binding GodNames, Mode=OneWay}">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+                </WrapPanel>
+                <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="5" Grid.Column="1">
+                    <ComboBox Width="140"
+                      IsTextSearchEnabled="False"
+                      IsEditable="True"
+                      PreviewTextInput="OnPreviewTextInput"
+                      Tag="9"
+                      SelectionChanged="OnSelectionChanged"
+                      DropDownClosed="OnPickDropDownClosed"
+                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                      ItemsSource="{Binding GodNames, Mode=OneWay}">
+                        <ComboBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <VirtualizingStackPanel />
+                            </ItemsPanelTemplate>
+                        </ComboBox.ItemsPanel>
+                    </ComboBox>
+                </WrapPanel>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>

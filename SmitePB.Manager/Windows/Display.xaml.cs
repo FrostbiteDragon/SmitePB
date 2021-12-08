@@ -21,43 +21,64 @@ namespace SmitePB.Manager.Windows
 {
     public partial class Display : Window, INotifyPropertyChanged
     {
+        public Team[] Teams { get; }
+        public God[] Gods { get; }
 
-        public Team[] Teams { get; private set; }
+        public string[] Picks { get; private set; } = new string[10];
+        public string[] Bans { get; private set; } = new string[10];
 
-        public string[] Picks { get; private set; }
         public Team Team0 { get; private set; }
         public Team Team1 { get; private set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        private string GetPickPath(string godName) => Path.Combine(Directory.GetCurrentDirectory(), "Assets", godName, "Pick.png");
+        private Team GetTeambyName(string name) => Teams.FirstOrDefault(x => x.DisplayName == name);
+        private God GetGodbyName(string name) => Gods.FirstOrDefault(x => x.name == name);
+
 
         public Display()
         {
             Teams = TeamService.GetTeams().ToArray();
+            Gods = GodService.GetGods().ToArray();
 
-            Picks = new string[10];
-            Picks = Picks.Select(x => GetPickPath("None")).ToArray();
+            var none = GetGodbyName("None");
+            Picks = Picks.Select(x => none.Pick).ToArray();
+            Bans = Bans.Select(x => none.Ban).ToArray();
+
 
             DataContext = this;
 
             Show();
 
             //must be run before components are initialized
-            var window = new MainWindow(this, Teams);
-            window.Owner = this;
+            var window = new MainWindow(this, Teams)
+            {
+                Owner = this
+            };
 
             InitializeComponent();
         }
 
-        public void SetGod(int slot, string god)
+        public void SetGod(int slot, string godName)
         {
-            Picks[slot] = GetPickPath(god ?? "None");
+            var god = GetGodbyName(godName);
+
+            Picks[slot] = god.Pick;
             PropertyChanged?.Invoke(this, new(nameof(Picks)));
         }
 
-        public void SetTeam(int slot, Team team)
+        public void SetBan(int slot, string godName)
         {
+            var god = GetGodbyName(godName);
+
+            Bans[slot] = god.Ban;
+            PropertyChanged?.Invoke(this, new(nameof(Bans)));
+        }
+
+        public void SetTeam(int slot, string teamName)
+        {
+            var team = GetTeambyName(teamName);
+
             switch (slot)
             {
                 case 0:

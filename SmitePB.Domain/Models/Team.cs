@@ -12,9 +12,8 @@ namespace SmitePB.Domain
         public string Colour { get; }
         public string Logo { get; }
 
-        public Team(string path, string displayName, string colour, string logo)
+        public Team(string displayName, string colour, string logo)
         {
-            Path = path;
             DisplayName = displayName;
             Colour = colour;
             Logo = logo;

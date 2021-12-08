@@ -17,7 +17,7 @@ namespace SmitePB.Domain
             foreach (var teamDirectory in teamDirectories)
             {
                 var teamDTO = JsonConvert.DeserializeObject<TeamDTO>(File.ReadAllText(Path.Combine(teamDirectory, "Team.json")));
-                yield return new Team(teamDirectory, teamDTO.displayName, teamDTO.colour, Path.Combine(teamDirectory, "Logo.png"));
+                yield return new Team(teamDTO.displayName, teamDTO.colour, Path.Combine(teamDirectory, "Logo.png"));
             }
         }
     }

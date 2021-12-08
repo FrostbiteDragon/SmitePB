@@ -8,7 +8,6 @@ namespace SmitePB.Domain
 {
     public record Team
     {
-        public string Path { get; }
         public string DisplayName { get; }
         public string Colour { get; }
         public string Logo { get; }

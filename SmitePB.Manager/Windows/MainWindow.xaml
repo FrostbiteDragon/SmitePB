@@ -64,12 +64,17 @@
                 </ComboBox.ItemsPanel>
             </ComboBox>
 
-            <Label Grid.Column="1"
-                   Foreground="White"
-                   VerticalAlignment="Center"
-                   FontWeight="Bold"
-                   FontSize="20"
-                   Content="0"/>
+            <TextBox Grid.Column="1"
+                     Foreground="White"
+                     VerticalAlignment="Center"
+                     FontWeight="Bold"
+                     FontSize="20"
+                     Background="Black"
+                     BorderThickness="0"
+                     Tag="0"
+                     TextChanged="OnWinCountChanged"
+                     Text="0"/>
+
 
             <Button Grid.Column="2" Click="SwapTeamSides">
                 <Button.Template>
@@ -84,12 +89,18 @@
                 </Button.Template>
             </Button>
 
-            <Label Grid.Column="3"
-                   Foreground="White"
-                   VerticalAlignment="Center"
-                   FontWeight="Bold"
-                   FontSize="20"
-                   Content="0"/>
+            <TextBox Grid.Column="3"
+                     Foreground="White"
+                     VerticalAlignment="Center"
+                     FontWeight="Bold"
+                     FontSize="20"
+                     Background="Black"
+                     BorderThickness="0"
+                     Tag="1"
+                     TextChanged="OnWinCountChanged"
+                     Text="0"/>
+
+
 
             <Label Grid.Column="4"
                    Foreground="White"
@@ -324,8 +335,10 @@
             <!--Picks-->
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width=".2*"/>
+                    <ColumnDefinition Width=".2*"/>
+                    <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
@@ -342,9 +355,9 @@
                    VerticalAlignment="Center"
                    FontWeight="Bold"
                    FontSize="20"
-                   Content="PICKS" Grid.ColumnSpan="2" Margin="162,0,0,0"/>
+                   Content="PICKS" Grid.ColumnSpan="4" Margin="162,0,0,0"/>
 
-                <WrapPanel  Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
+                <WrapPanel VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
                     <ComboBox Width="140"
                       IsTextSearchEnabled="False"
                       IsEditable="True"
@@ -361,7 +374,7 @@
                         </ComboBox.ItemsPanel>
                     </ComboBox>
                 </WrapPanel>
-                <WrapPanel  Orientation="Horizontal" Grid.Row="2" Grid.Column="0">
+                <WrapPanel VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="2" Grid.Column="0">
                     <ComboBox Width="140"
                       IsTextSearchEnabled="False"
                       IsEditable="True"
@@ -378,7 +391,7 @@
                         </ComboBox.ItemsPanel>
                     </ComboBox>
                 </WrapPanel>
-                <WrapPanel  Orientation="Horizontal" Grid.Row="3" Grid.Column="0">
+                <WrapPanel VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="3" Grid.Column="0">
                     <ComboBox Width="140"
                       IsTextSearchEnabled="False"
                       IsEditable="True"
@@ -395,7 +408,7 @@
                         </ComboBox.ItemsPanel>
                     </ComboBox>
                 </WrapPanel>
-                <WrapPanel  Orientation="Horizontal" Grid.Row="4" Grid.Column="0">
+                <WrapPanel VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="4" Grid.Column="0">
                     <ComboBox Width="140"
                       IsTextSearchEnabled="False"
                       IsEditable="True"
@@ -412,7 +425,7 @@
                         </ComboBox.ItemsPanel>
                     </ComboBox>
                 </WrapPanel>
-                <WrapPanel  Orientation="Horizontal" Grid.Row="5" Grid.Column="0">
+                <WrapPanel VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="5" Grid.Column="0">
                     <ComboBox Width="140"
                       IsTextSearchEnabled="False"
                       IsEditable="True"
@@ -430,7 +443,7 @@
                     </ComboBox>
                 </WrapPanel>
 
-                <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+                <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="1" Grid.Column="3">
                     <ComboBox Width="140"
                       IsTextSearchEnabled="False"
                       IsEditable="True"
@@ -447,7 +460,7 @@
                         </ComboBox.ItemsPanel>
                     </ComboBox>
                 </WrapPanel>
-                <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
+                <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="2" Grid.Column="3">
                     <ComboBox Width="140"
                       IsTextSearchEnabled="False"
                       IsEditable="True"
@@ -464,7 +477,7 @@
                         </ComboBox.ItemsPanel>
                     </ComboBox>
                 </WrapPanel>
-                <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
+                <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="3" Grid.Column="3">
                     <ComboBox Width="140"
                       IsTextSearchEnabled="False"
                       IsEditable="True"
@@ -481,7 +494,7 @@
                         </ComboBox.ItemsPanel>
                     </ComboBox>
                 </WrapPanel>
-                <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="4" Grid.Column="1">
+                <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="4" Grid.Column="3">
                     <ComboBox Width="140"
                       IsTextSearchEnabled="False"
                       IsEditable="True"
@@ -498,7 +511,7 @@
                         </ComboBox.ItemsPanel>
                     </ComboBox>
                 </WrapPanel>
-                <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="5" Grid.Column="1">
+                <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="5" Grid.Column="3">
                     <ComboBox Width="140"
                       IsTextSearchEnabled="False"
                       IsEditable="True"
@@ -515,6 +528,219 @@
                         </ComboBox.ItemsPanel>
                     </ComboBox>
                 </WrapPanel>
+                
+                <Button Grid.Column="1" Grid.Row="1" Click="OnLockedIn" Tag="0">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Label HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontFamily="{StaticResource IcoFont}"
+                                   Foreground="White">
+                                <Label.Style>
+                                    <Style TargetType="{x:Type Label}">
+                                        <Setter Property="Label.Content" Value="&#xf01b;" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding LockedIn[0]}" Value="True">
+                                                <Setter Property="Label.Content" Value="&#xf01a;" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Grid.Column="1" Grid.Row="2" Click="OnLockedIn" Tag="1">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Label HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontFamily="{StaticResource IcoFont}"
+                                   Foreground="White">
+                                <Label.Style>
+                                    <Style TargetType="{x:Type Label}">
+                                        <Setter Property="Label.Content" Value="&#xf01b;" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding LockedIn[1]}" Value="True">
+                                                <Setter Property="Label.Content" Value="&#xf01a;" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Grid.Column="1" Grid.Row="3" Click="OnLockedIn" Tag="2">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Label HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontFamily="{StaticResource IcoFont}"
+                                   Foreground="White">
+                                <Label.Style>
+                                    <Style TargetType="{x:Type Label}">
+                                        <Setter Property="Label.Content" Value="&#xf01b;" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding LockedIn[2]}" Value="True">
+                                                <Setter Property="Label.Content" Value="&#xf01a;" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Grid.Column="1" Grid.Row="4" Click="OnLockedIn" Tag="3">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Label HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontFamily="{StaticResource IcoFont}"
+                                   Foreground="White">
+                                <Label.Style>
+                                    <Style TargetType="{x:Type Label}">
+                                        <Setter Property="Label.Content" Value="&#xf01b;" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding LockedIn[3]}" Value="True">
+                                                <Setter Property="Label.Content" Value="&#xf01a;" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Grid.Column="1" Grid.Row="5" Click="OnLockedIn" Tag="4">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Label HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   FontFamily="{StaticResource IcoFont}"
+                                   Foreground="White">
+                                <Label.Style>
+                                    <Style TargetType="{x:Type Label}">
+                                        <Setter Property="Label.Content" Value="&#xf01b;" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding LockedIn[4]}" Value="True">
+                                                <Setter Property="Label.Content" Value="&#xf01a;" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <Button Grid.Column="2" Grid.Row="1" Click="OnLockedIn" Tag="5">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Label HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   FontFamily="{StaticResource IcoFont}"
+                                   Foreground="White">
+                                <Label.Style>
+                                    <Style TargetType="{x:Type Label}">
+                                        <Setter Property="Label.Content" Value="&#xf01b;" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding LockedIn[5]}" Value="True">
+                                                <Setter Property="Label.Content" Value="&#xf01a;" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Grid.Column="2" Grid.Row="2" Click="OnLockedIn" Tag="6">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Label HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   FontFamily="{StaticResource IcoFont}"
+                                   Foreground="White">
+                                <Label.Style>
+                                    <Style TargetType="{x:Type Label}">
+                                        <Setter Property="Label.Content" Value="&#xf01b;" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding LockedIn[6]}" Value="True">
+                                                <Setter Property="Label.Content" Value="&#xf01a;" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Grid.Column="2" Grid.Row="3" Click="OnLockedIn" Tag="7">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Label HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   FontFamily="{StaticResource IcoFont}"
+                                   Foreground="White">
+                                <Label.Style>
+                                    <Style TargetType="{x:Type Label}">
+                                        <Setter Property="Label.Content" Value="&#xf01b;" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding LockedIn[7]}" Value="True">
+                                                <Setter Property="Label.Content" Value="&#xf01a;" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Grid.Column="2" Grid.Row="4" Click="OnLockedIn" Tag="8">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Label HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   FontFamily="{StaticResource IcoFont}"
+                                   Foreground="White">
+                                <Label.Style>
+                                    <Style TargetType="{x:Type Label}">
+                                        <Setter Property="Label.Content" Value="&#xf01b;" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding LockedIn[8]}" Value="True">
+                                                <Setter Property="Label.Content" Value="&#xf01a;" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Grid.Column="2" Grid.Row="5" Click="OnLockedIn" Tag="9">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Label HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   FontFamily="{StaticResource IcoFont}"
+                                   Foreground="White">
+                                <Label.Style>
+                                    <Style TargetType="{x:Type Label}">
+                                        <Setter Property="Label.Content" Value="&#xf01b;" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding LockedIn[9]}" Value="True">
+                                                <Setter Property="Label.Content" Value="&#xf01a;" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Label.Style>
+                            </Label>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
             </Grid>
         </Grid>
     </Grid>

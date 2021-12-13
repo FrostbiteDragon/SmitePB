@@ -1,13 +1,15 @@
 ﻿<Window x:Class="SmitePB.Manager.Windows.Display"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      WindowStyle="none"
-      WindowState="Maximized"
-      mc:Ignorable="d" 
-      d:DesignHeight="1080" d:DesignWidth="1920"
-      Title="Display">
+        x:Name="Root"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:control="clr-namespace:SmitePB.Manager.Controls"
+        WindowStyle="none"
+        WindowState="Maximized"
+        mc:Ignorable="d" 
+        d:DesignHeight="1080" d:DesignWidth="1920"
+        Title="Display">
 
     
     <Window.Background>
@@ -24,16 +26,63 @@
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height=".3*"/>
+            <RowDefinition Height="10"/>
             <RowDefinition Height="1.2*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height=".3*"/>
+            <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
 
+        <!--Team 0-->
+        <Grid Grid.Column="1" Grid.Row="1">
+            
+            <!--Bans-->
+            <Grid Grid.Column="0" Grid.Row="0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.2*"/>
+                    <RowDefinition Height="4*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.ColumnSpan="3" 
+                   Foreground="White" 
+                   FontWeight="Bold" 
+                   VerticalAlignment="Top" 
+                   HorizontalAlignment="Center" 
+                   FontSize="30"
+                   Content="BANS 1" />
+
+                <Label Grid.Column="3" 
+                   Grid.ColumnSpan="5" 
+                   Foreground="White" 
+                   FontWeight="Bold" 
+                   VerticalAlignment="Top" 
+                   HorizontalAlignment="Center" 
+                   FontSize="30" 
+                   Content="BANS 2" />
+
+                <!--Bans-->
+                <Rectangle Grid.Column="0" Grid.Row="2" Margin="5" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
+                <Image Grid.Column="0" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[0], Mode=OneWay }" />
+                <Rectangle Grid.Column="1" Grid.Row="2" Margin="5" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
+                <Image Grid.Column="1" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[1], Mode=OneWay }" />
+                <Rectangle Grid.Column="2" Grid.Row="2" Margin="5" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
+                <Image Grid.Column="2" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[2], Mode=OneWay }" />
+                <Rectangle Grid.Column="3" Grid.Row="2" Margin="5" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
+                <Image Grid.Column="3" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[3], Mode=OneWay }" />
+                <Rectangle Grid.Column="4" Grid.Row="2" Margin="5" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
+                <Image Grid.Column="4" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[4], Mode=OneWay }" />
+            </Grid>
+        </Grid>
 
         <!--Teams-->
         <Grid Grid.Column="2" Grid.Row="1" Margin="5">
@@ -54,7 +103,7 @@
                    FontSize="100"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
-                   Content="0"/>
+                   Content="{Binding Wins[0]}"/>
 
             <Image Grid.Column="1" Source="{Binding Team0.Logo}"/>
             <Viewbox HorizontalAlignment="Center" Grid.Column="2" StretchDirection="DownOnly" Stretch="Uniform">
@@ -82,8 +131,12 @@
                    FontSize="100"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
-                   Content="1"/>
+                   Content="{Binding Wins[1]}"/>
 
+        </Grid>
+        
+        <Grid Grid.Column="2" Grid.Row="2" Grid.RowSpan="5">
+            
         </Grid>
         
         <Rectangle Grid.Column="2"
@@ -93,49 +146,7 @@
                    Fill="#161616"
                    Opacity=".9"/>
         
-        <!--Bans Team 0-->
-        <Grid Grid.Column="1" Grid.Row="1" >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1.2*"/>
-                <RowDefinition Height="4*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
-
-            <Label Grid.ColumnSpan="3" 
-                   Foreground="White" 
-                   FontWeight="Bold" 
-                   VerticalAlignment="Top" 
-                   HorizontalAlignment="Center" 
-                   FontSize="30"
-                   Content="BANS 1" />
-            
-            <Label Grid.Column="3" 
-                   Grid.ColumnSpan="5" 
-                   Foreground="White" 
-                   FontWeight="Bold" 
-                   VerticalAlignment="Top" 
-                   HorizontalAlignment="Center" 
-                   FontSize="30" 
-                   Content="BANS 2" />
-
-            <!--Bans-->
-            <Rectangle Grid.Column="0" Grid.Row="2" Margin="5" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
-            <Image Grid.Column="0" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[0], Mode=OneWay }" />
-            <Rectangle Grid.Column="1" Grid.Row="2" Margin="5" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
-            <Image Grid.Column="1" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[1], Mode=OneWay }" />
-            <Rectangle Grid.Column="2" Grid.Row="2" Margin="5" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
-            <Image Grid.Column="2" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[2], Mode=OneWay }" />
-            <Rectangle Grid.Column="3" Grid.Row="2" Margin="5" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
-            <Image Grid.Column="3" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[3], Mode=OneWay }" />
-            <Rectangle Grid.Column="4" Grid.Row="2" Margin="5" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
-            <Image Grid.Column="4" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[4], Mode=OneWay }" />
-        </Grid>
+        
 
         <!--Bans Team 1-->
         <Grid Grid.Column="3" Grid.Row="1" >
@@ -182,26 +193,50 @@
 
         <!--Picks Team 0-->
         <Rectangle Grid.Column="1" Grid.Row="2" Margin="5" Fill="{Binding Path=Team0.Colour, Mode=OneWay}" />
-        <Image Grid.Column="1" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Picks[0], Mode=OneWay }" />
+        <Image Grid.Column="1" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=SelectedGods[0].Pick, Mode=OneWay }" />
+        <Rectangle Grid.Column="1" Grid.Row="2" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[0]}"/>
+
+        <!--<control:PickItem Grid.Column="1" 
+                          Grid.Row="2"
+                          FillColour="{Binding Path=Team0.Colour}"
+                          />-->
+
+
         <Rectangle Grid.Column="1" Grid.Row="3" Margin="5" Fill="{Binding Path=Team0.Colour, Mode=OneWay}" />
-        <Image Grid.Column="1" Grid.Row="3" Margin="5" Stretch="Fill" Source="{ Binding Path=Picks[1], Mode=OneWay }" />
+        <Image Grid.Column="1" Grid.Row="3" Margin="5" Stretch="Fill" Source="{ Binding Path=SelectedGods[1].Pick, Mode=OneWay }" />
+        <Rectangle Grid.Column="1" Grid.Row="3" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[1]}"  />
+
         <Rectangle Grid.Column="1" Grid.Row="4" Margin="5" Fill="{Binding Path=Team0.Colour, Mode=OneWay}" />
-        <Image Grid.Column="1" Grid.Row="4" Margin="5" Stretch="Fill" Source="{ Binding Path=Picks[2], Mode=OneWay }" />
+        <Image Grid.Column="1" Grid.Row="4" Margin="5" Stretch="Fill" Source="{ Binding Path=SelectedGods[2].Pick, Mode=OneWay }" />
+        <Rectangle Grid.Column="1" Grid.Row="4" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[2]}"  />
+
         <Rectangle Grid.Column="1" Grid.Row="5" Margin="5" Fill="{Binding Path=Team0.Colour, Mode=OneWay}" />
-        <Image Grid.Column="1" Grid.Row="5" Margin="5" Stretch="Fill" Source="{ Binding Path=Picks[3], Mode=OneWay }" />
+        <Image Grid.Column="1" Grid.Row="5" Margin="5" Stretch="Fill" Source="{ Binding Path=SelectedGods[3].Pick, Mode=OneWay }" />
+        <Rectangle Grid.Column="1" Grid.Row="5" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[3]}"  />
+
         <Rectangle Grid.Column="1" Grid.Row="6" Margin="5" Fill="{Binding Path=Team0.Colour, Mode=OneWay}" />
-        <Image Grid.Column="1" Grid.Row="6" Margin="5" Stretch="Fill" Source="{ Binding Path=Picks[4], Mode=OneWay }" />
+        <Image Grid.Column="1" Grid.Row="6" Margin="5" Stretch="Fill" Source="{ Binding Path=SelectedGods[4].Pick, Mode=OneWay }" />
+        <Rectangle Grid.Column="1" Grid.Row="6" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[4]}"/>
 
         <!--Picks Team 1-->
         <Rectangle Grid.Column="3" Grid.Row="2" Margin="5" Fill="{Binding Path=Team1.Colour, Mode=OneWay}" />
-        <Image Grid.Column="3" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Picks[5], Mode=OneWay }" />
+        <Image Grid.Column="3" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=SelectedGods[5].Pick, Mode=OneWay }" />
+        <Rectangle Grid.Column="3" Grid.Row="2" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[5]}"/>
+
         <Rectangle Grid.Column="3" Grid.Row="3" Margin="5" Fill="{Binding Path=Team1.Colour, Mode=OneWay}" />
-        <Image Grid.Column="3" Grid.Row="3" Margin="5" Stretch="Fill" Source="{ Binding Path=Picks[6], Mode=OneWay }" />
+        <Image Grid.Column="3" Grid.Row="3" Margin="5" Stretch="Fill" Source="{ Binding Path=SelectedGods[6].Pick, Mode=OneWay }" />
+        <Rectangle Grid.Column="3" Grid.Row="3" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[6]}"/>
+
         <Rectangle Grid.Column="3" Grid.Row="4" Margin="5" Fill="{Binding Path=Team1.Colour, Mode=OneWay}" />
-        <Image Grid.Column="3" Grid.Row="4" Margin="5" Stretch="Fill" Source="{ Binding Path=Picks[7], Mode=OneWay }" />
+        <Image Grid.Column="3" Grid.Row="4" Margin="5" Stretch="Fill" Source="{ Binding Path=SelectedGods[7].Pick, Mode=OneWay }" />
+        <Rectangle Grid.Column="3" Grid.Row="4" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[7]}"/>
+
         <Rectangle Grid.Column="3" Grid.Row="5" Margin="5" Fill="{Binding Path=Team1.Colour, Mode=OneWay}" />
-        <Image Grid.Column="3" Grid.Row="5" Margin="5" Stretch="Fill" Source="{ Binding Path=Picks[8], Mode=OneWay }" />
+        <Image Grid.Column="3" Grid.Row="5" Margin="5" Stretch="Fill" Source="{ Binding Path=SelectedGods[8].Pick, Mode=OneWay }" />
+        <Rectangle Grid.Column="3" Grid.Row="5" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[8]}"/>
+
         <Rectangle Grid.Column="3" Grid.Row="6" Margin="5" Fill="{Binding Path=Team1.Colour, Mode=OneWay}" />
-        <Image Grid.Column="3" Grid.Row="6" Margin="5" Stretch="Fill" Source="{ Binding Path=Picks[9], Mode=OneWay }" />
+        <Image Grid.Column="3" Grid.Row="6" Margin="5" Stretch="Fill" Source="{ Binding Path=SelectedGods[9].Pick, Mode=OneWay }" />
+        <Rectangle Grid.Column="3" Grid.Row="6" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[9]}"/>
     </Grid>
 </Window>

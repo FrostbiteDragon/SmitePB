@@ -6,15 +6,17 @@ namespace SmitePB.Domain
 {
     public record God
     {
-        public string name;
+        public string Name { get; }
         public string Pick { get; }
         public string Ban { get; }
+        public string LockInSound { get; }
 
-        public God(string name, string pick, string ban)
+        public God(string name, string pick, string ban, string lockInSound)
         {
-            this.name = name;
+            Name = name;
             Pick = pick;
             Ban = ban;
+            LockInSound = lockInSound;
         }
     }
 }

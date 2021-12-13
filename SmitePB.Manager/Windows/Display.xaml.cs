@@ -1,50 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.ComponentModel;
 using SmitePB.Domain;
-using Path = System.IO.Path;
+using System.Windows.Media;
 
 namespace SmitePB.Manager.Windows
 {
     public partial class Display : Window, INotifyPropertyChanged
     {
         public Team[] Teams { get; }
-        public God[] Gods { get; }
 
-        public string[] Picks { get; private set; } = new string[10];
+        public God[] SelectedGods { get; } = new God[10];
         public string[] Bans { get; private set; } = new string[10];
+        public int[] Wins { get; } = new int[2] { 0, 1 };
+
+
+        public Visibility[] PickVisibilities { get; private set; } = new Visibility[10];
 
         public Team Team0 { get; private set; }
         public Team Team1 { get; private set; }
 
+        public Brush Team0Colour { get; private set; }
+
+        public string[] GetGodNames() => gods.Select(x => x.Name).ToArray();
+
         public event PropertyChangedEventHandler PropertyChanged;
+        private readonly God[] gods;
+        private readonly MediaPlayer mediaPlayer = new();
 
         private Team GetTeambyName(string name) => Teams.FirstOrDefault(x => x.DisplayName == name);
-        private God GetGodbyName(string name) => Gods.FirstOrDefault(x => x.name == name);
+        private God GetGodbyName(string name) => gods.FirstOrDefault(x => x.Name == name);
 
 
         public Display()
         {
             Teams = TeamService.GetTeams().ToArray();
-            Gods = GodService.GetGods().ToArray();
-
+            gods = GodService.GetGods().ToArray();
             var none = GetGodbyName("None");
-            Picks = Picks.Select(x => none.Pick).ToArray();
-            Bans = Bans.Select(x => none.Ban).ToArray();
+            SelectedGods = SelectedGods.Select(x => none).ToArray();
 
+            Bans = Bans.Select(x => none.Ban).ToArray();
+            PickVisibilities = PickVisibilities.Select(x => Visibility.Hidden).ToArray();
 
             DataContext = this;
 
@@ -62,14 +58,35 @@ namespace SmitePB.Manager.Windows
         public void SetGod(int slot, string godName)
         {
             var god = GetGodbyName(godName);
+            if (god is null)
+                return;
 
-            Picks[slot] = god.Pick;
-            PropertyChanged?.Invoke(this, new(nameof(Picks)));
+            SelectedGods[slot] = GetGodbyName(godName);
+            PickVisibilities[slot] = Visibility.Visible;
+            PropertyChanged?.Invoke(this, new(nameof(PickVisibilities)));
+            PropertyChanged?.Invoke(this, new(nameof(SelectedGods)));
+        }
+
+        public void LockIn(int slot, bool state)
+        {
+            if (state) 
+            {
+                mediaPlayer.Open(new(SelectedGods[slot].LockInSound));
+                mediaPlayer.Volume = 0.25f;
+                mediaPlayer.Play();
+
+                PickVisibilities[slot] = Visibility.Hidden;
+            }
+            else PickVisibilities[slot] = Visibility.Visible;
+
+            PropertyChanged?.Invoke(this, new(nameof(PickVisibilities)));
         }
 
         public void SetBan(int slot, string godName)
         {
             var god = GetGodbyName(godName);
+            if (god is null)
+                return;
 
             Bans[slot] = god.Ban;
             PropertyChanged?.Invoke(this, new(nameof(Bans)));
@@ -84,6 +101,8 @@ namespace SmitePB.Manager.Windows
                 case 0:
                     Team0 = team;
                     PropertyChanged?.Invoke(this, new(nameof(Team0)));
+
+                    Team0Colour = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2596be"));
                     break;
 
                 case 1:
@@ -91,7 +110,12 @@ namespace SmitePB.Manager.Windows
                     PropertyChanged?.Invoke(this, new(nameof(Team1)));
                     break;
             }
-           
+        }
+
+        public void SetWins(int slot, int wins)
+        {
+            Wins[slot] = wins;
+            PropertyChanged?.Invoke(this, new(nameof(Wins)));
         }
     }
 }

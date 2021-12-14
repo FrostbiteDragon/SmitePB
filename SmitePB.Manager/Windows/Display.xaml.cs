@@ -11,6 +11,7 @@ namespace SmitePB.Manager.Windows
         public Team[] Teams { get; }
 
         public God[] SelectedGods { get; } = new God[10];
+        public bool[] LockedIn { get; } = new bool[10];
         public string[] Bans { get; private set; } = new string[10];
         public int[] Wins { get; } = new int[2] { 0, 1 };
 
@@ -69,7 +70,7 @@ namespace SmitePB.Manager.Windows
 
         public void LockIn(int slot, bool state)
         {
-            if (state) 
+            if (state)
             {
                 mediaPlayer.Open(new(SelectedGods[slot].LockInSound));
                 mediaPlayer.Volume = 0.25f;
@@ -77,9 +78,14 @@ namespace SmitePB.Manager.Windows
 
                 PickVisibilities[slot] = Visibility.Hidden;
             }
-            else PickVisibilities[slot] = Visibility.Visible;
+            else
+            {
+                PickVisibilities[slot] = Visibility.Visible;
+            }
 
+            LockedIn[slot] = state;
             PropertyChanged?.Invoke(this, new(nameof(PickVisibilities)));
+            PropertyChanged?.Invoke(this, new(nameof(LockedIn)));
         }
 
         public void SetBan(int slot, string godName)

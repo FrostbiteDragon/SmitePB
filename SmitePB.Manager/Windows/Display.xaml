@@ -38,7 +38,6 @@
 
         <!--Team 0-->
         <Grid Grid.Column="1" Grid.Row="1">
-            
             <!--Bans-->
             <Grid Grid.Column="0" Grid.Row="0" >
                 <Grid.RowDefinitions>
@@ -195,6 +194,38 @@
         <Rectangle Grid.Column="1" Grid.Row="2" Margin="5" Fill="{Binding Path=Team0.Colour, Mode=OneWay}" />
         <Image Grid.Column="1" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=SelectedGods[0].Pick, Mode=OneWay }" />
         <Rectangle Grid.Column="1" Grid.Row="2" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[0]}"/>
+
+      
+        <Grid Grid.Column="1" Grid.Row="2" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.Style>
+                <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Grid.Visibility" Value="Hidden"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding LockedIn[0]}" Value="True">
+                            <Setter Property="Grid.Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+
+            <Rectangle Grid.Column="1" Grid.Row="1" Fill="Black" Opacity=".65"/>
+            <Label Grid.Column="1" Grid.Row="1"
+                   Foreground="White"
+                   FontWeight="Bold"
+                   FontSize="25"
+                   HorizontalContentAlignment="Center"
+                   VerticalAlignment="Center"
+                   Content="ACHILLES"/>
+        </Grid>
 
         <!--<control:PickItem Grid.Column="1" 
                           Grid.Row="2"

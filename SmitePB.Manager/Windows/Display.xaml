@@ -11,12 +11,18 @@
         d:DesignHeight="1080" d:DesignWidth="1920"
         Title="Display">
 
-    
     <Window.Background>
-        <ImageBrush ImageSource="../Assets/Background3.jpg" >
-
-        </ImageBrush>
+        <VisualBrush>
+            <VisualBrush.Visual>
+                <MediaElement Source="C:\Users\Cameron\Documents\_Programming\SmitePB\SmitePB.Manager\bin\Debug\net5.0-windows\Assets\sparks.mov" 
+                              MediaEnded="OnMediaEnded"/>
+            </VisualBrush.Visual>
+        </VisualBrush>
     </Window.Background>
+
+    <!--<Window.Background>
+        <ImageBrush ImageSource="../Assets/Background3.jpg" />
+    </Window.Background>-->
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>

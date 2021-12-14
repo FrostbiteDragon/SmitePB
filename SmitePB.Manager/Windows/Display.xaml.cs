@@ -3,6 +3,8 @@ using System.Windows;
 using System.ComponentModel;
 using SmitePB.Domain;
 using System.Windows.Media;
+using System;
+using System.Windows.Controls;
 
 namespace SmitePB.Manager.Windows
 {
@@ -122,6 +124,12 @@ namespace SmitePB.Manager.Windows
         {
             Wins[slot] = wins;
             PropertyChanged?.Invoke(this, new(nameof(Wins)));
+        }
+
+        private void OnMediaEnded(object sender, RoutedEventArgs e)
+        {
+            var media = sender as MediaElement;
+            media.Position = TimeSpan.Zero;
         }
     }
 }

@@ -39,7 +39,7 @@ namespace SmitePB.Manager.Windows
         {
             Teams = TeamService.GetTeams().ToArray();
             gods = GodService.GetGods().ToArray();
-            var none = GetGodbyName("None");
+            var none = GetGodbyName("NONE");
             SelectedGods = SelectedGods.Select(x => none).ToArray();
 
             Bans = Bans.Select(x => none.Ban).ToArray();

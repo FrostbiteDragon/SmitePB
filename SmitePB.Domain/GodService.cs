@@ -16,7 +16,10 @@ namespace SmitePB.Domain
             foreach(var godDirectory in godDirectories)
             {
                 yield return new God(
-                    name: godDirectory.Split(Path.DirectorySeparatorChar).Last(),
+                    name: godDirectory
+                        .Split(Path.DirectorySeparatorChar)
+                        .Last()
+                        .ToUpper(),
                     pick: Path.Combine(godDirectory, "Pick.png"),
                     ban: Path.Combine(godDirectory, "Ban.png"),
                     lockInSound: Path.Combine(godDirectory, "LockIn.mp3"));

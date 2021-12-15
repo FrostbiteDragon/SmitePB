@@ -300,7 +300,7 @@
                        FontSize="20"
                        HorizontalContentAlignment="Center"
                        VerticalAlignment="Center"
-                       Content="ACHILLES"/>
+                       Content="{Binding SelectedGods[0].Name}"/>
             </Grid>
 
             <!--<control:PickItem Grid.Column="1" 

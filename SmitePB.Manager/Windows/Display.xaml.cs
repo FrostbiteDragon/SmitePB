@@ -16,6 +16,7 @@ namespace SmitePB.Manager.Windows
         public bool[] LockedIn { get; } = new bool[10];
         public string[] Bans { get; private set; } = new string[10];
         public int[] Wins { get; } = new int[2] { 0, 1 };
+        public string[] PlayerNames { get; } = new string[10];
 
 
         public Visibility[] PickVisibilities { get; private set; } = new Visibility[10];
@@ -37,6 +38,9 @@ namespace SmitePB.Manager.Windows
 
         public Display()
         {
+            //temp
+            PlayerNames = PlayerNames.Select(x => "PLAYER").ToArray();
+
             Teams = TeamService.GetTeams().ToArray();
             gods = GodService.GetGods().ToArray();
             var none = GetGodbyName("NONE");
@@ -124,6 +128,12 @@ namespace SmitePB.Manager.Windows
         {
             Wins[slot] = wins;
             PropertyChanged?.Invoke(this, new(nameof(Wins)));
+        }
+
+        public void SetPlayerNames(int slot, string name)
+        {
+            PlayerNames[slot] = name;
+            PropertyChanged?.Invoke(this, new(nameof(PlayerNames)));
         }
 
         private void OnMediaEnded(object sender, RoutedEventArgs e)

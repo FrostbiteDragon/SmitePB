@@ -376,7 +376,8 @@
             <Image Grid.Row="1" Margin="5" Stretch="Fill" Source="{ Binding Path=SelectedGods[0].Pick, Mode=OneWay }" />
             <Rectangle Grid.Row="1" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[0]}"/>
             <!--Locked In-->
-            <Grid Grid.Row="1"  Margin="5">
+            <Canvas Grid.Row="1">
+                <Grid x:Name="Pick1" Margin="5" Canvas.Bottom="0" Width="440" Canvas.Left="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
@@ -387,13 +388,25 @@
                     <RowDefinition Height="3*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-
                 <Grid.Style>
                     <Style TargetType="{x:Type Grid}">
                         <Setter Property="Grid.Visibility" Value="Hidden"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding LockedIn[0]}" Value="True">
                                 <Setter Property="Grid.Visibility" Value="Visible"/>
+                                <DataTrigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="(Canvas.Left)"
+                                                             Duration="0:0:0.25"
+                                                             From="-500"
+                                                             To="0"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </DataTrigger.EnterActions>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding LockedIn[0]}" Value="False">
+                                <Setter Property="Grid.Visibility" Value="Hidden"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
@@ -437,6 +450,7 @@
                        VerticalAlignment="Center"
                        Content="{Binding SelectedGods[0].Name}"/>
             </Grid>
+            </Canvas>
 
             <!--<control:PickItem Grid.Column="1" 
                               Grid.Row="2"

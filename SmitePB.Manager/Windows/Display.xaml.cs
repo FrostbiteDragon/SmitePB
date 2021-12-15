@@ -68,6 +68,7 @@ namespace SmitePB.Manager.Windows
             if (god is null)
                 return;
 
+            LockIn(slot, false);
             SelectedGods[slot] = GetGodbyName(godName);
             PickVisibilities[slot] = Visibility.Visible;
             PropertyChanged?.Invoke(this, new(nameof(PickVisibilities)));

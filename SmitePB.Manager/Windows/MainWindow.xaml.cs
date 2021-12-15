@@ -123,5 +123,11 @@ namespace SmitePB.Manager.Windows
             else
                 textBox.Text = "";
         }
+
+        private void OnPlayerNameChnaged(object sender, TextChangedEventArgs e)
+        {
+            var textBox = (TextBox)sender;
+            _display.SetPlayerName(int.Parse(textBox.Tag as string), textBox.Text);
+        }
     }
 }

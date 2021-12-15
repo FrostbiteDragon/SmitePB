@@ -130,7 +130,7 @@ namespace SmitePB.Manager.Windows
             PropertyChanged?.Invoke(this, new(nameof(Wins)));
         }
 
-        public void SetPlayerNames(int slot, string name)
+        public void SetPlayerName(int slot, string name)
         {
             PlayerNames[slot] = name;
             PropertyChanged?.Invoke(this, new(nameof(PlayerNames)));

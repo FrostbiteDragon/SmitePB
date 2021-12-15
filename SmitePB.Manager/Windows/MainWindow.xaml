@@ -28,109 +28,181 @@
 
         </Grid.RowDefinitions>
 
-        <!--teams-->
         <Grid Grid.Column="1" Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width=".3*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width=".3*"/>
-                <ColumnDefinition Width="2*"/>
-            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="71*"/>
-                <RowDefinition Height="287*"/>
+                <RowDefinition Height=".3*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
 
+            <!--teams-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width=".3*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width=".3*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
 
-            <Label Grid.Column="0"
-                   Foreground="White"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Top"
-                   Content="TEAM 1"/>
-
-            <ComboBox Grid.Column="0"
-                      Height="20"
-                      VerticalAlignment="Center"
-                      SelectionChanged="OnTeamSelectionChanged"
-                      Tag="0"
-                      SelectedValue="{Binding SelectedTeam0, Mode=TwoWay}"
-                      ItemsSource="{Binding TeamSource}">
-
-                <ComboBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel />
-                    </ItemsPanelTemplate>
-                </ComboBox.ItemsPanel>
-            </ComboBox>
-
-            <TextBox Grid.Column="1"
-                     Foreground="White"
-                     VerticalAlignment="Center"
-                     FontWeight="Bold"
-                     FontSize="20"
-                     Background="Black"
-                     BorderThickness="0"
-                     Tag="0"
-                     TextChanged="OnWinCountChanged"
-                     Text="0"/>
-
-
-            <Button Grid.Column="2" Click="SwapTeamSides">
-                <Button.Template>
-                    <ControlTemplate>
-                        <Label FontFamily="{StaticResource IcoFont}" 
-                               Foreground="White" 
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               FontSize="30"
-                               Content="&#xef18;"/>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-
-            <TextBox Grid.Column="3"
-                     Foreground="White"
-                     VerticalAlignment="Center"
-                     FontWeight="Bold"
-                     FontSize="20"
-                     Background="Black"
-                     BorderThickness="0"
-                     Tag="1"
-                     TextChanged="OnWinCountChanged"
-                     Text="0"/>
-
-
-
-            <Label Grid.Column="4"
-                   Foreground="White"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Top"
-                   Content="TEAM 2">
-
-            </Label>
-
-            <ComboBox Grid.Column="4"
-                      Height="20"
-                      VerticalAlignment="Center"
-                      SelectionChanged="OnTeamSelectionChanged"
-                      Tag="1"
-                      SelectedValue="{Binding SelectedTeam1, Mode=TwoWay}"
-                      ItemsSource="{Binding TeamSource}">
-
-                <ComboBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <VirtualizingStackPanel />
-                    </ItemsPanelTemplate>
-                </ComboBox.ItemsPanel>
-            </ComboBox>
-
-            <Separator Grid.ColumnSpan="5"
-                       Grid.Row="1"
+                <Label Grid.Column="0"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
                        VerticalAlignment="Top"
-                       Foreground="White"/>
+                       Content="TEAM 1"/>
 
+                <ComboBox Grid.Column="0"
+                          Height="20"
+                          VerticalAlignment="Bottom"
+                          SelectionChanged="OnTeamSelectionChanged"
+                          Tag="0"
+                          SelectedValue="{Binding SelectedTeam0, Mode=TwoWay}"
+                          ItemsSource="{Binding TeamSource}">
+
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+
+                <TextBox Grid.Column="1"
+                         Foreground="White"
+                         VerticalAlignment="Bottom"
+                         FontWeight="Bold"
+                         FontSize="20"
+                         Background="Black"
+                         BorderThickness="0"
+                         Tag="0"
+                         TextChanged="OnWinCountChanged"
+                         Text="0"/>
+
+
+                <Button Grid.Column="2" Click="SwapTeamSides">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Label FontFamily="{StaticResource IcoFont}" 
+                                   Foreground="White" 
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="30"
+                                   Content="&#xef18;"/>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+                <TextBox Grid.Column="3"
+                         Foreground="White"
+                         VerticalAlignment="Bottom"
+                         FontWeight="Bold"
+                         FontSize="20"
+                         Background="Black"
+                         BorderThickness="0"
+                         Tag="1"
+                         TextChanged="OnWinCountChanged"
+                         Text="0"/>
+
+
+
+                <Label Grid.Column="4"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top"
+                       Content="TEAM 2">
+
+                </Label>
+
+                <ComboBox Grid.Column="4"
+                          Height="20"
+                          VerticalAlignment="Bottom"
+                          SelectionChanged="OnTeamSelectionChanged"
+                          Tag="1"
+                          SelectedValue="{Binding SelectedTeam1, Mode=TwoWay}"
+                          ItemsSource="{Binding TeamSource}">
+
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+            </Grid>
+
+            <Grid Grid.Row="1" Margin="0 5 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width=".5*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Separator Grid.ColumnSpan="10"
+                           VerticalAlignment="Top"
+                           Foreground="White"/>
+
+                <TextBox Grid.Row="0" Height="20" Tag="0" TextChanged="OnPlayerNameChnaged"/>
+                <TextBox Grid.Row="1" Height="20" Tag="1" TextChanged="OnPlayerNameChnaged"/>
+                <TextBox Grid.Row="2" Height="20" Tag="2" TextChanged="OnPlayerNameChnaged"/>
+                <TextBox Grid.Row="3" Height="20" Tag="3" TextChanged="OnPlayerNameChnaged"/>
+                <TextBox Grid.Row="4" Height="20" Tag="4" TextChanged="OnPlayerNameChnaged"/>
+
+                <TextBox Grid.Column="2" Grid.Row="0" Height="20" Tag="5" TextChanged="OnPlayerNameChnaged"/>
+                <TextBox Grid.Column="2" Grid.Row="1" Height="20" Tag="6" TextChanged="OnPlayerNameChnaged"/>
+                <TextBox Grid.Column="2" Grid.Row="2" Height="20" Tag="7" TextChanged="OnPlayerNameChnaged"/>
+                <TextBox Grid.Column="2" Grid.Row="3" Height="20" Tag="8" TextChanged="OnPlayerNameChnaged"/>
+                <TextBox Grid.Column="2" Grid.Row="4" Height="20" Tag="9" TextChanged="OnPlayerNameChnaged"/>
+                
+
+                <!--Role Names-->
+                <Label Grid.Column="1"
+                       HorizontalContentAlignment="Center"
+                       VerticalContentAlignment="Center"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       FontSize="12"
+                       Content="SOLO"/>
+                <Label Grid.Column="1"
+                       Grid.Row="1"
+                       HorizontalContentAlignment="Center"
+                       VerticalContentAlignment="Center"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       FontSize="12"
+                       Content="JUNGLE"/>
+                <Label Grid.Column="1"
+                       Grid.Row="2"
+                       HorizontalContentAlignment="Center"
+                       VerticalContentAlignment="Center"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       FontSize="12"
+                       Content="MID"/>
+                <Label Grid.Column="1"
+                       Grid.Row="3"
+                       HorizontalContentAlignment="Center"
+                       VerticalContentAlignment="Center"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       FontSize="12"
+                       Content="SUPPORT"/>
+                <Label Grid.Column="1"
+                       Grid.Row="4"
+                       HorizontalContentAlignment="Center"
+                       VerticalContentAlignment="Center"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       FontSize="12"
+                       Content="CARRY"/>
+
+            </Grid>
         </Grid>
+
         <!--Pick/Bans-->
         <Grid Grid.Column="3" Grid.Row="1">
             <Grid.RowDefinitions>
@@ -528,7 +600,7 @@
                         </ComboBox.ItemsPanel>
                     </ComboBox>
                 </WrapPanel>
-                
+
                 <Button Grid.Column="1" Grid.Row="1" Click="OnLockedIn" Tag="0">
                     <Button.Template>
                         <ControlTemplate>

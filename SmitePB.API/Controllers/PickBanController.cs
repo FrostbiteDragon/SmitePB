@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using SmitePB.Domain.Models;
+using SmitePB.Domain;
 using System;
 using System.Threading.Tasks;
 using static SmitePB.API.Services.PickBanService;

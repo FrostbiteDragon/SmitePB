@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmitePB.Domain.Models
+namespace SmitePB.Domain
 {
     public record Pick
     {

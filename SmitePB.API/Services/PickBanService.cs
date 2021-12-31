@@ -1,4 +1,4 @@
-﻿using SmitePB.Domain.Models;
+﻿using SmitePB.Domain;
 using System;
 using Raven.Client.Documents.Linq;
 using static SmitePB.API.Services.RavenService;
@@ -36,7 +36,9 @@ namespace SmitePB.API.Services
 
                 return new GodStats(
                     pickBanRate: (gamesPlayed + gamesBaned) * 100 / globalGamesPlayed,
-                    winRate: wins * 100 / gamesPlayed,
+                    winRate: gamesPlayed == 0 
+                        ? 0
+                        : wins * 100 / gamesPlayed,
                     gamesPlayed: gamesPlayed
                 );
             });

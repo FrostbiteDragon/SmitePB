@@ -74,15 +74,15 @@
                    Content="BANS 2" />
 
                 <!--Bans-->
-                <Rectangle Grid.Column="0" Grid.Row="2" Margin="5" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
+                <Rectangle Grid.Column="0" Grid.Row="2" Margin="5" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
                 <Image Grid.Column="0" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[0], Mode=OneWay }" />
-                <Rectangle Grid.Column="1" Grid.Row="2" Margin="5" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
+                <Rectangle Grid.Column="1" Grid.Row="2" Margin="5" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
                 <Image Grid.Column="1" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[1], Mode=OneWay }" />
-                <Rectangle Grid.Column="2" Grid.Row="2" Margin="5" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
+                <Rectangle Grid.Column="2" Grid.Row="2" Margin="5" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
                 <Image Grid.Column="2" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[2], Mode=OneWay }" />
-                <Rectangle Grid.Column="3" Grid.Row="2" Margin="5" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
+                <Rectangle Grid.Column="3" Grid.Row="2" Margin="5" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
                 <Image Grid.Column="3" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[3], Mode=OneWay }" />
-                <Rectangle Grid.Column="4" Grid.Row="2" Margin="5" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
+                <Rectangle Grid.Column="4" Grid.Row="2" Margin="5" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
                 <Image Grid.Column="4" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[4], Mode=OneWay }" />
             </Grid>
         </Grid>
@@ -372,12 +372,12 @@
             </Grid>
 
             <!--Pick 1-->
-            <Rectangle Grid.Row="1" Margin="5" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
+            <Rectangle Grid.Row="1" Margin="5" Height="150" Width="440" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
             <Image Grid.Row="1" Margin="5" Stretch="Fill" Source="{ Binding Path=SelectedGods[0].Pick, Mode=OneWay }"/>
             <Rectangle Grid.Row="1" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[0]}"/>
             <!--Locked In-->
             <Canvas Grid.Row="1">
-                <Grid x:Name="Pick1" Margin="5" Canvas.Bottom="0" Width="440" Canvas.Left="0">
+                <Grid Margin="5" Canvas.Bottom="0" Width="440" Canvas.Left="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
@@ -385,7 +385,7 @@
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="1*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <Grid.Style>
@@ -405,7 +405,7 @@
                                     </BeginStoryboard>
                                 </DataTrigger.EnterActions>
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding LockedIn[0]}" Value="False">
+                                <DataTrigger Binding="{Binding LockedIn[0]}" Value="False">
                                 <Setter Property="Grid.Visibility" Value="Hidden"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -420,8 +420,8 @@
                        HorizontalContentAlignment="Center"
                        Foreground="White"
                        FontWeight="Bold"
-                       FontSize="20"
-                       Content="50%"/>
+                       FontSize="18"
+                       Content="{Binding GodStats[0].PickBanRate}" ContentStringFormat="{}{0}%" />
                 <!--Win Rate-->
                 <Label Grid.Column="1" 
                        Grid.Row="2"
@@ -429,8 +429,8 @@
                        HorizontalContentAlignment="Center"
                        Foreground="White"
                        FontWeight="Bold"
-                       FontSize="20"
-                       Content="100%"/>
+                       FontSize="18"
+                       Content="{Binding GodStats[0].WinRate}" ContentStringFormat="{}{0}%" />
                 <!--Games Played-->
                 <Label Grid.Column="2" 
                        Grid.Row="2"
@@ -438,41 +438,339 @@
                        HorizontalContentAlignment="Center"
                        Foreground="White"
                        FontWeight="Bold"
-                       FontSize="20"
-                       Content="2"/>
+                       FontSize="18"
+                       Content="{Binding GodStats[0].GamesPlayed}"/>
 
                 <!--NAME-->
                 <Label Grid.Column="3" Grid.Row="2"
                        Foreground="White"
                        FontWeight="Bold"
-                       FontSize="20"
+                       FontSize="18"
                        HorizontalContentAlignment="Center"
                        VerticalAlignment="Center"
                        Content="{Binding SelectedGods[0].Name}"/>
             </Grid>
             </Canvas>
 
-            <!--<control:PickItem Grid.Column="1" 
-                              Grid.Row="2"
-                              FillColour="{Binding Path=Team0.Colour}"
-                              />-->
-
-
             <Rectangle Grid.Column="1" Grid.Row="2" Margin="5" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}" />
             <Image Grid.Column="1" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=SelectedGods[1].Pick, Mode=OneWay }" />
             <Rectangle Grid.Column="1" Grid.Row="2" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[1]}"  />
+            <!--Locked In-->
+            <Canvas Grid.Row="2">
+                <Grid Margin="5" Canvas.Bottom="0" Width="440" Canvas.Left="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.Style>
+                        <Style TargetType="{x:Type Grid}">
+                            <Setter Property="Grid.Visibility" Value="Hidden"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding LockedIn[1]}" Value="True">
+                                    <Setter Property="Grid.Visibility" Value="Visible"/>
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="(Canvas.Left)"
+                                                             Duration="0:0:0.25"
+                                                             From="-500"
+                                                             To="0"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding LockedIn[1]}" Value="False">
+                                    <Setter Property="Grid.Visibility" Value="Hidden"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+
+                    <Rectangle Grid.ColumnSpan="4" Grid.Row="2" Fill="Black" Opacity=".65"/>
+                    <!--Pick/Ban Rate-->
+                    <Label Grid.Column="0" 
+                       Grid.Row="2"
+                       VerticalContentAlignment="Center"
+                       HorizontalContentAlignment="Center"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       FontSize="18"
+                       Content="{Binding GodStats[1].PickBanRate}" ContentStringFormat="{}{0}%" />
+                    <!--Win Rate-->
+                    <Label Grid.Column="1" 
+                       Grid.Row="2"
+                       VerticalContentAlignment="Center"
+                       HorizontalContentAlignment="Center"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       FontSize="18"
+                       Content="{Binding GodStats[1].WinRate}" ContentStringFormat="{}{0}%" />
+                    <!--Games Played-->
+                    <Label Grid.Column="2" 
+                       Grid.Row="2"
+                       VerticalContentAlignment="Center"
+                       HorizontalContentAlignment="Center"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       FontSize="18"
+                       Content="{Binding GodStats[1].GamesPlayed}"/>
+
+                    <!--NAME-->
+                    <Label Grid.Column="3" Grid.Row="2"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       FontSize="18"
+                       HorizontalContentAlignment="Center"
+                       VerticalAlignment="Center"
+                       Content="{Binding SelectedGods[1].Name}"/>
+                </Grid>
+            </Canvas>
 
             <Rectangle Grid.Column="1" Grid.Row="3" Margin="5" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}" />
             <Image Grid.Column="1" Grid.Row="3" Margin="5" Stretch="Fill" Source="{ Binding Path=SelectedGods[2].Pick, Mode=OneWay }" />
             <Rectangle Grid.Column="1" Grid.Row="3" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[2]}"  />
+            <!--Locked In-->
+            <Canvas Grid.Row="3">
+                <Grid Margin="5" Canvas.Bottom="0" Width="440" Canvas.Left="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.Style>
+                        <Style TargetType="{x:Type Grid}">
+                            <Setter Property="Grid.Visibility" Value="Hidden"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding LockedIn[2]}" Value="True">
+                                    <Setter Property="Grid.Visibility" Value="Visible"/>
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="(Canvas.Left)"
+                                                             Duration="0:0:0.25"
+                                                             From="-500"
+                                                             To="0"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding LockedIn[2]}" Value="False">
+                                    <Setter Property="Grid.Visibility" Value="Hidden"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+
+                    <Rectangle Grid.ColumnSpan="4" Grid.Row="2" Fill="Black" Opacity=".65"/>
+                    <!--Pick/Ban Rate-->
+                    <Label Grid.Column="0" 
+                       Grid.Row="2"
+                       VerticalContentAlignment="Center"
+                       HorizontalContentAlignment="Center"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       FontSize="18"
+                       Content="{Binding GodStats[2].PickBanRate}" ContentStringFormat="{}{0}%" />
+                    <!--Win Rate-->
+                    <Label Grid.Column="1" 
+                       Grid.Row="2"
+                       VerticalContentAlignment="Center"
+                       HorizontalContentAlignment="Center"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       FontSize="18"
+                       Content="{Binding GodStats[2].WinRate}" ContentStringFormat="{}{0}%" />
+                    <!--Games Played-->
+                    <Label Grid.Column="2" 
+                       Grid.Row="2"
+                       VerticalContentAlignment="Center"
+                       HorizontalContentAlignment="Center"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       FontSize="18"
+                       Content="{Binding GodStats[2].GamesPlayed}"/>
+
+                    <!--NAME-->
+                    <Label Grid.Column="3" Grid.Row="2"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       FontSize="18"
+                       HorizontalContentAlignment="Center"
+                       VerticalAlignment="Center"
+                       Content="{Binding SelectedGods[2].Name}"/>
+                </Grid>
+            </Canvas>
 
             <Rectangle Grid.Column="1" Grid.Row="4" Margin="5" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}" />
             <Image Grid.Column="1" Grid.Row="4" Margin="5" Stretch="Fill" Source="{ Binding Path=SelectedGods[3].Pick, Mode=OneWay }" />
             <Rectangle Grid.Column="1" Grid.Row="4" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[3]}"  />
+            <!--Locked In-->
+            <Canvas Grid.Row="4">
+                <Grid Margin="5" Canvas.Bottom="0" Width="440" Canvas.Left="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.Style>
+                        <Style TargetType="{x:Type Grid}">
+                            <Setter Property="Grid.Visibility" Value="Hidden"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding LockedIn[3]}" Value="True">
+                                    <Setter Property="Grid.Visibility" Value="Visible"/>
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="(Canvas.Left)"
+                                                             Duration="0:0:0.25"
+                                                             From="-500"
+                                                             To="0"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding LockedIn[3]}" Value="False">
+                                    <Setter Property="Grid.Visibility" Value="Hidden"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+
+                    <Rectangle Grid.ColumnSpan="4" Grid.Row="2" Fill="Black" Opacity=".65"/>
+                    <!--Pick/Ban Rate-->
+                    <Label Grid.Column="0" 
+                       Grid.Row="2"
+                       VerticalContentAlignment="Center"
+                       HorizontalContentAlignment="Center"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       FontSize="18"
+                       Content="{Binding GodStats[3].PickBanRate}" ContentStringFormat="{}{0}%" />
+                    <!--Win Rate-->
+                    <Label Grid.Column="1" 
+                       Grid.Row="2"
+                       VerticalContentAlignment="Center"
+                       HorizontalContentAlignment="Center"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       FontSize="18"
+                       Content="{Binding GodStats[3].WinRate}" ContentStringFormat="{}{0}%" />
+                    <!--Games Played-->
+                    <Label Grid.Column="2" 
+                       Grid.Row="2"
+                       VerticalContentAlignment="Center"
+                       HorizontalContentAlignment="Center"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       FontSize="18"
+                       Content="{Binding GodStats[3].GamesPlayed}"/>
+
+                    <!--NAME-->
+                    <Label Grid.Column="3" Grid.Row="2"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       FontSize="18"
+                       HorizontalContentAlignment="Center"
+                       VerticalAlignment="Center"
+                       Content="{Binding SelectedGods[3].Name}"/>
+                </Grid>
+            </Canvas>
 
             <Rectangle Grid.Column="1" Grid.Row="5" Margin="5" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}" />
             <Image Grid.Column="1" Grid.Row="5" Margin="5" Stretch="Fill" Source="{ Binding Path=SelectedGods[4].Pick, Mode=OneWay }" />
             <Rectangle Grid.Column="1" Grid.Row="5" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[4]}"/>
+            <!--Locked In-->
+            <Canvas Grid.Row="5">
+                <Grid Margin="5" Canvas.Bottom="0" Width="440" Canvas.Left="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.Style>
+                        <Style TargetType="{x:Type Grid}">
+                            <Setter Property="Grid.Visibility" Value="Hidden"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding LockedIn[4]}" Value="True">
+                                    <Setter Property="Grid.Visibility" Value="Visible"/>
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="(Canvas.Left)"
+                                                             Duration="0:0:0.25"
+                                                             From="-500"
+                                                             To="0"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding LockedIn[4]}" Value="False">
+                                    <Setter Property="Grid.Visibility" Value="Hidden"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Grid.Style>
+
+                    <Rectangle Grid.ColumnSpan="4" Grid.Row="2" Fill="Black" Opacity=".65"/>
+                    <!--Pick/Ban Rate-->
+                    <Label Grid.Column="0" 
+                       Grid.Row="2"
+                       VerticalContentAlignment="Center"
+                       HorizontalContentAlignment="Center"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       FontSize="18"
+                       Content="{Binding GodStats[4].PickBanRate}" ContentStringFormat="{}{0}%" />
+                    <!--Win Rate-->
+                    <Label Grid.Column="1" 
+                       Grid.Row="2"
+                       VerticalContentAlignment="Center"
+                       HorizontalContentAlignment="Center"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       FontSize="18"
+                       Content="{Binding GodStats[4].WinRate}" ContentStringFormat="{}{0}%" />
+                    <!--Games Played-->
+                    <Label Grid.Column="2" 
+                       Grid.Row="2"
+                       VerticalContentAlignment="Center"
+                       HorizontalContentAlignment="Center"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       FontSize="18"
+                       Content="{Binding GodStats[4].GamesPlayed}"/>
+
+                    <!--NAME-->
+                    <Label Grid.Column="3" Grid.Row="2"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       FontSize="18"
+                       HorizontalContentAlignment="Center"
+                       VerticalAlignment="Center"
+                       Content="{Binding SelectedGods[4].Name}"/>
+                </Grid>
+            </Canvas>
 
             <!--Picks Team 1--><!--
             <Rectangle Grid.Column="3" Grid.Row="2" Margin="5" Fill="{Binding Path=Team1.Colour, Mode=OneWay}" />

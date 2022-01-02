@@ -15,8 +15,8 @@ namespace SmitePB.API.Services
         {
             var globalGamesPlayed =
                 await session
-                .Query<Pick>()
-                .CountAsync() / 10;
+                .Query<Game>()
+                .CountAsync();
             var gamesPlayed =
                 await session
                 .Query<Pick>()
@@ -36,8 +36,9 @@ namespace SmitePB.API.Services
 
             return new GodStats(
                 pickBanRate: (gamesPlayed + gamesBaned) * 100 / globalGamesPlayed,
-                winRate: gamesPlayed == 0
-                    ? 0
+                winRate: 
+                    gamesPlayed == 0 
+                    ? 0 
                     : wins * 100 / gamesPlayed,
                 gamesPlayed: gamesPlayed
             );

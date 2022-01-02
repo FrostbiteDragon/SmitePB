@@ -162,7 +162,12 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <Rectangle Grid.ColumnSpan="10" Grid.RowSpan="10" Fill="Black" Opacity=".3"/>
+                <Rectangle Grid.ColumnSpan="10" 
+                           Grid.RowSpan="10" 
+                           Fill="Black" 
+                           Stroke="WhiteSmoke"
+                           StrokeThickness="3"
+                           Opacity=".3"/>
 
 
                 <!--Team 0 Players-->
@@ -280,10 +285,11 @@
             
             <!--Bans-->
             <Grid Grid.Row="2" Margin="5">
-                <Rectangle Fill="Black" Opacity=".3"/>
+                <Rectangle Fill="Black" Opacity=".3" Stroke="WhiteSmoke" StrokeThickness="3"/>
             </Grid>
         </Grid>
-        
+
+
         <!--Bans Team 1-->
         <Grid Grid.Column="3" Grid.Row="1" >
             <Grid.RowDefinitions>
@@ -297,6 +303,8 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
+            
+            <Rectangle Grid.ColumnSpan="5" Fill="Black" Opacity="0.3" Margin="5"/>
 
             <Label Grid.ColumnSpan="2" 
                    Foreground="White" 

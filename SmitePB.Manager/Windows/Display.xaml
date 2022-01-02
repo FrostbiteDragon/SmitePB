@@ -75,15 +75,15 @@
 
                 <!--Bans-->
                 <Rectangle Grid.Column="0" Grid.Row="2" Margin="5" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
-                <Image Grid.Column="0" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[0], Mode=OneWay }" />
+                <Image Grid.Column="0" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[0].Ban, Mode=OneWay }" />
                 <Rectangle Grid.Column="1" Grid.Row="2" Margin="5" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
-                <Image Grid.Column="1" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[1], Mode=OneWay }" />
+                <Image Grid.Column="1" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[1].Ban, Mode=OneWay }" />
                 <Rectangle Grid.Column="2" Grid.Row="2" Margin="5" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
-                <Image Grid.Column="2" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[2], Mode=OneWay }" />
+                <Image Grid.Column="2" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[2].Ban, Mode=OneWay }" />
                 <Rectangle Grid.Column="3" Grid.Row="2" Margin="5" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
-                <Image Grid.Column="3" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[3], Mode=OneWay }" />
+                <Image Grid.Column="3" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[3].Ban, Mode=OneWay }" />
                 <Rectangle Grid.Column="4" Grid.Row="2" Margin="5" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
-                <Image Grid.Column="4" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[4], Mode=OneWay }" />
+                <Image Grid.Column="4" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[4].Ban, Mode=OneWay }" />
             </Grid>
         </Grid>
 
@@ -316,15 +316,15 @@
 
             <!--Bans-->
             <Rectangle Grid.Column="0" Grid.Row="2" Margin="5" Fill="{Binding Path=Team1.Colour, Mode=OneWay}"/>
-            <Image Grid.Column="0" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[5], Mode=OneWay }" />
+            <Image Grid.Column="0" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[5].Ban }" />
             <Rectangle Grid.Column="1" Grid.Row="2" Margin="5" Fill="{Binding Path=Team1.Colour, Mode=OneWay}"/>
-            <Image Grid.Column="1" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[6], Mode=OneWay }" />
+            <Image Grid.Column="1" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[6].Ban }" />
             <Rectangle Grid.Column="2" Grid.Row="2" Margin="5" Fill="{Binding Path=Team1.Colour, Mode=OneWay}"/>
-            <Image Grid.Column="2" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[7], Mode=OneWay }" />
+            <Image Grid.Column="2" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[7].Ban }" />
             <Rectangle Grid.Column="3" Grid.Row="2" Margin="5" Fill="{Binding Path=Team1.Colour, Mode=OneWay}"/>
-            <Image Grid.Column="3" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[8], Mode=OneWay }" />
+            <Image Grid.Column="3" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[8].Ban }" />
             <Rectangle Grid.Column="4" Grid.Row="2" Margin="5" Fill="{Binding Path=Team1.Colour, Mode=OneWay}"/>
-            <Image Grid.Column="4" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[9], Mode=OneWay }" />
+            <Image Grid.Column="4" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[9].Ban }" />
         </Grid>
 
         <!--Picks Team 0-->
@@ -373,7 +373,7 @@
 
             <!--Pick 1-->
             <Rectangle Grid.Row="1" Margin="5" Height="150" Width="440" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
-            <Image Grid.Row="1" Margin="5" Stretch="Fill" Source="{ Binding Path=SelectedGods[0].Pick, Mode=OneWay }"/>
+            <Image Grid.Row="1" Margin="5" Stretch="Fill" Source="{ Binding Path=Picks[0].Pick, Mode=OneWay }"/>
             <Rectangle Grid.Row="1" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[0]}"/>
             <!--Locked In-->
             <Canvas Grid.Row="1">
@@ -448,12 +448,12 @@
                        FontSize="18"
                        HorizontalContentAlignment="Center"
                        VerticalAlignment="Center"
-                       Content="{Binding SelectedGods[0].Name}"/>
+                       Content="{Binding Picks[0].Name}"/>
             </Grid>
             </Canvas>
 
             <Rectangle Grid.Column="1" Grid.Row="2" Margin="5" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}" />
-            <Image Grid.Column="1" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=SelectedGods[1].Pick, Mode=OneWay }" />
+            <Image Grid.Column="1" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Picks[1].Pick, Mode=OneWay }" />
             <Rectangle Grid.Column="1" Grid.Row="2" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[1]}"  />
             <!--Locked In-->
             <Canvas Grid.Row="2">
@@ -528,12 +528,12 @@
                        FontSize="18"
                        HorizontalContentAlignment="Center"
                        VerticalAlignment="Center"
-                       Content="{Binding SelectedGods[1].Name}"/>
+                       Content="{Binding Picks[1].Name}"/>
                 </Grid>
             </Canvas>
 
             <Rectangle Grid.Column="1" Grid.Row="3" Margin="5" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}" />
-            <Image Grid.Column="1" Grid.Row="3" Margin="5" Stretch="Fill" Source="{ Binding Path=SelectedGods[2].Pick, Mode=OneWay }" />
+            <Image Grid.Column="1" Grid.Row="3" Margin="5" Stretch="Fill" Source="{ Binding Path=Picks[2].Pick, Mode=OneWay }" />
             <Rectangle Grid.Column="1" Grid.Row="3" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[2]}"  />
             <!--Locked In-->
             <Canvas Grid.Row="3">
@@ -608,12 +608,12 @@
                        FontSize="18"
                        HorizontalContentAlignment="Center"
                        VerticalAlignment="Center"
-                       Content="{Binding SelectedGods[2].Name}"/>
+                       Content="{Binding Picks[2].Name}"/>
                 </Grid>
             </Canvas>
 
             <Rectangle Grid.Column="1" Grid.Row="4" Margin="5" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}" />
-            <Image Grid.Column="1" Grid.Row="4" Margin="5" Stretch="Fill" Source="{ Binding Path=SelectedGods[3].Pick, Mode=OneWay }" />
+            <Image Grid.Column="1" Grid.Row="4" Margin="5" Stretch="Fill" Source="{ Binding Path=Picks[3].Pick, Mode=OneWay }" />
             <Rectangle Grid.Column="1" Grid.Row="4" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[3]}"  />
             <!--Locked In-->
             <Canvas Grid.Row="4">
@@ -688,12 +688,12 @@
                        FontSize="18"
                        HorizontalContentAlignment="Center"
                        VerticalAlignment="Center"
-                       Content="{Binding SelectedGods[3].Name}"/>
+                       Content="{Binding Picks[3].Name}"/>
                 </Grid>
             </Canvas>
 
             <Rectangle Grid.Column="1" Grid.Row="5" Margin="5" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}" />
-            <Image Grid.Column="1" Grid.Row="5" Margin="5" Stretch="Fill" Source="{ Binding Path=SelectedGods[4].Pick, Mode=OneWay }" />
+            <Image Grid.Column="1" Grid.Row="5" Margin="5" Stretch="Fill" Source="{ Binding Path=Picks[4].Pick, Mode=OneWay }" />
             <Rectangle Grid.Column="1" Grid.Row="5" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[4]}"/>
             <!--Locked In-->
             <Canvas Grid.Row="5">
@@ -768,29 +768,29 @@
                        FontSize="18"
                        HorizontalContentAlignment="Center"
                        VerticalAlignment="Center"
-                       Content="{Binding SelectedGods[4].Name}"/>
+                       Content="{Binding Picks[4].Name}"/>
                 </Grid>
             </Canvas>
 
             <!--Picks Team 1--><!--
             <Rectangle Grid.Column="3" Grid.Row="2" Margin="5" Fill="{Binding Path=Team1.Colour, Mode=OneWay}" />
-            <Image Grid.Column="3" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=SelectedGods[5].Pick, Mode=OneWay }" />
+            <Image Grid.Column="3" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Picks[5].Pick, Mode=OneWay }" />
             <Rectangle Grid.Column="3" Grid.Row="2" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[5]}"/>
 
             <Rectangle Grid.Column="3" Grid.Row="3" Margin="5" Fill="{Binding Path=Team1.Colour, Mode=OneWay}" />
-            <Image Grid.Column="3" Grid.Row="3" Margin="5" Stretch="Fill" Source="{ Binding Path=SelectedGods[6].Pick, Mode=OneWay }" />
+            <Image Grid.Column="3" Grid.Row="3" Margin="5" Stretch="Fill" Source="{ Binding Path=Picks[6].Pick, Mode=OneWay }" />
             <Rectangle Grid.Column="3" Grid.Row="3" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[6]}"/>
 
             <Rectangle Grid.Column="3" Grid.Row="4" Margin="5" Fill="{Binding Path=Team1.Colour, Mode=OneWay}" />
-            <Image Grid.Column="3" Grid.Row="4" Margin="5" Stretch="Fill" Source="{ Binding Path=SelectedGods[7].Pick, Mode=OneWay }" />
+            <Image Grid.Column="3" Grid.Row="4" Margin="5" Stretch="Fill" Source="{ Binding Path=Picks[7].Pick, Mode=OneWay }" />
             <Rectangle Grid.Column="3" Grid.Row="4" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[7]}"/>
 
             <Rectangle Grid.Column="3" Grid.Row="5" Margin="5" Fill="{Binding Path=Team1.Colour, Mode=OneWay}" />
-            <Image Grid.Column="3" Grid.Row="5" Margin="5" Stretch="Fill" Source="{ Binding Path=SelectedGods[8].Pick, Mode=OneWay }" />
+            <Image Grid.Column="3" Grid.Row="5" Margin="5" Stretch="Fill" Source="{ Binding Path=Picks[8].Pick, Mode=OneWay }" />
             <Rectangle Grid.Column="3" Grid.Row="5" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[8]}"/>
 
             <Rectangle Grid.Column="3" Grid.Row="6" Margin="5" Fill="{Binding Path=Team1.Colour, Mode=OneWay}" />
-            <Image Grid.Column="3" Grid.Row="6" Margin="5" Stretch="Fill" Source="{ Binding Path=SelectedGods[9].Pick, Mode=OneWay }" />
+            <Image Grid.Column="3" Grid.Row="6" Margin="5" Stretch="Fill" Source="{ Binding Path=Picks[9].Pick, Mode=OneWay }" />
             <Rectangle Grid.Column="3" Grid.Row="6" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[9]}"/>-->
         </Grid>
     </Grid>

@@ -12,10 +12,10 @@ namespace SmitePB.Manager.Windows
     {
         public Team[] Teams { get; }
 
-        public God[] SelectedGods { get; } = new God[10];
+        public God[] Picks { get; private set; } = new God[10];
         public GodStats[] GodStats { get; } = new GodStats[10];
-        public bool[] LockedIn { get; } = new bool[10];
-        public string[] Bans { get; private set; } = new string[10];
+        public bool[] LockedIn { get; private set; } = new bool[10];
+        public God[] Bans { get; private set; } = new God[10];
         public int[] Wins { get; } = new int[2] { 0, 1 };
         public string[] PlayerNames { get; } = new string[10];
 
@@ -44,11 +44,9 @@ namespace SmitePB.Manager.Windows
 
             Teams = TeamService.GetTeams().ToArray();
             gods = GodService.GetGods();
-            var none = GetGodbyName("NONE");
-            SelectedGods = SelectedGods.Select(x => none).ToArray();
 
-            Bans = Bans.Select(x => none.Ban).ToArray();
-            PickVisibilities = PickVisibilities.Select(x => Visibility.Hidden).ToArray();
+            ClearPicksAndBans();
+           
 
             DataContext = this;
 
@@ -70,10 +68,10 @@ namespace SmitePB.Manager.Windows
                 return;
 
             LockIn(slot, false);
-            SelectedGods[slot] = GetGodbyName(godName);
+            Picks[slot] = GetGodbyName(godName);
             PickVisibilities[slot] = Visibility.Visible;
             PropertyChanged?.Invoke(this, new(nameof(PickVisibilities)));
-            PropertyChanged?.Invoke(this, new(nameof(SelectedGods)));
+            PropertyChanged?.Invoke(this, new(nameof(Picks)));
         }
 
         public async void LockIn(int slot, bool state)
@@ -81,10 +79,10 @@ namespace SmitePB.Manager.Windows
             if (state)
             {
 
-                GodStats[slot] = await GodService.GetStatsForGod(SelectedGods[slot].Name);
+                GodStats[slot] = await GodService.GetStatsForGod(Picks[slot].Name);
 
                 PickVisibilities[slot] = Visibility.Hidden;
-                mediaPlayer.Open(new(SelectedGods[slot].LockInSound));
+                mediaPlayer.Open(new(Picks[slot].LockInSound));
                 mediaPlayer.Volume = 0.25f;
                 mediaPlayer.Play();
             }
@@ -106,7 +104,7 @@ namespace SmitePB.Manager.Windows
             if (god is null)
                 return;
 
-            Bans[slot] = god.Ban;
+            Bans[slot] = god;
             PropertyChanged?.Invoke(this, new(nameof(Bans)));
         }
 
@@ -146,6 +144,34 @@ namespace SmitePB.Manager.Windows
         {
             var media = sender as MediaElement;
             media.Position = TimeSpan.Zero;
+        }
+
+        public async void SaveResult(bool team0Won)
+        {
+            var gameResult = new GameResult(
+                team0Won,
+                Team0.DisplayName.ToLower(),
+                Team1.DisplayName.ToLower(),
+                Picks.Select(x => x.Name).ToArray(),
+                Bans.Select(x => x.Name).ToArray()
+            );
+
+            await GodService.SaveGameResult(gameResult);
+        }
+
+        public void ClearPicksAndBans()
+        {
+            var none = GetGodbyName("NONE");
+
+            Picks = Picks.Select(x => none).ToArray();
+            Bans = Bans.Select(x => none).ToArray();
+            LockedIn = new bool[10];
+            PickVisibilities = PickVisibilities.Select(x => Visibility.Hidden).ToArray();
+
+            PropertyChanged?.Invoke(this, new(nameof(Picks)));
+            PropertyChanged?.Invoke(this, new(nameof(Bans)));
+            PropertyChanged?.Invoke(this, new(nameof(LockedIn)));
+            PropertyChanged?.Invoke(this, new(nameof(PickVisibilities)));
         }
     }
 }

@@ -50,5 +50,18 @@ namespace SmitePB.Domain
                 return await response.Content.ReadAsAsync<GodStats>();
             else throw new Exception(await response.Content.ReadAsStringAsync());
         }
+
+        public static async Task SaveGameResult(GameResult gameResult)
+        {
+            using var client = new HttpClient()
+            {
+                BaseAddress = new("https://localhost:5001/"),
+            };
+
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new("application/json"));
+
+            await client.PostAsJsonAsync("result", gameResult);
+        }
     }
 }

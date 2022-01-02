@@ -27,6 +27,13 @@ namespace SmitePB.API.Controllers
             return Ok("Ban stored.");
         }
 
+        [HttpPost("result")]
+        public async Task<IActionResult> PostGameResult([FromBody] GameResult gameResult)
+        {
+            await SaveGamePBs(Services, gameResult);
+            return Ok("Game saved stored.");
+        }
+
         [HttpGet("stats/{god}")]
         public async Task<IActionResult> HttpGetGodStats(string god)
         {

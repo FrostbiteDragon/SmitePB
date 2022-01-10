@@ -25,4 +25,10 @@
     <ProjectReference Include="..\SmitePB.Domain\SmitePB.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Client.pfx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -35,7 +35,9 @@ namespace SmitePB.API.Services
                 .CountAsync();
 
             return new GodStats(
-                pickBanRate: (gamesPlayed + gamesBaned) * 100 / globalGamesPlayed,
+                pickBanRate: gamesPlayed == 0 
+                ? 0
+                : (gamesPlayed + gamesBaned) * 100 / globalGamesPlayed,
                 winRate: 
                     gamesPlayed == 0 
                     ? 0 

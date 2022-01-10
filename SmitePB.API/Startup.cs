@@ -11,6 +11,7 @@ using Raven.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace SmitePB.API
@@ -29,7 +30,12 @@ namespace SmitePB.API
         {
 
             services.AddControllers();
-            services.AddRavenDbDocStore();
+            #if DEBUG
+                services.AddRavenDbDocStore();
+            #else
+                services.AddRavenDbDocStore(options => options.Certificate = new X509Certificate2("Client.pfx", "gll"));
+            #endif
+
             services.AddRavenDbAsyncSession();
             services.AddSwaggerGen(c =>
             {

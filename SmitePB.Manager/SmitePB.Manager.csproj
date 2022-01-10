@@ -6,10 +6,6 @@
 	<UseWPF>true</UseWPF>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>C:\Users\Cameron\Documents\_Programming\SmitePB\Build\</OutputPath>
-  </PropertyGroup>
-
   <ItemGroup>
     <Compile Remove="Windows\Assets\**" />
     <EmbeddedResource Remove="Windows\Assets\**" />
@@ -19,13 +15,9 @@
 
 
   <ItemGroup>
-    <None Remove="Assets\Background.jpg" />
-    <None Remove="Assets\Background2.jpg" />
-    <None Remove="Assets\Background3.jpg" />
     <None Remove="Assets\Background4.jpg" />
     <None Remove="Assets\Background5.jpg" />
     <None Remove="Assets\Disaster.png" />
-    <None Remove="Assets\GLL Logo Transparent.png" />
     <None Remove="Assets\GllLogo.png" />
     <None Remove="Assets\GllLogo2.png" />
     <None Remove="Assets\Janitors.png" />
@@ -38,15 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Assets\Background.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Background2.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\Background3.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Assets\Background4.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -54,9 +37,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Teams\Recipe For Disaster\Logo.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Assets\GLL Logo Transparent.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\GllLogo.png">
@@ -103,6 +83,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Assets\Gods\Scylla\Pick.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Assets\sparks.mov">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Assets\Teams\Recipe For Disaster\Team.json">

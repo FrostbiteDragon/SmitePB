@@ -4,8 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using SmitePB.Domain;
 
-namespace SmitePB.Domain
+namespace SmitePB.Manager
 {
     public class GodService
     {
@@ -23,11 +24,13 @@ namespace SmitePB.Domain
                         .Last()
                         .ToUpper();
 
+                    string GetFile(string fileName) => Directory.EnumerateFiles(godDirectory,  $"{fileName}.*").FirstOrDefault();
+
                     yield return new God(
                         name: name,
-                        pick: Path.Combine(godDirectory, "Pick.png"),
-                        ban: Path.Combine(godDirectory, "Ban.png"),
-                        lockInSound: Path.Combine(godDirectory, "LockIn.mp3")
+                        pick: GetFile("Pick"),
+                        ban: GetFile("Ban"),
+                        lockInSound: GetFile("LockIn")
                     );
                 }
             }

@@ -1,12 +1,9 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
+using SmitePB.Domain;
 
-namespace SmitePB.Domain
+namespace SmitePB.Manager
 {
     public static class TeamService
     {

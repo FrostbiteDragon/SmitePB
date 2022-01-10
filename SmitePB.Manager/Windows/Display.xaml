@@ -14,7 +14,7 @@
     <Window.Background>
         <VisualBrush>
             <VisualBrush.Visual>
-                <MediaElement Source="C:\Users\Cameron\Documents\_Programming\SmitePB\SmitePB.Manager\bin\Debug\net5.0-windows\Assets\sparks.mov" 
+                <MediaElement Source="{Binding BackgroundImage}" 
                               MediaEnded="OnMediaEnded"/>
             </VisualBrush.Visual>
         </VisualBrush>
@@ -54,7 +54,12 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <Rectangle Grid.ColumnSpan="5" Fill="Black" Opacity="0.3" Margin="5"/>
+                <Rectangle Grid.ColumnSpan="5" 
+                           Fill="Black" 
+                           Opacity="0.3"
+                           Stroke="WhiteSmoke"
+                           StrokeThickness="3"
+                           Margin="5"/>
 
                 <Label Grid.ColumnSpan="3" 
                    Foreground="White" 
@@ -99,7 +104,11 @@
                 <ColumnDefinition Width=".6*"/>
             </Grid.ColumnDefinitions>
 
-            <Rectangle Grid.ColumnSpan="7" Fill="Black" Opacity=".3"/>
+            <Rectangle Grid.ColumnSpan="7" 
+                       Fill="Black" 
+                       Stroke="WhiteSmoke"
+                       StrokeThickness="3" 
+                       Opacity=".3"/>
 
             <Label Foreground="White"
                    FontWeight="Bold"
@@ -303,8 +312,13 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            
-            <Rectangle Grid.ColumnSpan="5" Fill="Black" Opacity="0.3" Margin="5"/>
+
+            <Rectangle Grid.ColumnSpan="5" 
+                       Margin="5"
+                       Fill="Black"
+                       Stroke="WhiteSmoke"
+                       StrokeThickness="3"
+                       Opacity="0.3"/>
 
             <Label Grid.ColumnSpan="2" 
                    Foreground="White" 
@@ -370,7 +384,12 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <Rectangle Fill="Black" Opacity="0.3" Margin="5"/>
+            <Rectangle Fill="Black" 
+                       Opacity="0.3" 
+                       Margin="5"
+                       Stroke="WhiteSmoke"
+                       StrokeThickness="3"/>
+            
             <Grid Margin="5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
@@ -816,7 +835,12 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <Rectangle Fill="Black" Opacity="0.3" Margin="5"/>
+            <Rectangle Fill="Black" 
+                       Margin="5"
+                       Opacity="0.3" 
+                       Stroke="WhiteSmoke"
+                       StrokeThickness="3"/>
+            
             <Grid Margin="5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*"/>

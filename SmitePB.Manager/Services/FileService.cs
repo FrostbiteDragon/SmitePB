@@ -8,7 +8,9 @@ namespace SmitePB.Manager.Services
 {
     public class FileService
     {
-        private static string GetFile(string directory, string fileName) => Directory.EnumerateFiles(directory, $"{fileName}.*").FirstOrDefault();
+        public static string AssetsFolder => Path.Combine(Directory.GetCurrentDirectory(), "Assets");
+
+        public static string GetFile(string directory, string fileName) => Directory.EnumerateFiles(directory, $"{fileName}.*").FirstOrDefault();
 
         public static IEnumerable<Team> GetTeams()
         {

@@ -6,6 +6,7 @@ using System;
 using System.Windows.Controls;
 using SmitePB.Domain;
 using SmitePB.Manager.Services;
+using System.IO;
 
 namespace SmitePB.Manager.Windows
 {
@@ -19,6 +20,7 @@ namespace SmitePB.Manager.Windows
         public God[] Bans { get; private set; } = new God[10];
         public int[] Wins { get; } = new int[2] { 0, 1 };
         public string[] PlayerNames { get; } = new string[10];
+        public string BackgroundImage { get; }
 
         public Visibility[] PickVisibilities { get; private set; } = new Visibility[10];
 
@@ -41,6 +43,8 @@ namespace SmitePB.Manager.Windows
         public Display(ApiService apiService)
         {
             _apiService = apiService;
+
+            BackgroundImage = FileService.GetFile(FileService.AssetsFolder, "Background");
 
             //temp
             PlayerNames = PlayerNames.Select(x => "PLAYER").ToArray();

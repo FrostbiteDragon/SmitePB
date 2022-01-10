@@ -477,7 +477,7 @@
 
                 <WrapPanel VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
                     <ComboBox Width="140"
-                      IsTextSearchEnabled="False"
+                      IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
                       Tag="0"

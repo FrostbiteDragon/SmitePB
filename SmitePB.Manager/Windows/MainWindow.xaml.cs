@@ -51,7 +51,7 @@ namespace SmitePB.Manager.Windows
         private void OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             var cb = (ComboBox)sender;
-            cb.IsDropDownOpen = true;
+            //cb.IsDropDownOpen = true;
         }
 
         private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)

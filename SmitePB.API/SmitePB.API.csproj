@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="C:\Users\Cameron\.nuget\packages\ravendb.client\5.3.0\contentFiles\any\any\libzstd.arm.32.so" />
+    <None Remove="C:\Users\Cameron\.nuget\packages\ravendb.client\5.3.0\contentFiles\any\any\libzstd.arm.64.so" />
+    <None Remove="C:\Users\Cameron\.nuget\packages\ravendb.client\5.3.0\contentFiles\any\any\libzstd.linux.x64.so" />
+    <None Remove="C:\Users\Cameron\.nuget\packages\ravendb.client\5.3.0\contentFiles\any\any\libzstd.mac.x64.dylib" />
+    <None Remove="C:\Users\Cameron\.nuget\packages\ravendb.client\5.3.0\contentFiles\any\any\libzstd.win.x64.dll" />
+    <None Remove="C:\Users\Cameron\.nuget\packages\ravendb.client\5.3.0\contentFiles\any\any\libzstd.win.x86.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.1" NoWarn="NU1605" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="5.0.1" NoWarn="NU1605" />
+    <PackageReference Include="RavenDB.Client" Version="5.3.0" />
+    <PackageReference Include="RavenDB.DependencyInjection" Version="4.0.2" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SmitePB.Domain\SmitePB.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

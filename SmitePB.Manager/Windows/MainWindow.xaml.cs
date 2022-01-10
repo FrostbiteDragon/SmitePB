@@ -42,7 +42,6 @@ namespace SmitePB.Manager.Windows
             Show();
         }
 
-
         private void CloseScreen(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
@@ -50,8 +49,9 @@ namespace SmitePB.Manager.Windows
 
         private void OnPreviewTextInput(object sender, TextCompositionEventArgs e)
         {
+            //pretty sure this does nothing
             var cb = (ComboBox)sender;
-            //cb.IsDropDownOpen = true;
+            cb.IsDropDownOpen = true;
         }
 
         private void OnSelectionChanged(object sender, SelectionChangedEventArgs e)

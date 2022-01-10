@@ -1,8 +1,7 @@
 ﻿<Application x:Class="SmitePB.Manager.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:SmitePB.Manager"
-             StartupUri="Windows/Display.xaml">
+             xmlns:local="clr-namespace:SmitePB.Manager">
     <Application.Resources>
         <FontFamily x:Key="FontAwesome">/Fonts/FontAwesome.ttf#FontAwesome</FontFamily>
         <FontFamily x:Key="IcoFont">/Fonts/icofont.ttf#IcoFont</FontFamily>

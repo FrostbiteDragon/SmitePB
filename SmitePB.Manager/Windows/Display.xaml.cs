@@ -1,10 +1,11 @@
 ﻿using System.Linq;
 using System.Windows;
 using System.ComponentModel;
-using SmitePB.Domain;
 using System.Windows.Media;
 using System;
 using System.Windows.Controls;
+using SmitePB.Domain;
+using SmitePB.Manager.Services;
 
 namespace SmitePB.Manager.Windows
 {
@@ -18,7 +19,6 @@ namespace SmitePB.Manager.Windows
         public God[] Bans { get; private set; } = new God[10];
         public int[] Wins { get; } = new int[2] { 0, 1 };
         public string[] PlayerNames { get; } = new string[10];
-
 
         public Visibility[] PickVisibilities { get; private set; } = new Visibility[10];
 
@@ -36,18 +36,20 @@ namespace SmitePB.Manager.Windows
         private Team GetTeambyName(string name) => Teams.FirstOrDefault(x => x.DisplayName == name);
         private God GetGodbyName(string name) => gods.FirstOrDefault(x => x.Name == name);
 
+        private readonly ApiService _apiService;
 
-        public Display()
+        public Display(ApiService apiService)
         {
+            _apiService = apiService;
+
             //temp
             PlayerNames = PlayerNames.Select(x => "PLAYER").ToArray();
 
-            Teams = TeamService.GetTeams().ToArray();
-            gods = GodService.GetGods();
+            Teams = FileService.GetTeams().ToArray();
+            gods = FileService.GetGods();
 
             ClearPicksAndBans();
            
-
             DataContext = this;
 
             Show();
@@ -79,7 +81,7 @@ namespace SmitePB.Manager.Windows
             if (state)
             {
 
-                GodStats[slot] = await GodService.GetStatsForGod(Picks[slot].Name);
+                GodStats[slot] = await _apiService.GetStatsForGod(Picks[slot].Name);
 
                 PickVisibilities[slot] = Visibility.Hidden;
                 mediaPlayer.Open(new(Picks[slot].LockInSound));
@@ -156,7 +158,7 @@ namespace SmitePB.Manager.Windows
                 Bans.Select(x => x.Name).ToArray()
             );
 
-            await GodService.SaveGameResult(gameResult);
+            await _apiService.SaveGameResult(gameResult);
         }
 
         public void ClearPicksAndBans()

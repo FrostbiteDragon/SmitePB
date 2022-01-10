@@ -9,15 +9,18 @@ namespace SmitePB.Manager.Windows
 {
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-
         public string SearchBoxText { get; set; } = "";
         public string[] TeamSource { get; }
         public string SelectedTeam0 { get; set; } = "";
         public string SelectedTeam1 { get; set; } = "";
         public string[] GodNames { get; }
 
+
         public bool[] LockedIn { get; } = new bool[10];
         public event PropertyChangedEventHandler PropertyChanged;
+
+        private bool saveResults;
+        public string[] Players { get; set; } = new string[10];
         private readonly Display _display;
 
         public MainWindow(Display owner, Team[] teams)
@@ -85,6 +88,11 @@ namespace SmitePB.Manager.Windows
             SelectedTeam0 = SelectedTeam1;
             SelectedTeam1 = selectedTeam0;
 
+            var team0Players = Players.Take(5);
+
+            Players = Players.TakeLast(5).Concat(team0Players).ToArray();
+
+            PropertyChanged?.Invoke(this, new(nameof(Players)));
             PropertyChanged?.Invoke(this, new(nameof(SelectedTeam0)));
             PropertyChanged?.Invoke(this, new(nameof(SelectedTeam1)));
         }
@@ -112,7 +120,6 @@ namespace SmitePB.Manager.Windows
                 _display.LockIn(slot, true);
                 PropertyChanged?.Invoke(this, new(nameof(LockedIn)));
             }
-            
         }
 
         private void OnWinCountChanged(object sender, TextChangedEventArgs e)
@@ -127,7 +134,32 @@ namespace SmitePB.Manager.Windows
         private void OnPlayerNameChnaged(object sender, TextChangedEventArgs e)
         {
             var textBox = (TextBox)sender;
-            _display.SetPlayerName(int.Parse(textBox.Tag as string), textBox.Text);
+            var slot = int.Parse(textBox.Tag as string);
+
+            Players[slot] = textBox.Text;
+            _display.SetPlayerName(slot, textBox.Text);
         }
+
+        private void OnTeamWon(object sender, RoutedEventArgs e)
+        {
+            var button = (Button)sender;
+            bool team0Won = (string)button.Tag == "0";
+
+            var team0WinDisplay = FindName("Team0WinDisplay") as TextBox;
+            var team1WinDisplay = FindName("Team1WinDisplay") as TextBox;
+
+            if (team0Won)
+                team0WinDisplay.Text = (int.Parse(team0WinDisplay.Text) + 1).ToString();
+            else
+                team1WinDisplay.Text = (int.Parse(team0WinDisplay.Text) + 1).ToString();
+
+            if (saveResults)
+                _display.SaveResult(team0Won);
+
+            _display.ClearPicksAndBans();
+        }
+
+        private void OnSaveGameResultChecked(object sender, RoutedEventArgs e) => saveResults = true;
+        private void OnSaveGameResultUnchecked(object sender, RoutedEventArgs e) => saveResults = false;
     }
 }

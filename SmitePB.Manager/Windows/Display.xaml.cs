@@ -84,7 +84,8 @@ namespace SmitePB.Manager.Windows
                 GodStats[slot] = await _apiService.GetStatsForGod(Picks[slot].Name);
 
                 PickVisibilities[slot] = Visibility.Hidden;
-                mediaPlayer.Open(new(Picks[slot].LockInSound));
+                if (Picks[slot].LockInSound != null)
+                    mediaPlayer.Open(new(Picks[slot].LockInSound));
                 mediaPlayer.Volume = 0.25f;
                 mediaPlayer.Play();
             }

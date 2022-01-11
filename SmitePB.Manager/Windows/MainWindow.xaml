@@ -280,7 +280,7 @@
 
                 <WrapPanel Orientation="Horizontal" Grid.Row="1">
                     <ComboBox Width="140"
-                      IsTextSearchEnabled="False"
+                      IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
                       Tag="0"
@@ -297,7 +297,7 @@
                 </WrapPanel>
                 <WrapPanel  Orientation="Horizontal" Grid.Row="2" Grid.Column="0">
                     <ComboBox Width="140"
-                      IsTextSearchEnabled="False"
+                      IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
                       Tag="1"
@@ -314,7 +314,7 @@
                 </WrapPanel>
                 <WrapPanel  Orientation="Horizontal" Grid.Row="3" Grid.Column="0">
                     <ComboBox Width="140"
-                      IsTextSearchEnabled="False"
+                      IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
                       Tag="2"
@@ -331,7 +331,7 @@
                 </WrapPanel>
                 <WrapPanel  Orientation="Horizontal" Grid.Row="4" Grid.Column="0">
                     <ComboBox Width="140"
-                      IsTextSearchEnabled="False"
+                      IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
                       Tag="3"
@@ -348,7 +348,7 @@
                 </WrapPanel>
                 <WrapPanel  Orientation="Horizontal" Grid.Row="5" Grid.Column="0">
                     <ComboBox Width="140"
-                      IsTextSearchEnabled="False"
+                      IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
                       Tag="4"
@@ -366,7 +366,7 @@
 
                 <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
                     <ComboBox Width="140"
-                      IsTextSearchEnabled="False"
+                      IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
                       Tag="5"
@@ -383,7 +383,7 @@
                 </WrapPanel>
                 <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
                     <ComboBox Width="140"
-                      IsTextSearchEnabled="False"
+                      IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
                       Tag="6"
@@ -400,7 +400,7 @@
                 </WrapPanel>
                 <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
                     <ComboBox Width="140"
-                      IsTextSearchEnabled="False"
+                      IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
                       Tag="7"
@@ -417,7 +417,7 @@
                 </WrapPanel>
                 <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="4" Grid.Column="1">
                     <ComboBox Width="140"
-                      IsTextSearchEnabled="False"
+                      IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
                       Tag="8"
@@ -434,7 +434,7 @@
                 </WrapPanel>
                 <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="5" Grid.Column="1">
                     <ComboBox Width="140"
-                      IsTextSearchEnabled="False"
+                      IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
                       Tag="9"
@@ -494,7 +494,7 @@
                 </WrapPanel>
                 <WrapPanel VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="2" Grid.Column="0">
                     <ComboBox Width="140"
-                      IsTextSearchEnabled="False"
+                      IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
                       Tag="1"
@@ -511,7 +511,7 @@
                 </WrapPanel>
                 <WrapPanel VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="3" Grid.Column="0">
                     <ComboBox Width="140"
-                      IsTextSearchEnabled="False"
+                      IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
                       Tag="2"
@@ -528,7 +528,7 @@
                 </WrapPanel>
                 <WrapPanel VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="4" Grid.Column="0">
                     <ComboBox Width="140"
-                      IsTextSearchEnabled="False"
+                      IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
                       Tag="3"
@@ -545,7 +545,7 @@
                 </WrapPanel>
                 <WrapPanel VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="5" Grid.Column="0">
                     <ComboBox Width="140"
-                      IsTextSearchEnabled="False"
+                      IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
                       Tag="4"
@@ -563,7 +563,7 @@
 
                 <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="1" Grid.Column="3">
                     <ComboBox Width="140"
-                      IsTextSearchEnabled="False"
+                      IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
                       Tag="5"
@@ -580,7 +580,7 @@
                 </WrapPanel>
                 <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="2" Grid.Column="3">
                     <ComboBox Width="140"
-                      IsTextSearchEnabled="False"
+                      IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
                       Tag="6"
@@ -597,7 +597,7 @@
                 </WrapPanel>
                 <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="3" Grid.Column="3">
                     <ComboBox Width="140"
-                      IsTextSearchEnabled="False"
+                      IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
                       Tag="7"
@@ -614,7 +614,7 @@
                 </WrapPanel>
                 <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="4" Grid.Column="3">
                     <ComboBox Width="140"
-                      IsTextSearchEnabled="False"
+                      IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
                       Tag="8"
@@ -631,7 +631,7 @@
                 </WrapPanel>
                 <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="5" Grid.Column="3">
                     <ComboBox Width="140"
-                      IsTextSearchEnabled="False"
+                      IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
                       Tag="9"

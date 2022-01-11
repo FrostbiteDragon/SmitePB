@@ -21,6 +21,7 @@ namespace SmitePB.Manager.Windows
         public int[] Wins { get; } = new int[2] { 0, 1 };
         public string[] PlayerNames { get; } = new string[10];
         public string BackgroundImage { get; }
+        public string LeagueLogo { get; }
 
         public Visibility[] PickVisibilities { get; private set; } = new Visibility[10];
 
@@ -45,6 +46,7 @@ namespace SmitePB.Manager.Windows
             _apiService = apiService;
 
             BackgroundImage = FileService.GetFile(FileService.AssetsFolder, "Background");
+            LeagueLogo = FileService.GetFile(FileService.AssetsFolder, "Logo");
 
             //temp
             PlayerNames = PlayerNames.Select(x => "PLAYER").ToArray();

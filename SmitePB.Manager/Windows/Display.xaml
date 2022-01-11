@@ -80,15 +80,15 @@
 
                 <!--Bans-->
                 <Rectangle Grid.Column="0" Grid.Row="2" Margin="5" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
-                <Image Grid.Column="0" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[0].Ban, Mode=OneWay }" />
+                <Image Grid.Column="0" Grid.Row="2" Margin="5" Stretch="UniformToFill" HorizontalAlignment="Center" Source="{ Binding Path=Bans[0].Ban, Mode=OneWay }" />
                 <Rectangle Grid.Column="1" Grid.Row="2" Margin="5" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
-                <Image Grid.Column="1" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[1].Ban, Mode=OneWay }" />
+                <Image Grid.Column="1" Grid.Row="2" Margin="5" Stretch="UniformToFill" HorizontalAlignment="Center" Source="{ Binding Path=Bans[1].Ban, Mode=OneWay }" />
                 <Rectangle Grid.Column="2" Grid.Row="2" Margin="5" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
-                <Image Grid.Column="2" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[2].Ban, Mode=OneWay }" />
+                <Image Grid.Column="2" Grid.Row="2" Margin="5" Stretch="UniformToFill" HorizontalAlignment="Center" Source="{ Binding Path=Bans[2].Ban, Mode=OneWay }" />
                 <Rectangle Grid.Column="3" Grid.Row="2" Margin="5" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
-                <Image Grid.Column="3" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[3].Ban, Mode=OneWay }" />
+                <Image Grid.Column="3" Grid.Row="2" Margin="5" Stretch="UniformToFill" HorizontalAlignment="Center" Source="{ Binding Path=Bans[3].Ban, Mode=OneWay }" />
                 <Rectangle Grid.Column="4" Grid.Row="2" Margin="5" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
-                <Image Grid.Column="4" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Bans[4].Ban, Mode=OneWay }" />
+                <Image Grid.Column="4" Grid.Row="2" Margin="5" Stretch="UniformToFill" HorizontalAlignment="Center" Source="{ Binding Path=Bans[4].Ban, Mode=OneWay }" />
             </Grid>
         </Grid>
 
@@ -338,35 +338,35 @@
 
             <!--Bans-->
             <Rectangle Grid.Column="0" Grid.Row="2" Margin="5" Opacity=".8" Fill="{Binding Path=Team1.Colour, Mode=OneWay}"/>
-            <Image Grid.Column="0" Grid.Row="2" Margin="5" Stretch="Fill" RenderTransformOrigin="0.5, 0.5" Source="{ Binding Path=Bans[5].Ban }">
+            <Image Grid.Column="0" Grid.Row="2" Margin="5" Stretch="UniformToFill" HorizontalAlignment="Center" RenderTransformOrigin="0.5, 0.5" Source="{ Binding Path=Bans[5].Ban }">
                 <Image.RenderTransform>
                     <ScaleTransform ScaleX="-1"/>
                 </Image.RenderTransform>
             </Image>
             
             <Rectangle Grid.Column="1" Grid.Row="2" Margin="5" Opacity=".8" Fill="{Binding Path=Team1.Colour, Mode=OneWay}"/>
-            <Image Grid.Column="1" Grid.Row="2" Margin="5" Stretch="Fill" RenderTransformOrigin="0.5, 0.5" Source="{ Binding Path=Bans[6].Ban }">
+            <Image Grid.Column="1" Grid.Row="2" Margin="5" Stretch="UniformToFill" HorizontalAlignment="Center" RenderTransformOrigin="0.5, 0.5" Source="{ Binding Path=Bans[6].Ban }">
                 <Image.RenderTransform>
                     <ScaleTransform ScaleX="-1"/>
                 </Image.RenderTransform>
             </Image>
             
             <Rectangle Grid.Column="2" Grid.Row="2" Margin="5" Opacity=".8" Fill="{Binding Path=Team1.Colour, Mode=OneWay}"/>
-            <Image Grid.Column="2" Grid.Row="2" Margin="5" Stretch="Fill" RenderTransformOrigin="0.5, 0.5" Source="{ Binding Path=Bans[7].Ban }">
+            <Image Grid.Column="2" Grid.Row="2" Margin="5" Stretch="UniformToFill" HorizontalAlignment="Center" RenderTransformOrigin="0.5, 0.5" Source="{ Binding Path=Bans[7].Ban }">
                 <Image.RenderTransform>
                     <ScaleTransform ScaleX="-1"/>
                 </Image.RenderTransform>
             </Image>
             
             <Rectangle Grid.Column="3" Grid.Row="2" Margin="5" Opacity=".8" Fill="{Binding Path=Team1.Colour, Mode=OneWay}"/>
-            <Image Grid.Column="3" Grid.Row="2" Margin="5" Stretch="Fill" RenderTransformOrigin="0.5, 0.5" Source="{ Binding Path=Bans[8].Ban }">
+            <Image Grid.Column="3" Grid.Row="2" Margin="5" Stretch="UniformToFill" HorizontalAlignment="Center" RenderTransformOrigin="0.5, 0.5" Source="{ Binding Path=Bans[8].Ban }">
                 <Image.RenderTransform>
                     <ScaleTransform ScaleX="-1"/>
                 </Image.RenderTransform>
             </Image>
             
             <Rectangle Grid.Column="4" Grid.Row="2" Margin="5" Opacity=".8" Fill="{Binding Path=Team1.Colour, Mode=OneWay}"/>
-            <Image Grid.Column="4" Grid.Row="2" Margin="5" Stretch="Fill" RenderTransformOrigin="0.5, 0.5" Source="{ Binding Path=Bans[9].Ban }">
+            <Image Grid.Column="4" Grid.Row="2" Margin="5" Stretch="UniformToFill" HorizontalAlignment="Center" RenderTransformOrigin="0.5, 0.5" Source="{ Binding Path=Bans[9].Ban }">
                 <Image.RenderTransform>
                     <ScaleTransform ScaleX="-1"/>
                 </Image.RenderTransform>
@@ -424,7 +424,7 @@
 
             <!--Pick 1-->
             <Rectangle Grid.Row="1" Margin="5" Height="150" Width="440" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}"/>
-            <Image Grid.Row="1" Margin="5" Stretch="Fill" Source="{ Binding Path=Picks[0].Pick, Mode=OneWay }"/>
+            <Image Grid.Row="1" Margin="5" Stretch="UniformToFill" HorizontalAlignment="Center" Source="{ Binding Path=Picks[0].Pick, Mode=OneWay }"/>
             <Rectangle Grid.Row="1" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[0]}"/>
             <!--Locked In-->
             <Canvas Grid.Row="1">
@@ -504,7 +504,7 @@
             </Canvas>
 
             <Rectangle Grid.Column="1" Grid.Row="2" Margin="5" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}" />
-            <Image Grid.Column="1" Grid.Row="2" Margin="5" Stretch="Fill" Source="{ Binding Path=Picks[1].Pick, Mode=OneWay }" />
+            <Image Grid.Column="1" Grid.Row="2" Margin="5" Stretch="UniformToFill" HorizontalAlignment="Center" Source="{ Binding Path=Picks[1].Pick, Mode=OneWay }" />
             <Rectangle Grid.Column="1" Grid.Row="2" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[1]}"  />
             <!--Locked In-->
             <Canvas Grid.Row="2">
@@ -584,7 +584,7 @@
             </Canvas>
 
             <Rectangle Grid.Column="1" Grid.Row="3" Margin="5" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}" />
-            <Image Grid.Column="1" Grid.Row="3" Margin="5" Stretch="Fill" Source="{ Binding Path=Picks[2].Pick, Mode=OneWay }" />
+            <Image Grid.Column="1" Grid.Row="3" Margin="5" Stretch="UniformToFill" HorizontalAlignment="Center" Source="{ Binding Path=Picks[2].Pick, Mode=OneWay }" />
             <Rectangle Grid.Column="1" Grid.Row="3" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[2]}"  />
             <!--Locked In-->
             <Canvas Grid.Row="3">
@@ -664,7 +664,7 @@
             </Canvas>
 
             <Rectangle Grid.Column="1" Grid.Row="4" Margin="5" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}" />
-            <Image Grid.Column="1" Grid.Row="4" Margin="5" Stretch="Fill" Source="{ Binding Path=Picks[3].Pick, Mode=OneWay }" />
+            <Image Grid.Column="1" Grid.Row="4" Margin="5" Stretch="UniformToFill" HorizontalAlignment="Center" Source="{ Binding Path=Picks[3].Pick, Mode=OneWay }" />
             <Rectangle Grid.Column="1" Grid.Row="4" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[3]}"  />
             <!--Locked In-->
             <Canvas Grid.Row="4">
@@ -744,7 +744,7 @@
             </Canvas>
 
             <Rectangle Grid.Column="1" Grid.Row="5" Margin="5" Opacity=".8" Fill="{Binding Path=Team0.Colour, Mode=OneWay}" />
-            <Image Grid.Column="1" Grid.Row="5" Margin="5" Stretch="Fill" Source="{ Binding Path=Picks[4].Pick, Mode=OneWay }" />
+            <Image Grid.Column="1" Grid.Row="5" Margin="5" Stretch="UniformToFill" HorizontalAlignment="Center" Source="{ Binding Path=Picks[4].Pick, Mode=OneWay }" />
             <Rectangle Grid.Column="1" Grid.Row="5" Margin="5" Fill="Black" Opacity=".60" Visibility="{Binding PickVisibilities[4]}"/>
             <!--Locked In-->
             <Canvas Grid.Row="5">
@@ -876,7 +876,7 @@
 
             <!--Pick 1-->
             <Rectangle Grid.Row="1" Margin="5" Height="150" Width="440" Opacity=".8" Fill="{Binding Path=Team1.Colour, Mode=OneWay}"/>
-            <Image Grid.Row="1" Margin="5" Stretch="Fill" RenderTransformOrigin="0.5, 0.5" Source="{ Binding Path=Picks[5].Pick, Mode=OneWay }">
+            <Image Grid.Row="1" Margin="5" Stretch="UniformToFill" HorizontalAlignment="Center" RenderTransformOrigin="0.5, 0.5" Source="{ Binding Path=Picks[5].Pick, Mode=OneWay }">
                 <Image.RenderTransform>
                     <ScaleTransform ScaleX="-1"/>
                 </Image.RenderTransform>
@@ -961,7 +961,7 @@
             
             <!--Pick 2-->
             <Rectangle Grid.Row="2" Margin="5" Height="150" Width="440" Opacity=".8" Fill="{Binding Path=Team1.Colour, Mode=OneWay}"/>
-            <Image Grid.Row="2" Margin="5" Stretch="Fill" RenderTransformOrigin="0.5, 0.5" Source="{ Binding Path=Picks[6].Pick, Mode=OneWay }">
+            <Image Grid.Row="2" Margin="5" Stretch="UniformToFill" HorizontalAlignment="Center" RenderTransformOrigin="0.5, 0.5" Source="{ Binding Path=Picks[6].Pick, Mode=OneWay }">
                 <Image.RenderTransform>
                     <ScaleTransform ScaleX="-1"/>
                 </Image.RenderTransform>
@@ -1046,7 +1046,7 @@
 
             <!--Pick 3-->
             <Rectangle Grid.Row="3" Margin="5" Height="150" Width="440" Opacity=".8" Fill="{Binding Path=Team1.Colour, Mode=OneWay}"/>
-            <Image Grid.Row="3" Margin="5" Stretch="Fill" RenderTransformOrigin="0.5, 0.5" Source="{ Binding Path=Picks[7].Pick, Mode=OneWay }">
+            <Image Grid.Row="3" Margin="5" Stretch="UniformToFill" HorizontalAlignment="Center" RenderTransformOrigin="0.5, 0.5" Source="{ Binding Path=Picks[7].Pick, Mode=OneWay }">
                 <Image.RenderTransform>
                     <ScaleTransform ScaleX="-1"/>
                 </Image.RenderTransform>
@@ -1131,7 +1131,7 @@
 
             <!--Pick 4-->
             <Rectangle Grid.Row="4" Margin="5" Height="150" Width="440" Opacity=".8" Fill="{Binding Path=Team1.Colour, Mode=OneWay}"/>
-            <Image Grid.Row="4" Margin="5" Stretch="Fill" RenderTransformOrigin="0.5, 0.5" Source="{ Binding Path=Picks[8].Pick, Mode=OneWay }">
+            <Image Grid.Row="4" Margin="5" Stretch="UniformToFill" HorizontalAlignment="Center" RenderTransformOrigin="0.5, 0.5" Source="{ Binding Path=Picks[8].Pick, Mode=OneWay }">
                 <Image.RenderTransform>
                     <ScaleTransform ScaleX="-1"/>
                 </Image.RenderTransform>
@@ -1216,7 +1216,7 @@
 
             <!--Pick 5-->
             <Rectangle Grid.Row="5" Margin="5" Height="150" Width="440" Opacity=".8" Fill="{Binding Path=Team1.Colour, Mode=OneWay}"/>
-            <Image Grid.Row="5" Margin="5" Stretch="Fill" RenderTransformOrigin="0.5, 0.5" Source="{ Binding Path=Picks[9].Pick, Mode=OneWay }">
+            <Image Grid.Row="5" Margin="5" Stretch="UniformToFill" HorizontalAlignment="Center" RenderTransformOrigin="0.5, 0.5" Source="{ Binding Path=Picks[9].Pick, Mode=OneWay }">
                 <Image.RenderTransform>
                     <ScaleTransform ScaleX="-1"/>
                 </Image.RenderTransform>

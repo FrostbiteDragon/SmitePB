@@ -338,14 +338,14 @@
 
             <!--Bans-->
             <Rectangle Grid.Column="0" Grid.Row="2" Margin="5" Opacity=".8" Fill="{Binding Path=Team1.Colour, Mode=OneWay}"/>
-            <Image Grid.Column="0" Grid.Row="2" Margin="5" Stretch="UniformToFill" HorizontalAlignment="Center" RenderTransformOrigin="0.5, 0.5" Source="{ Binding Path=Bans[5].Ban }">
+            <Image Grid.Column="0" Grid.Row="2" Margin="5" Stretch="UniformToFill" HorizontalAlignment="Center" RenderTransformOrigin="0.5, 0.5" Source="{ Binding Path=Bans[9].Ban }">
                 <Image.RenderTransform>
                     <ScaleTransform ScaleX="-1"/>
                 </Image.RenderTransform>
             </Image>
             
             <Rectangle Grid.Column="1" Grid.Row="2" Margin="5" Opacity=".8" Fill="{Binding Path=Team1.Colour, Mode=OneWay}"/>
-            <Image Grid.Column="1" Grid.Row="2" Margin="5" Stretch="UniformToFill" HorizontalAlignment="Center" RenderTransformOrigin="0.5, 0.5" Source="{ Binding Path=Bans[6].Ban }">
+            <Image Grid.Column="1" Grid.Row="2" Margin="5" Stretch="UniformToFill" HorizontalAlignment="Center" RenderTransformOrigin="0.5, 0.5" Source="{ Binding Path=Bans[8].Ban }">
                 <Image.RenderTransform>
                     <ScaleTransform ScaleX="-1"/>
                 </Image.RenderTransform>
@@ -359,14 +359,14 @@
             </Image>
             
             <Rectangle Grid.Column="3" Grid.Row="2" Margin="5" Opacity=".8" Fill="{Binding Path=Team1.Colour, Mode=OneWay}"/>
-            <Image Grid.Column="3" Grid.Row="2" Margin="5" Stretch="UniformToFill" HorizontalAlignment="Center" RenderTransformOrigin="0.5, 0.5" Source="{ Binding Path=Bans[8].Ban }">
+            <Image Grid.Column="3" Grid.Row="2" Margin="5" Stretch="UniformToFill" HorizontalAlignment="Center" RenderTransformOrigin="0.5, 0.5" Source="{ Binding Path=Bans[6].Ban }">
                 <Image.RenderTransform>
                     <ScaleTransform ScaleX="-1"/>
                 </Image.RenderTransform>
             </Image>
             
             <Rectangle Grid.Column="4" Grid.Row="2" Margin="5" Opacity=".8" Fill="{Binding Path=Team1.Colour, Mode=OneWay}"/>
-            <Image Grid.Column="4" Grid.Row="2" Margin="5" Stretch="UniformToFill" HorizontalAlignment="Center" RenderTransformOrigin="0.5, 0.5" Source="{ Binding Path=Bans[9].Ban }">
+            <Image Grid.Column="4" Grid.Row="2" Margin="5" Stretch="UniformToFill" HorizontalAlignment="Center" RenderTransformOrigin="0.5, 0.5" Source="{ Binding Path=Bans[5].Ban }">
                 <Image.RenderTransform>
                     <ScaleTransform ScaleX="-1"/>
                 </Image.RenderTransform>

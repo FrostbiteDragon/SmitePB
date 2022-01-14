@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:control="clr-namespace:SmitePB.Manager.Controls"
-        WindowStyle="none"
-        WindowState="Maximized"
-        mc:Ignorable="d" 
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        mc:Ignorable="d"
+        MouseDown="WindowMouseDown"
         d:DesignHeight="1080" d:DesignWidth="1920"
         Title="Display">
 
@@ -37,6 +38,10 @@
             <RowDefinition Height="4.7*"/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
+
+        <Grid.LayoutTransform>
+            <ScaleTransform ScaleX="{Binding WindowScale}" ScaleY="{Binding WindowScale}"/>
+        </Grid.LayoutTransform>
 
         <!--Team 0-->
         <Grid Grid.Column="1" Grid.Row="1">

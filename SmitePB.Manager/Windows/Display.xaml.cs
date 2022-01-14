@@ -12,8 +12,8 @@ namespace SmitePB.Manager.Windows
 {
     public partial class Display : Window, INotifyPropertyChanged
     {
+        public double WindowScale { get; private set; } = 4.0 / 4;
         public Team[] Teams { get; }
-
         public God[] Picks { get; private set; } = new God[10];
         public GodStats[] GodStats { get; } = new GodStats[10];
         public bool[] LockedIn { get; private set; } = new bool[10];
@@ -35,6 +35,8 @@ namespace SmitePB.Manager.Windows
         public event PropertyChangedEventHandler PropertyChanged;
         private readonly God[] gods;
         private readonly MediaPlayer mediaPlayer = new();
+        private const int defaultHeight = 1080;
+        private const int defaultWidth = 1920;
 
         private Team GetTeambyName(string name) => Teams.FirstOrDefault(x => x.DisplayName == name);
         private God GetGodbyName(string name) => gods.FirstOrDefault(x => x.Name == name);
@@ -43,6 +45,9 @@ namespace SmitePB.Manager.Windows
 
         public Display(ApiService apiService)
         {
+            Height = 1080 * WindowScale;
+            Width = 1920 * WindowScale;
+
             _apiService = apiService;
 
             BackgroundImage = FileService.GetFile(FileService.AssetsFolder, "Background");
@@ -181,6 +186,25 @@ namespace SmitePB.Manager.Windows
             PropertyChanged?.Invoke(this, new(nameof(Bans)));
             PropertyChanged?.Invoke(this, new(nameof(LockedIn)));
             PropertyChanged?.Invoke(this, new(nameof(PickVisibilities)));
+        }
+
+        public void SetWindowScale(double scale)
+        {
+            Height = defaultHeight * scale;
+            Width = defaultWidth * scale;
+            WindowScale = scale;
+            PropertyChanged?.Invoke(this, new(nameof(WindowScale)));
+        }
+
+        public void SnapToTopLeft()
+        {
+            Left = 0;
+            Top = 0;
+        }
+
+        private void WindowMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }

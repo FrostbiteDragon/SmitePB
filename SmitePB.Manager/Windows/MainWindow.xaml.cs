@@ -161,5 +161,9 @@ namespace SmitePB.Manager.Windows
 
         private void OnSaveGameResultChecked(object sender, RoutedEventArgs e) => saveResults = true;
         private void OnSaveGameResultUnchecked(object sender, RoutedEventArgs e) => saveResults = false;
+
+        private void OnDisplayScaleChanged(object sender, RoutedPropertyChangedEventArgs<double> e) => _display.SetWindowScale(e.NewValue);
+
+        private void SnapDisplayToTopLeft(object sender, RoutedEventArgs e) => _display.SnapToTopLeft();
     }
 }

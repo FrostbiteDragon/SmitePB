@@ -22,11 +22,41 @@
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="5*"/>
             <RowDefinition Height="10"/>
 
         </Grid.RowDefinitions>
+
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".2*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width=".1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label FontSize="8"
+                   Foreground="White"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Content="Display Scale:"/>
+
+            <Slider Grid.Column="1"
+                    
+                    ValueChanged="OnDisplayScaleChanged"
+                    IsDirectionReversed="False"
+                    Maximum="1"
+                    Minimum="0"
+                    Value="1"
+                />
+
+            <Button Grid.Column="2" 
+                    Margin="3"
+                    Content="snap"
+                    FontSize="7"
+                    Click="SnapDisplayToTopLeft"/>
+
+        </Grid>
 
         <Grid Grid.Column="1" Grid.Row="1">
             <Grid.RowDefinitions>
@@ -279,7 +309,7 @@
                    Content="BANS" Grid.ColumnSpan="2" />
 
                 <WrapPanel Orientation="Horizontal" Grid.Row="1">
-                    <ComboBox Width="140"
+                    <ComboBox Name="ban0" Width="140"
                       IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
@@ -296,7 +326,7 @@
                     </ComboBox>
                 </WrapPanel>
                 <WrapPanel  Orientation="Horizontal" Grid.Row="2" Grid.Column="0">
-                    <ComboBox Width="140"
+                    <ComboBox Name="ban1" Width="140"
                       IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
@@ -313,7 +343,7 @@
                     </ComboBox>
                 </WrapPanel>
                 <WrapPanel  Orientation="Horizontal" Grid.Row="3" Grid.Column="0">
-                    <ComboBox Width="140"
+                    <ComboBox Name="ban2" Width="140"
                       IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
@@ -330,7 +360,7 @@
                     </ComboBox>
                 </WrapPanel>
                 <WrapPanel  Orientation="Horizontal" Grid.Row="4" Grid.Column="0">
-                    <ComboBox Width="140"
+                    <ComboBox Name="ban3" Width="140"
                       IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
@@ -347,7 +377,7 @@
                     </ComboBox>
                 </WrapPanel>
                 <WrapPanel  Orientation="Horizontal" Grid.Row="5" Grid.Column="0">
-                    <ComboBox Width="140"
+                    <ComboBox Name="ban4" Width="140"
                       IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
@@ -365,7 +395,7 @@
                 </WrapPanel>
 
                 <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
-                    <ComboBox Width="140"
+                    <ComboBox Name="ban5" Width="140"
                       IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
@@ -382,7 +412,7 @@
                     </ComboBox>
                 </WrapPanel>
                 <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
-                    <ComboBox Width="140"
+                    <ComboBox Name="ban6" Width="140"
                       IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
@@ -399,7 +429,7 @@
                     </ComboBox>
                 </WrapPanel>
                 <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
-                    <ComboBox Width="140"
+                    <ComboBox Name="ban7" Width="140"
                       IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
@@ -416,7 +446,7 @@
                     </ComboBox>
                 </WrapPanel>
                 <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="4" Grid.Column="1">
-                    <ComboBox Width="140"
+                    <ComboBox Name="ban8" Width="140"
                       IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
@@ -433,7 +463,7 @@
                     </ComboBox>
                 </WrapPanel>
                 <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="5" Grid.Column="1">
-                    <ComboBox Width="140"
+                    <ComboBox Name="ban9" Width="140"
                       IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
@@ -476,14 +506,14 @@
                    Content="PICKS" Grid.ColumnSpan="4" Margin="162,0,0,0"/>
 
                 <WrapPanel VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
-                    <ComboBox Width="140"
+                    <ComboBox Name="pick0" 
+                        Width="140"
                       IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
                       Tag="0"
                       SelectionChanged="OnSelectionChanged"
                       DropDownClosed="OnPickDropDownClosed"
-                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
                       ItemsSource="{Binding GodNames, Mode=OneWay}">
                         <ComboBox.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -493,15 +523,16 @@
                     </ComboBox>
                 </WrapPanel>
                 <WrapPanel VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="2" Grid.Column="0">
-                    <ComboBox Width="140"
-                      IsTextSearchEnabled="True"
-                      IsEditable="True"
-                      PreviewTextInput="OnPreviewTextInput"
-                      Tag="1"
-                      SelectionChanged="OnSelectionChanged"
-                      DropDownClosed="OnPickDropDownClosed"
-                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
-                      ItemsSource="{Binding GodNames, Mode=OneWay}">
+                    <ComboBox Name="pick1" 
+                              Width="140"
+                              IsTextSearchEnabled="True"
+                              IsEditable="True"
+                              PreviewTextInput="OnPreviewTextInput"
+                              Tag="1"
+                              SelectionChanged="OnSelectionChanged"
+                              DropDownClosed="OnPickDropDownClosed"
+                              Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                              ItemsSource="{Binding GodNames, Mode=OneWay}">    
                         <ComboBox.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <VirtualizingStackPanel />
@@ -510,7 +541,7 @@
                     </ComboBox>
                 </WrapPanel>
                 <WrapPanel VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="3" Grid.Column="0">
-                    <ComboBox Width="140"
+                    <ComboBox Name="pick2" Width="140"
                       IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
@@ -527,7 +558,7 @@
                     </ComboBox>
                 </WrapPanel>
                 <WrapPanel VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="4" Grid.Column="0">
-                    <ComboBox Width="140"
+                    <ComboBox Name="pick3" Width="140"
                       IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
@@ -544,7 +575,7 @@
                     </ComboBox>
                 </WrapPanel>
                 <WrapPanel VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="5" Grid.Column="0">
-                    <ComboBox Width="140"
+                    <ComboBox Name="pick4" Width="140"
                       IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
@@ -562,7 +593,7 @@
                 </WrapPanel>
 
                 <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="1" Grid.Column="3">
-                    <ComboBox Width="140"
+                    <ComboBox Name="pick5" Width="140"
                       IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
@@ -579,7 +610,7 @@
                     </ComboBox>
                 </WrapPanel>
                 <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="2" Grid.Column="3">
-                    <ComboBox Width="140"
+                    <ComboBox Name="pick6" Width="140"
                       IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
@@ -596,7 +627,7 @@
                     </ComboBox>
                 </WrapPanel>
                 <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="3" Grid.Column="3">
-                    <ComboBox Width="140"
+                    <ComboBox Name="pick7" Width="140"
                       IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
@@ -613,7 +644,7 @@
                     </ComboBox>
                 </WrapPanel>
                 <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="4" Grid.Column="3">
-                    <ComboBox Width="140"
+                    <ComboBox Name="pick8" Width="140"
                       IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"
@@ -630,7 +661,7 @@
                     </ComboBox>
                 </WrapPanel>
                 <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="5" Grid.Column="3">
-                    <ComboBox Width="140"
+                    <ComboBox Name="pick9" Width="140"
                       IsTextSearchEnabled="True"
                       IsEditable="True"
                       PreviewTextInput="OnPreviewTextInput"

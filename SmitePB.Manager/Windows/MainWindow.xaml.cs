@@ -83,14 +83,19 @@ namespace SmitePB.Manager.Windows
 
         private void SwapTeamSides(object sender, RoutedEventArgs e)
         {
+            //swap teams
             var selectedTeam0 = SelectedTeam0;
-
             SelectedTeam0 = SelectedTeam1;
             SelectedTeam1 = selectedTeam0;
 
+            //swap players
             var team0Players = Players.Take(5);
-
             Players = Players.TakeLast(5).Concat(team0Players).ToArray();
+
+            //swap team wins
+            var team0Wins = Team0WinDisplay.Text;
+            Team0WinDisplay.Text = Team1WinDisplay.Text;
+            Team1WinDisplay.Text = team0Wins;
 
             PropertyChanged?.Invoke(this, new(nameof(Players)));
             PropertyChanged?.Invoke(this, new(nameof(SelectedTeam0)));
@@ -145,21 +150,53 @@ namespace SmitePB.Manager.Windows
             var button = (Button)sender;
             bool team0Won = (string)button.Tag == "0";
 
-            var team0WinDisplay = FindName("Team0WinDisplay") as TextBox;
-            var team1WinDisplay = FindName("Team1WinDisplay") as TextBox;
-
+            //update wins
             if (team0Won)
-                team0WinDisplay.Text = (int.Parse(team0WinDisplay.Text) + 1).ToString();
+                Team0WinDisplay.Text = (int.Parse(Team0WinDisplay.Text) + 1).ToString();
             else
-                team1WinDisplay.Text = (int.Parse(team0WinDisplay.Text) + 1).ToString();
+                Team1WinDisplay.Text = (int.Parse(Team0WinDisplay.Text) + 1).ToString();
 
             if (saveResults)
                 _display.SaveResult(team0Won);
+
+            ComboBox[] picksAndBans = new ComboBox[]
+            {
+                pick0,
+                pick1,
+                pick2,
+                pick3,
+                pick4,
+                pick5,
+                pick6,
+                pick7,
+                pick8,
+                pick9,
+                ban0,
+                ban1,
+                ban2,
+                ban3,
+                ban4,
+                ban5,
+                ban6,
+                ban7,
+                ban8,
+                ban9
+            };
+
+            foreach (var cb in picksAndBans)
+            {
+                cb.SelectedItem = null;
+                cb.IsDropDownOpen = false;
+            }
 
             _display.ClearPicksAndBans();
         }
 
         private void OnSaveGameResultChecked(object sender, RoutedEventArgs e) => saveResults = true;
         private void OnSaveGameResultUnchecked(object sender, RoutedEventArgs e) => saveResults = false;
+
+        private void OnDisplayScaleChanged(object sender, RoutedPropertyChangedEventArgs<double> e) => _display.SetWindowScale(e.NewValue);
+
+        private void SnapDisplayToTopLeft(object sender, RoutedEventArgs e) => _display.SnapToTopLeft();
     }
 }

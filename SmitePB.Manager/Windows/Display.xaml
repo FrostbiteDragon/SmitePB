@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:control="clr-namespace:SmitePB.Manager.Controls"
-        WindowStyle="none"
-        WindowState="Maximized"
-        mc:Ignorable="d" 
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        mc:Ignorable="d"
+        MouseDown="WindowMouseDown"
         d:DesignHeight="1080" d:DesignWidth="1920"
         Title="Display">
 
@@ -37,6 +38,10 @@
             <RowDefinition Height="4.7*"/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
+
+        <Grid.LayoutTransform>
+            <ScaleTransform ScaleX="{Binding WindowScale}" ScaleY="{Binding WindowScale}"/>
+        </Grid.LayoutTransform>
 
         <!--Team 0-->
         <Grid Grid.Column="1" Grid.Row="1">
@@ -166,9 +171,12 @@
                     <RowDefinition Height="5"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
+                    <ColumnDefinition Width="20"/>
+
                 </Grid.ColumnDefinitions>
 
                 <Rectangle Grid.ColumnSpan="10" 
@@ -178,41 +186,45 @@
                            StrokeThickness="3"
                            Opacity=".3"/>
 
-
                 <!--Team 0 Players-->
-                <Label Grid.Row="1"
-                       HorizontalAlignment="Center"
+                <Label Grid.Column="1"
+                       Grid.Row="1"
+                       HorizontalAlignment="Left"
                        VerticalAlignment="Center"
                        Foreground="White"
                        FontSize="20"
                        Content="{Binding PlayerNames[0]}"/>
-                <Label Grid.Row="2"
-                       HorizontalAlignment="Center"
+                <Label Grid.Column="1"
+                       Grid.Row="2"
+                       HorizontalAlignment="Left"
                        VerticalAlignment="Center"
                        Foreground="White"
                        FontSize="20"
                        Content="{Binding PlayerNames[1]}"/>
-                <Label Grid.Row="3"
-                       HorizontalAlignment="Center"
+                <Label Grid.Column="1"
+                       Grid.Row="3"
+                       HorizontalAlignment="Left"
                        VerticalAlignment="Center"
                        Foreground="White"
                        FontSize="20"
                        Content="{Binding PlayerNames[2]}"/>
-                <Label Grid.Row="4"
-                       HorizontalAlignment="Center"
+                <Label Grid.Column="1"
+                       Grid.Row="4"
+                       HorizontalAlignment="Left"
                        VerticalAlignment="Center"
                        Foreground="White"
                        FontSize="20"
                        Content="{Binding PlayerNames[3]}"/>
-                <Label Grid.Row="5"
-                       HorizontalAlignment="Center"
+                <Label Grid.Column="1"
+                       Grid.Row="5"
+                       HorizontalAlignment="Left"
                        VerticalAlignment="Center"
                        Foreground="White"
                        FontSize="20"
                        Content="{Binding PlayerNames[4]}"/>
                 
                 <!--Roles-->
-                <Label Grid.Column="1"
+                <Label Grid.Column="2"
                        Grid.Row="1"
                        HorizontalContentAlignment="Center"
                        VerticalContentAlignment="Center"
@@ -220,7 +232,7 @@
                        FontWeight="Bold"
                        FontSize="20"
                        Content="SOLO"/>
-                <Label Grid.Column="1"
+                <Label Grid.Column="2"
                        Grid.Row="2"
                        HorizontalContentAlignment="Center"
                        VerticalContentAlignment="Center"
@@ -228,7 +240,7 @@
                        FontWeight="Bold"
                        FontSize="20"
                        Content="JUNGLE"/>
-                <Label Grid.Column="1"
+                <Label Grid.Column="2"
                        Grid.Row="3"
                        HorizontalContentAlignment="Center"
                        VerticalContentAlignment="Center"
@@ -236,7 +248,7 @@
                        FontWeight="Bold"
                        FontSize="20"
                        Content="MID"/>
-                <Label Grid.Column="1"
+                <Label Grid.Column="2"
                        Grid.Row="4"
                        HorizontalContentAlignment="Center"
                        VerticalContentAlignment="Center"
@@ -244,7 +256,7 @@
                        FontWeight="Bold"
                        FontSize="20"
                        Content="SUPPORT"/>
-                <Label Grid.Column="1"
+                <Label Grid.Column="2"
                        Grid.Row="5"
                        HorizontalContentAlignment="Center"
                        VerticalContentAlignment="Center"
@@ -254,37 +266,37 @@
                        Content="CARRY"/>
                 
                 <!--Team 1 Players-->
-                <Label Grid.Column="2"
+                <Label Grid.Column="3"
                        Grid.Row="1"
-                       HorizontalAlignment="Center"
+                       HorizontalAlignment="Right"
                        VerticalAlignment="Center"
                        Foreground="White"
                        FontSize="20"
                        Content="{Binding PlayerNames[5]}"/>
-                <Label Grid.Column="2"
+                <Label Grid.Column="3"
                        Grid.Row="2"
-                       HorizontalAlignment="Center"
+                       HorizontalAlignment="Right"
                        VerticalAlignment="Center"
                        Foreground="White"
                        FontSize="20"
                        Content="{Binding PlayerNames[6]}"/>
-                <Label Grid.Column="2"
+                <Label Grid.Column="3"
                        Grid.Row="3"
-                       HorizontalAlignment="Center"
+                       HorizontalAlignment="Right"
                        VerticalAlignment="Center"
                        Foreground="White"
                        FontSize="20"
                        Content="{Binding PlayerNames[7]}"/>
-                <Label Grid.Column="2"
+                <Label Grid.Column="3"
                        Grid.Row="4"
-                       HorizontalAlignment="Center"
+                       HorizontalAlignment="Right"
                        VerticalAlignment="Center"
                        Foreground="White"
                        FontSize="20"
                        Content="{Binding PlayerNames[8]}"/>
-                <Label Grid.Column="2" 
+                <Label Grid.Column="3" 
                        Grid.Row="5"
-                       HorizontalAlignment="Center"
+                       HorizontalAlignment="Right"
                        VerticalAlignment="Center"
                        Foreground="White"
                        FontSize="20"

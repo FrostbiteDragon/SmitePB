@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Raven.Client.Documents;
@@ -46,6 +47,52 @@ namespace SmitePB.API.Services
             );
         });
 
+        public static Task<GodPBCount[]> GetTeamTopPBs(IServiceProvider services, string team) => AccessRaven(services, async session =>
+        {
+            var teamPicks =
+                await session
+                .Query<Pick>()
+                .Where(x => x.Team == team)
+                .Select(x => x.God)
+                .ToArrayAsync();
+
+            var teamBansAgainst =
+                await session
+                .Query<Ban>()
+                .Where(x => x.EnemyTeamName == team)
+                .Select(x => x.God)
+                .ToArrayAsync();
+
+            return teamPicks
+                .Concat(teamBansAgainst)
+                .GroupBy(x => x)
+                .Select(x => new GodPBCount(x.Key, x.Count()))
+                .OrderBy(x => x.Count)
+                .ToArray();
+        });
+
+        public static Task<GodPBCount[]> GetLeagueTopPBs(IServiceProvider services) => AccessRaven(services, async session =>
+        {
+            var leaguePicks =
+                await session
+                .Query<Pick>()
+                .Select(x => x.God)
+                .ToArrayAsync();
+
+            var leagueBans =
+                await session
+                .Query<Ban>()
+                .Select(x => x.God)
+                .ToArrayAsync();
+
+            return leaguePicks
+                .Concat(leagueBans)
+                .GroupBy(x => x)
+                .Select(x => new GodPBCount(x.Key, x.Count()))
+                .OrderBy(x => x.Count)
+                .ToArray();
+        });
+
         public static Task SaveGamePBs(IServiceProvider services, GameResult gameResult) => AccessRaven(services, async session =>
         {
             var picks = 
@@ -87,4 +134,5 @@ namespace SmitePB.API.Services
             await session.SaveChangesAsync();
         });
     }
+
 }

@@ -18,6 +18,9 @@ namespace SmitePB.Manager.Windows
         public GodStats[] GodStats { get; } = new GodStats[10];
         public bool[] LockedIn { get; private set; } = new bool[10];
         public God[] Bans { get; private set; } = new God[10];
+        public (God, int)[] OrderTopBans { get; } = new (God, int)[8];
+        public God[] LeagueTopBans { get; } = new God[8];
+        public God[] ChaosTopBans { get; } = new God[8];
         public int[] Wins { get; } = new int[2] { 0, 1 };
         public string[] PlayerNames { get; } = new string[10];
         public string BackgroundImage { get; }

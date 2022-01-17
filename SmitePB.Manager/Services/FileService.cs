@@ -36,11 +36,17 @@ namespace SmitePB.Manager.Services
 
                 foreach (var godDirectory in godDirectories)
                 {
-                    var name =
-                        godDirectory
-                        .Split(Path.DirectorySeparatorChar)
-                        .Last()
-                        .ToUpper();
+                    var godFile = Directory.EnumerateFiles(godDirectory, "*.json").FirstOrDefault();
+
+                    var name = (godFile is null) switch
+                    {
+                        true => godDirectory
+                            .Split(Path.DirectorySeparatorChar)
+                            .Last()
+                            .ToUpper(),
+                        false => JsonConvert.DeserializeObject<GodDTO>(File.ReadAllText(godFile)).name
+                    };
+                        
 
                     yield return new God(
                         name: name,

@@ -19,4 +19,14 @@ namespace SmitePB.Domain
             LockInSound = lockInSound;
         }
     }
+
+    public record GodDTO
+    {
+        public readonly string name;
+
+        public GodDTO(string name)
+        {
+            this.name = name;
+        }
+    }
 }

@@ -63,10 +63,22 @@ namespace SmitePB.API.Services
                 .Select(x => x.God)
                 .ToArrayAsync();
 
+            var games =
+                await session
+                .Query<Game>()
+                .Include(x => x.BanIds)
+                .Include(x => x.PickIds)
+                .Select(x => new { x.PickIds, x.BanIds })
+                .ToArrayAsync();
+
+            games.First().
+
+
+
             return teamPicks
                 .Concat(teamBansAgainst)
                 .GroupBy(x => x)
-                .Select(x => new GodPBCount(x.Key, x.Count()))
+                .Select(x => new GodPBCount(x.Key, x.Count() * 100 / totalPBCount))
                 .OrderBy(x => x.Count)
                 .ToArray();
         });

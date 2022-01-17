@@ -18,9 +18,9 @@ namespace SmitePB.Manager.Windows
         public GodStats[] GodStats { get; } = new GodStats[10];
         public bool[] LockedIn { get; private set; } = new bool[10];
         public God[] Bans { get; private set; } = new God[10];
-        public (God, int)[] OrderTopBans { get; } = new (God, int)[8];
+        public God[] OrderTopBans { get; private set; } = new God[8];
         public God[] LeagueTopBans { get; } = new God[8];
-        public God[] ChaosTopBans { get; } = new God[8];
+        public God[] ChaosTopBans { get; private set; } = new God[8];
         public int[] Wins { get; } = new int[2] { 0, 1 };
         public string[] PlayerNames { get; } = new string[10];
         public string BackgroundImage { get; }
@@ -122,7 +122,7 @@ namespace SmitePB.Manager.Windows
             PropertyChanged?.Invoke(this, new(nameof(Bans)));
         }
 
-        public void SetTeam(int slot, string teamName)
+        public async void SetTeam(int slot, string teamName)
         {
             var team = GetTeambyName(teamName);
 
@@ -130,13 +130,21 @@ namespace SmitePB.Manager.Windows
             {
                 case 0:
                     Team0 = team;
+                    OrderTopBans = (await _apiService.GetTopPBforTeam(teamName))
+                        .Select(x => GetGodbyName(x.God))
+                        .ToArray();
+
                     PropertyChanged?.Invoke(this, new(nameof(Team0)));
+                    PropertyChanged?.Invoke(this, new(nameof(OrderTopBans)));
 
                     Team0Colour = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2596be"));
                     break;
 
                 case 1:
                     Team1 = team;
+                    ChaosTopBans = (await _apiService.GetTopPBforTeam(teamName))
+                       .Select(x => GetGodbyName(x.God))
+                       .ToArray();
                     PropertyChanged?.Invoke(this, new(nameof(Team1)));
                     break;
             }

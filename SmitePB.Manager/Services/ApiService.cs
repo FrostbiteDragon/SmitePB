@@ -54,6 +54,14 @@ namespace SmitePB.Manager.Services
             else throw new Exception(await response.Content.ReadAsStringAsync());
         });
 
+        public Task<GodPBCount[]> GetTopPBforTeam(string team) => AccessClient(async client =>
+        {
+            var response = await client.GetAsync($"topPB/{team}");
+            if (response.IsSuccessStatusCode)
+                return await response.Content.ReadAsAsync<GodPBCount[]>();
+            else throw new Exception(await response.Content.ReadAsStringAsync());
+        });
+
         public Task SaveGameResult(GameResult gameResult) => AccessClient(async client =>
         {
             await client.PostAsJsonAsync("result", gameResult);

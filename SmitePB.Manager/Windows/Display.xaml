@@ -347,7 +347,7 @@
                            VerticalAlignment="Center"
                            Content="TOP PICKS / BANS AGAINST"/>
 
-                    <Image Grid.Column="1" Grid.Row="1" Margin="1" Stretch="UniformToFill" Source="C:\Users\Cameron\Documents\_Programming\SmitePB.Assets\Assets\Gods\Achilles\Ban.jpg"/>
+                    <Image Grid.Column="1" Grid.Row="1" Margin="1" Stretch="UniformToFill" Source="{Binding OrderTopBans[0].Ban}"/>
                     <Image Grid.Column="2" Grid.Row="1" Margin="1" Stretch="UniformToFill" Source="C:\Users\Cameron\Documents\_Programming\SmitePB.Assets\Assets\Gods\Achilles\Ban.jpg"/>
                     <Image Grid.Column="3" Grid.Row="1" Margin="1" Stretch="UniformToFill" Source="C:\Users\Cameron\Documents\_Programming\SmitePB.Assets\Assets\Gods\Achilles\Ban.jpg"/>
                     <Image Grid.Column="4" Grid.Row="1" Margin="1" Stretch="UniformToFill" Source="C:\Users\Cameron\Documents\_Programming\SmitePB.Assets\Assets\Gods\Achilles\Ban.jpg"/>

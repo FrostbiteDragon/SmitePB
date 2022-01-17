@@ -305,13 +305,6 @@
 
             </Grid>
 
-            <Label Grid.Row="2"
-                   Foreground="White"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   FontWeight="Bold"
-                   FontSize="30"
-                   Content=""/>
             <Rectangle Margin="5" Grid.Row="2" Opacity=".3" Fill="Black" StrokeThickness="3" Stroke="WhiteSmoke"/>
 
             <!--Bans-->

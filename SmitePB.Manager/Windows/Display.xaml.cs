@@ -38,7 +38,7 @@ namespace SmitePB.Manager.Windows
         private const int defaultHeight = 1080;
         private const int defaultWidth = 1920;
 
-        private Team GetTeambyName(string name) => Teams.FirstOrDefault(x => x.DisplayName == name);
+        public Team GetTeambyName(string name) => Teams.FirstOrDefault(x => x.DisplayName == name);
         private God GetGodbyName(string name) => gods.FirstOrDefault(x => x.Name == name);
 
         private readonly ApiService _apiService;
@@ -52,9 +52,6 @@ namespace SmitePB.Manager.Windows
 
             BackgroundImage = FileService.GetFile(FileService.AssetsFolder, "Background");
             LeagueLogo = FileService.GetFile(FileService.AssetsFolder, "Logo");
-
-            //temp
-            PlayerNames = PlayerNames.Select(x => "PLAYER").ToArray();
 
             Teams = FileService.GetTeams().ToArray();
             gods = FileService.GetGods();

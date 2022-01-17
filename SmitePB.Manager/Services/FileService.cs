@@ -19,7 +19,12 @@ namespace SmitePB.Manager.Services
             foreach (var teamDirectory in teamDirectories)
             {
                 var teamDTO = JsonConvert.DeserializeObject<TeamDTO>(File.ReadAllText(Path.Combine(teamDirectory, "Team.json")));
-                yield return new Team(teamDTO.displayName, teamDTO.colour, Directory.EnumerateFiles(teamDirectory,  $"Logo.*").FirstOrDefault());
+
+                yield return new Team(
+                    teamDTO.displayName, 
+                    teamDTO.colour, 
+                    GetFile(teamDirectory, "Logo"),
+                    teamDTO.players is not null ? teamDTO.players : new string[] {"Player", "Player", "Player", "Player", "Player"});
             }
         }
 

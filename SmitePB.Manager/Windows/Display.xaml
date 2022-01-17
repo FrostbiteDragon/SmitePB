@@ -312,7 +312,7 @@
                    FontWeight="Bold"
                    FontSize="30"
                    Content=""/>
-            <Rectangle Margin="5" Grid.Row="2" Opacity=".3" StrokeThickness="3" Stroke="WhiteSmoke"/>
+            <Rectangle Margin="5" Grid.Row="2" Opacity=".3" Fill="Black" StrokeThickness="3" Stroke="WhiteSmoke"/>
 
             <!--Bans-->
             <Grid Grid.Row="3" Margin="5">
@@ -362,7 +362,6 @@
                     <Image Grid.Column="2" Grid.Row="2" Margin="1" Stretch="UniformToFill" Source="C:\Users\Cameron\Documents\_Programming\SmitePB.Assets\Assets\Gods\Achilles\Ban.jpg"/>
                     <Image Grid.Column="3" Grid.Row="2" Margin="1" Stretch="UniformToFill" Source="C:\Users\Cameron\Documents\_Programming\SmitePB.Assets\Assets\Gods\Achilles\Ban.jpg"/>
                     <Image Grid.Column="4" Grid.Row="2" Margin="1" Stretch="UniformToFill" Source="C:\Users\Cameron\Documents\_Programming\SmitePB.Assets\Assets\Gods\Achilles\Ban.jpg"/>
-
                 </Grid>
                 
                

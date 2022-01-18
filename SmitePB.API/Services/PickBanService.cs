@@ -20,19 +20,18 @@ namespace SmitePB.API.Services
                 .CountAsync();
             var gamesPlayed =
                 await session
-                .Query<Pick>()
-                .Where(x => x.God == god)
+                .Query<Game>()
+                .Where(x => x.Picks.Any(x => x.God == god))
                 .CountAsync();
             var gamesBaned =
                 await session
-                .Query<Ban>()
-                .Where(x => x.God == god)
+                .Query<Game>()
+                .Where(x => x.Bans.Any(x => x.God == god))
                 .CountAsync();
             var wins =
                 await session
-                .Query<Pick>()
-                .Where(x => x.God == god)
-                .Where(x => x.Win == true)
+                .Query<Game>()
+                .Where(x => x.Picks.Any(x => x.God == god && x.Win == true))
                 .CountAsync();
 
             return new GodStats(
@@ -49,101 +48,88 @@ namespace SmitePB.API.Services
 
         public static Task<GodPBCount[]> GetTeamTopPBs(IServiceProvider services, string team) => AccessRaven(services, async session =>
         {
-            var teamPicks =
-                await session
-                .Query<Pick>()
-                .Where(x => x.Team == team)
-                .Select(x => x.God)
-                .ToArrayAsync();
-
-            var teamBansAgainst =
-                await session
-                .Query<Ban>()
-                .Where(x => x.EnemyTeamName == team)
-                .Select(x => x.God)
-                .ToArrayAsync();
-
-            var games =
+            var totalGamesTeamPlayed =
                 await session
                 .Query<Game>()
-                .Include(x => x.BanIds)
-                .Include(x => x.PickIds)
-                .Select(x => new { x.PickIds, x.BanIds })
+                .Where(x => x.OrderTeamName == team || x.ChaosTeamName == team)
+                .CountAsync();
+
+            var pickBans =
+                await session
+                .Query<Game>()
+                .Where(x => x.OrderTeamName == team || x.ChaosTeamName == team)
+                .Select(x => new { x.Picks, x.Bans })
                 .ToArrayAsync();
 
-            games.First().
+            var picks =
+                pickBans
+                .SelectMany(x => x.Picks.Where(x => x.FriendlyTeamName.ToUpper() == team.ToUpper()))
+                .Select(x => x.God)
+                .ToArray();
 
+            var bansAgainst =
+                 pickBans
+                .SelectMany(x => x.Bans.Where(x => x.EnemyTeamName.ToUpper() == team.ToUpper()))
+                .Select(x => x.God)
+                .ToArray();
 
-
-            return teamPicks
-                .Concat(teamBansAgainst)
+            return 
+                picks
+                .Concat(bansAgainst)
                 .GroupBy(x => x)
-                .Select(x => new GodPBCount(x.Key, x.Count() * 100 / totalPBCount))
-                .OrderBy(x => x.Count)
+                .Select(x => new GodPBCount(x.Key, x.Count() * 100 / totalGamesTeamPlayed))
+                .OrderByDescending(x => x.Count)
                 .ToArray();
         });
 
         public static Task<GodPBCount[]> GetLeagueTopPBs(IServiceProvider services) => AccessRaven(services, async session =>
         {
-            var leaguePicks =
-                await session
-                .Query<Pick>()
-                .Select(x => x.God)
-                .ToArrayAsync();
+            var totalGames =
+                 await session
+                 .Query<Game>()
+                 .CountAsync();
 
-            var leagueBans =
-                await session
-                .Query<Ban>()
-                .Select(x => x.God)
-                .ToArrayAsync();
-
-            return leaguePicks
-                .Concat(leagueBans)
+            return
+                (
+                    await session
+                    .Query<Game>()
+                    .Select(x => new { x.Picks, x.Bans })
+                    .ToArrayAsync()
+                )
+                .SelectMany(x => x.Bans.Concat(x.Picks).ToArray().Select(x => x.God))
                 .GroupBy(x => x)
-                .Select(x => new GodPBCount(x.Key, x.Count()))
-                .OrderBy(x => x.Count)
+                .Select(x => new GodPBCount(x.Key, x.Count() * 100 / totalGames))
+                .OrderByDescending(x => x.Count)
                 .ToArray();
+
         });
 
         public static Task SaveGamePBs(IServiceProvider services, GameResult gameResult) => AccessRaven(services, async session =>
         {
-            var picks = 
+            var picks =
                 gameResult.Picks
                 .Take(5)
-                .Select(x => new Pick(gameResult.OrderTeamName, x, gameResult.OrderWon, Guid.NewGuid().ToString()))
+                .Select(x => new PickBan(gameResult.OrderTeamName, gameResult.ChaosTeamName, x, gameResult.OrderWon))
                 .Concat(
                     gameResult.Picks
                     .TakeLast(5)
-                    .Select(x => new Pick(gameResult.ChaosTeamName, x, !gameResult.OrderWon, Guid.NewGuid().ToString()))
+                    .Select(x => new PickBan(gameResult.ChaosTeamName, gameResult.OrderTeamName, x, !gameResult.OrderWon))
+                    .ToArray()
                 ).ToArray();
 
             var bans =
-               gameResult.Bans
-               .Take(5)
-               .Select(x => new Ban(gameResult.OrderTeamName, gameResult.ChaosTeamName, x, Guid.NewGuid().ToString()))
-               .Concat(
-                   gameResult.Bans
-                   .TakeLast(5)
-                   .Select(x => new Ban(gameResult.ChaosTeamName, gameResult.OrderTeamName, x, Guid.NewGuid().ToString()))
-               ).ToArray();
+                gameResult.Bans
+                .Take(5)
+                .Select(x => new PickBan(gameResult.OrderTeamName, gameResult.ChaosTeamName, x, gameResult.OrderWon))
+                .Concat(
+                    gameResult.Bans
+                    .TakeLast(5)
+                    .Select(x => new PickBan(gameResult.ChaosTeamName, gameResult.OrderTeamName, x, !gameResult.OrderWon))
+                    .ToArray()
+                ).ToArray();
 
-            foreach (var pick in picks)
-                await session.StoreAsync(pick, pick.Id);
-
-            foreach (var ban in bans)
-                await session.StoreAsync(ban, ban.Id);
-
-            await session.StoreAsync(
-                new Game(
-                    gameResult.OrderWon,
-                    gameResult.OrderTeamName,
-                    gameResult.ChaosTeamName,
-                    picks.Select(x => x.Id).ToArray(),
-                    bans.Select(x => x.Id).ToArray()
-                )
-            );
-
-            await session.SaveChangesAsync();
+            var game = new Game(gameResult.OrderWon, gameResult.OrderTeamName, gameResult.ChaosTeamName, picks, bans);
+            await session.StoreAsync(game);
         });
     }
 

@@ -15,20 +15,6 @@ namespace SmitePB.API.Controllers
     {
         private IServiceProvider Services => HttpContext.RequestServices;
 
-        [HttpPost("pick")]
-        public async Task<IActionResult> PostBan([FromBody] Pick pick)
-        {
-            await Store(Services, pick);
-            return Ok("Pick stored.");
-        }
-
-        [HttpPost("ban")]
-        public async Task<IActionResult> PostPick([FromBody] Ban ban)
-        {
-            await Store(Services, ban);
-            return Ok("Ban stored.");
-        }
-
         [HttpPost("result")]
         public async Task<IActionResult> PostGameResult([FromBody] GameResult gameResult)
         {

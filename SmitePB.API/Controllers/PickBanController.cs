@@ -31,7 +31,6 @@ namespace SmitePB.API.Controllers
         [HttpGet("topPB/{team}")]
         public async Task<IActionResult> HttpGetTeamTopPB(string team)
         {
-            var x = await GetTeamTopPBs(Services, team);
             return Ok(await GetTeamTopPBs(Services, team));
         }
 

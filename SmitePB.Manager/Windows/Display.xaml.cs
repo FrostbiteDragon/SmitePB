@@ -18,7 +18,8 @@ namespace SmitePB.Manager.Windows
         public GodStats[] GodStats { get; } = new GodStats[10];
         public bool[] LockedIn { get; private set; } = new bool[10];
         public God[] Bans { get; private set; } = new God[10];
-        public God[] OrderTopBans { get; private set; } = new God[8];
+        public Tuple<God, int>[] OrderTopBans { get; private set; } = new Tuple<God, int>[8];
+        public int[] OrderTopBanRates { get; private set; } = new int[8];
         public God[] LeagueTopBans { get; } = new God[8];
         public God[] ChaosTopBans { get; private set; } = new God[8];
         public int[] Wins { get; } = new int[2] { 0, 1 };
@@ -130,9 +131,17 @@ namespace SmitePB.Manager.Windows
             {
                 case 0:
                     Team0 = team;
-                    OrderTopBans = (await _apiService.GetTopPBforTeam(teamName))
-                        .Select(x => GetGodbyName(x.God))
-                        .ToArray();
+                    var orderTopBans = await _apiService.GetTopPBforTeam(teamName);
+
+                    if (orderTopBans.Length < 10)
+                    {
+                        var none = GetGodbyName("NONE");
+                        OrderTopBans = new God[8].Select(orderTopBans => new Tuple<God, int>(none, 0)).ToArray(); 
+                    }
+                    else
+                        OrderTopBans = orderTopBans
+                            .Select(x => new Tuple<God, int>(GetGodbyName(x.God.ToUpper()), x.Count))
+                            .ToArray();
 
                     PropertyChanged?.Invoke(this, new(nameof(Team0)));
                     PropertyChanged?.Invoke(this, new(nameof(OrderTopBans)));
@@ -143,7 +152,7 @@ namespace SmitePB.Manager.Windows
                 case 1:
                     Team1 = team;
                     ChaosTopBans = (await _apiService.GetTopPBforTeam(teamName))
-                       .Select(x => GetGodbyName(x.God))
+                       .Select(x => x is null ? GetGodbyName("None") : GetGodbyName(x.God))
                        .ToArray();
                     PropertyChanged?.Invoke(this, new(nameof(Team1)));
                     break;

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SmitePB.API.Models;
 using SmitePB.Domain;
 using System;
 using System.Linq;
@@ -44,6 +45,7 @@ namespace SmitePB.API.Controllers
         [HttpGet("topPB/{team}")]
         public async Task<IActionResult> HttpGetTeamTopPB(string team)
         {
+            var x = await GetTeamTopPBs(Services, team);
             return Ok(await GetTeamTopPBs(Services, team));
         }
 

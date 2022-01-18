@@ -12,17 +12,17 @@ namespace SmitePB.API.Models
         public bool OrderWon { get; }
         public string OrderTeamName { get; }
         public string ChaosTeamName { get; }
-        public string[] PickIds { get; }
-        public string[] BanIds { get; }
+        public PickBan[] Picks { get; }
+        public PickBan[] Bans { get; }
 
-        public Game(bool orderWon, string orderTeamName, string chaosTeamName, string[] pickIds, string[] banIds, string id = "")
+        public Game(bool orderWon, string orderTeamName, string chaosTeamName, PickBan[] picks, PickBan[] bans, string id = "")
         {
             Id = id;
             OrderWon = orderWon;
             OrderTeamName = orderTeamName;
             ChaosTeamName = chaosTeamName;
-            PickIds = pickIds;
-            BanIds = banIds;
+            Picks = picks;
+            Bans = bans;
         }
     }
 }

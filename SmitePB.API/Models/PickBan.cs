@@ -1,24 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace SmitePB.Domain
+namespace SmitePB.API.Models
 {
-    public record Ban
+    public record PickBan
     {
-        public string Id { get; }
         public string FriendlyTeamName { get; }
         public string EnemyTeamName { get; }
         public string God { get; }
+        public bool Win { get; }
 
-        public Ban(string friendlyTeamName, string enemyTeamName, string god, string id = "")
+        public PickBan(string friendlyTeamName, string enemyTeamName, string god, bool win)
         {
-            Id = id;
             FriendlyTeamName = friendlyTeamName;
             EnemyTeamName = enemyTeamName;
             God = god;
+            Win = win;
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using SmitePB.Domain;
 using SmitePB.Manager.Services;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace SmitePB.Manager.Windows
 {
@@ -18,6 +19,9 @@ namespace SmitePB.Manager.Windows
         public GodStats[] GodStats { get; } = new GodStats[10];
         public bool[] LockedIn { get; private set; } = new bool[10];
         public God[] Bans { get; private set; } = new God[10];
+        public Tuple<God, int>[] OrderTopBans { get; private set; } = new Tuple<God, int>[8];
+        public Tuple<God, int>[] LeagueTopBans { get; private set; } = new Tuple<God, int>[8];
+        public Tuple<God, int>[] ChaosTopBans { get; private set; } = new Tuple<God, int>[8];
         public int[] Wins { get; } = new int[2] { 0, 1 };
         public string[] PlayerNames { get; } = new string[10];
         public string BackgroundImage { get; }
@@ -38,8 +42,8 @@ namespace SmitePB.Manager.Windows
         private const int defaultHeight = 1080;
         private const int defaultWidth = 1920;
 
-        private Team GetTeambyName(string name) => Teams.FirstOrDefault(x => x.DisplayName == name);
-        private God GetGodbyName(string name) => gods.FirstOrDefault(x => x.Name == name);
+        public Team GetTeambyName(string name) => Teams.FirstOrDefault(x => x.DisplayName == name);
+        private God GetGodbyName(string name) => gods.FirstOrDefault(x => x.Name.ToUpper() == name.ToUpper());
 
         private readonly ApiService _apiService;
 
@@ -53,13 +57,11 @@ namespace SmitePB.Manager.Windows
             BackgroundImage = FileService.GetFile(FileService.AssetsFolder, "Background");
             LeagueLogo = FileService.GetFile(FileService.AssetsFolder, "Logo");
 
-            //temp
-            PlayerNames = PlayerNames.Select(x => "PLAYER").ToArray();
-
             Teams = FileService.GetTeams().ToArray();
             gods = FileService.GetGods();
 
             ClearPicksAndBans();
+            ConstructAsync();
            
             DataContext = this;
 
@@ -73,6 +75,32 @@ namespace SmitePB.Manager.Windows
 
             InitializeComponent();
         }
+
+        async void ConstructAsync()
+        {
+            LeagueTopBans = await GetTopPicks();
+            PropertyChanged?.Invoke(this, new(nameof(LeagueTopBans)));
+
+        }
+
+        public async Task<Tuple<God, int>[]> GetTopPicks(string teamName = "")
+        {
+            var topBans = await _apiService.GetTopPB(teamName);
+
+            if (topBans.Length < 8)
+            {
+                var none = GetGodbyName("NONE");
+                return new God[8].Select(x => new Tuple<God, int>(none, 0)).ToArray();
+            }
+            else
+            {
+                return 
+                    topBans
+                    .Select(x => new Tuple<God, int>(GetGodbyName(x.God), x.Count))
+                    .ToArray();
+            }
+        }
+
 
         public void SetGod(int slot, string godName)
         {
@@ -122,7 +150,7 @@ namespace SmitePB.Manager.Windows
             PropertyChanged?.Invoke(this, new(nameof(Bans)));
         }
 
-        public void SetTeam(int slot, string teamName)
+        public async void SetTeam(int slot, string teamName)
         {
             var team = GetTeambyName(teamName);
 
@@ -130,14 +158,20 @@ namespace SmitePB.Manager.Windows
             {
                 case 0:
                     Team0 = team;
+                    OrderTopBans = await GetTopPicks(teamName);
+
                     PropertyChanged?.Invoke(this, new(nameof(Team0)));
+                    PropertyChanged?.Invoke(this, new(nameof(OrderTopBans)));
 
                     Team0Colour = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#2596be"));
                     break;
 
                 case 1:
                     Team1 = team;
+                    ChaosTopBans = await GetTopPicks(teamName);
+
                     PropertyChanged?.Invoke(this, new(nameof(Team1)));
+                    PropertyChanged?.Invoke(this, new(nameof(ChaosTopBans)));
                     break;
             }
         }

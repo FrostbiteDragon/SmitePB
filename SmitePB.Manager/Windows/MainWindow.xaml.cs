@@ -1,4 +1,5 @@
 ﻿using SmitePB.Domain;
+using System;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
@@ -28,13 +29,11 @@ namespace SmitePB.Manager.Windows
             _display = owner;
             TeamSource = teams.Select(x => x.DisplayName).ToArray();
 
-
             GodNames = _display.GetGodNames();
             SelectedTeam0 = _display.Teams[0].DisplayName;
             SelectedTeam1 = _display.Teams[0].DisplayName;
             _display.SetTeam(0, SelectedTeam0);
             _display.SetTeam(1, SelectedTeam1);
-
 
             DataContext = this;
             InitializeComponent();
@@ -59,21 +58,22 @@ namespace SmitePB.Manager.Windows
             var cb = (ComboBox)sender;
             cb.IsDropDownOpen = true;
         }
-        private void OnPickDropDownClosed(object sender, System.EventArgs e)
+        private void OnPickDropDownClosed(object sender, EventArgs e)
         {
             var comboBox = (ComboBox)sender;
             var slot = int.Parse((string)comboBox.Tag);
-            _display.SetGod(slot, (string)comboBox.SelectedItem);
+            if ((string)comboBox.SelectedItem is not null)
+                _display.SetGod(slot, (string)comboBox.SelectedItem);
 
             LockedIn[slot] = false;
             PropertyChanged?.Invoke(this, new(nameof(LockedIn)));
-
         }
 
-        private void OnBanDropDownClosed(object sender, System.EventArgs e)
+        private void OnBanDropDownClosed(object sender, EventArgs e)
         {
             var comboBox = (ComboBox)sender;
-            _display.SetBan(int.Parse((string)comboBox.Tag), (string)comboBox.SelectedItem);
+            if ((string)comboBox.SelectedItem is not null)
+                _display.SetBan(int.Parse((string)comboBox.Tag), (string)comboBox.SelectedItem);
         }
 
         private void WindowMouseDown(object sender, MouseButtonEventArgs e)
@@ -106,7 +106,26 @@ namespace SmitePB.Manager.Windows
         {
             var comboBox = (ComboBox)sender;
             var teamId = int.Parse((string)comboBox.Tag);
+
+            string[] GetPlayers(string teamName) => _display.GetTeambyName(teamName).Players;
+
+            Players = teamId switch
+            {
+                0 => GetPlayers(SelectedTeam0)
+                    .Concat(Players.TakeLast(5))
+                    .ToArray(),
+
+                1 => Players
+                    .Take(5)
+                    .Concat(GetPlayers(SelectedTeam1))
+                    .ToArray(),
+
+                _ => new string[10]
+            };
+
             _display.SetTeam(teamId, teamId == 0 ? SelectedTeam0 : SelectedTeam1);
+
+            PropertyChanged?.Invoke(this, new(nameof(Players)));
         }
 
         private void OnLockedIn(object sender, RoutedEventArgs e)
@@ -136,7 +155,7 @@ namespace SmitePB.Manager.Windows
                 textBox.Text = "";
         }
 
-        private void OnPlayerNameChnaged(object sender, TextChangedEventArgs e)
+        private void OnPlayerNameChanged(object sender, TextChangedEventArgs e)
         {
             var textBox = (TextBox)sender;
             var slot = int.Parse(textBox.Tag as string);

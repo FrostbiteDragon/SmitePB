@@ -315,6 +315,7 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
+                <!--Order Top Picks-->
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="6"/>
@@ -346,66 +347,171 @@
                            VerticalAlignment="Center"
                            Content="TOP PICKS / BANS AGAINST"/>
 
-                    <Image Grid.Column="1" Grid.Row="1" Margin="1" Stretch="UniformToFill" Source="{Binding OrderTopBans[0].Item1.Ban}"/>
+                    <Image Grid.Column="1" Grid.Row="1" Margin="1" Stretch="UniformToFill" Source="{Binding OrderTopBans[3].Item1.Ban}"/>
                     <Rectangle Grid.Column="1" Grid.Row="1" Height="25" VerticalAlignment="Bottom" Fill="Black" Opacity=".6"/>
-                    <Label Grid.Column="1" Grid.Row="1" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding OrderTopBans[0].Item2}" ContentStringFormat="{}{0}%"/>
+                    <Label Grid.Column="1" Grid.Row="1" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding OrderTopBans[3].Item2}" ContentStringFormat="{}{0}%"/>
 
-                    <Image Grid.Column="2" Grid.Row="1" Margin="1" Stretch="UniformToFill" Source="{Binding OrderTopBans[1].Item1.Ban}"/>
+                    <Image Grid.Column="2" Grid.Row="1" Margin="1" Stretch="UniformToFill" Source="{Binding OrderTopBans[2].Item1.Ban}"/>
                     <Rectangle Grid.Column="2" Grid.Row="1" Height="25" VerticalAlignment="Bottom" Fill="Black" Opacity=".6"/>
-                    <Label Grid.Column="2" Grid.Row="1" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding OrderTopBans[1].Item2}" ContentStringFormat="{}{0}%"/>
+                    <Label Grid.Column="2" Grid.Row="1" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding OrderTopBans[2].Item2}" ContentStringFormat="{}{0}%"/>
 
-                    <Image Grid.Column="3" Grid.Row="1" Margin="1" Stretch="UniformToFill" Source="{Binding OrderTopBans[2].Item1.Ban}"/>
+                    <Image Grid.Column="3" Grid.Row="1" Margin="1" Stretch="UniformToFill" Source="{Binding OrderTopBans[1].Item1.Ban}"/>
                     <Rectangle Grid.Column="3" Grid.Row="1" Height="25" VerticalAlignment="Bottom" Fill="Black" Opacity=".6"/>
-                    <Label Grid.Column="3" Grid.Row="1" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding OrderTopBans[2].Item2}" ContentStringFormat="{}{0}%"/>
+                    <Label Grid.Column="3" Grid.Row="1" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding OrderTopBans[1].Item2}" ContentStringFormat="{}{0}%"/>
                     
-                    <Image Grid.Column="4" Grid.Row="1" Margin="1" Stretch="UniformToFill" Source="{Binding OrderTopBans[3].Item1.Ban}"/>
+                    <Image Grid.Column="4" Grid.Row="1" Margin="1" Stretch="UniformToFill" Source="{Binding OrderTopBans[0].Item1.Ban}"/>
                     <Rectangle Grid.Column="4" Grid.Row="1" Height="25" VerticalAlignment="Bottom" Fill="Black" Opacity=".6"/>
-                    <Label Grid.Column="4" Grid.Row="1" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding OrderTopBans[3].Item2}" ContentStringFormat="{}{0}%"/>
+                    <Label Grid.Column="4" Grid.Row="1" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding OrderTopBans[0].Item2}" ContentStringFormat="{}{0}%"/>
 
-                    <Image Grid.Column="1" Grid.Row="2" Margin="1" Stretch="UniformToFill" Source="{Binding OrderTopBans[4].Item1.Ban}"/>
+                    <Image Grid.Column="1" Grid.Row="2" Margin="1" Stretch="UniformToFill" Source="{Binding OrderTopBans[7].Item1.Ban}"/>
                     <Rectangle Grid.Column="1" Grid.Row="2" Height="25" VerticalAlignment="Bottom" Fill="Black" Opacity=".6"/>
-                    <Label Grid.Column="1" Grid.Row="2" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding OrderTopBans[4].Item2}" ContentStringFormat="{}{0}%"/>
+                    <Label Grid.Column="1" Grid.Row="2" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding OrderTopBans[7].Item2}" ContentStringFormat="{}{0}%"/>
 
-                    <Image Grid.Column="2" Grid.Row="2" Margin="1" Stretch="UniformToFill" Source="{Binding OrderTopBans[5].Item1.Ban}"/>
+                    <Image Grid.Column="2" Grid.Row="2" Margin="1" Stretch="UniformToFill" Source="{Binding OrderTopBans[6].Item1.Ban}"/>
                     <Rectangle Grid.Column="2" Grid.Row="2" Height="25" VerticalAlignment="Bottom" Fill="Black" Opacity=".6"/>
-                    <Label Grid.Column="2" Grid.Row="2" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding OrderTopBans[5].Item2}" ContentStringFormat="{}{0}%"/>
+                    <Label Grid.Column="2" Grid.Row="2" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding OrderTopBans[6].Item2}" ContentStringFormat="{}{0}%"/>
 
-                    <Image Grid.Column="3" Grid.Row="2" Margin="1" Stretch="UniformToFill" Source="{Binding OrderTopBans[6].Item1.Ban}"/>
+                    <Image Grid.Column="3" Grid.Row="2" Margin="1" Stretch="UniformToFill" Source="{Binding OrderTopBans[5].Item1.Ban}"/>
                     <Rectangle Grid.Column="3" Grid.Row="2" Height="25" VerticalAlignment="Bottom" Fill="Black" Opacity=".6"/>
-                    <Label Grid.Column="3" Grid.Row="2" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding OrderTopBans[6].Item2}" ContentStringFormat="{}{0}%"/>
+                    <Label Grid.Column="3" Grid.Row="2" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding OrderTopBans[5].Item2}" ContentStringFormat="{}{0}%"/>
 
-                    <Image Grid.Column="4" Grid.Row="2" Margin="1" Stretch="UniformToFill" Source="{Binding OrderTopBans[7].Item1.Ban}"/>
+                    <Image Grid.Column="4" Grid.Row="2" Margin="1" Stretch="UniformToFill" Source="{Binding OrderTopBans[4].Item1.Ban}"/>
                     <Rectangle Grid.Column="4" Grid.Row="2" Height="25" VerticalAlignment="Bottom" Fill="Black" Opacity=".6"/>
-                    <Label Grid.Column="4" Grid.Row="2" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding OrderTopBans[7].Item2}" ContentStringFormat="{}{0}%"/>
+                    <Label Grid.Column="4" Grid.Row="2" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding OrderTopBans[4].Item2}" ContentStringFormat="{}{0}%"/>
 
                 </Grid>
-                
-               
-                <Rectangle Grid.Column="1"
-                           Grid.RowSpan="3"
-                           Margin="2.5 0"
+
+                <!--League Top Bans-->
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="6"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="5"/>
+                    </Grid.RowDefinitions>
+
+                    <Rectangle Grid.ColumnSpan="6"
+                           Grid.RowSpan="4"
                            Fill="Black" 
                            Opacity=".3" 
                            Stroke="WhiteSmoke" 
                            StrokeThickness="3"/>
-                <Rectangle Grid.Column="3"
-                           Grid.RowSpan="3"
+
+                    <Label Grid.ColumnSpan="6"
+                           Foreground="White"
+                           FontSize="18"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Content="TOP PICKS / BANS AGAINST"/>
+
+                    <Image Grid.Column="1" Grid.Row="1" Margin="1" Stretch="UniformToFill" Source="{Binding LeagueTopBans[2].Item1.Ban}"/>
+                    <Rectangle Grid.Column="1" Grid.Row="1" Height="25" VerticalAlignment="Bottom" Fill="Black" Opacity=".6"/>
+                    <Label Grid.Column="1" Grid.Row="1" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding LeagueTopBans[2].Item2}" ContentStringFormat="{}{0}%"/>
+
+                    <Image Grid.Column="2" Grid.Row="1" Margin="1" Stretch="UniformToFill" Source="{Binding LeagueTopBans[0].Item1.Ban}"/>
+                    <Rectangle Grid.Column="2" Grid.Row="1" Height="25" VerticalAlignment="Bottom" Fill="Black" Opacity=".6"/>
+                    <Label Grid.Column="2" Grid.Row="1" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding LeagueTopBans[0].Item2}" ContentStringFormat="{}{0}%"/>
+
+                    <Image Grid.Column="3" Grid.Row="1" Margin="1" Stretch="UniformToFill" Source="{Binding LeagueTopBans[1].Item1.Ban}"/>
+                    <Rectangle Grid.Column="3" Grid.Row="1" Height="25" VerticalAlignment="Bottom" Fill="Black" Opacity=".6"/>
+                    <Label Grid.Column="3" Grid.Row="1" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding LeagueTopBans[1].Item2}" ContentStringFormat="{}{0}%"/>
+
+                    <Image Grid.Column="4" Grid.Row="1" Margin="1" Stretch="UniformToFill" Source="{Binding LeagueTopBans[3].Item1.Ban}"/>
+                    <Rectangle Grid.Column="4" Grid.Row="1" Height="25" VerticalAlignment="Bottom" Fill="Black" Opacity=".6"/>
+                    <Label Grid.Column="4" Grid.Row="1" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding LeagueTopBans[3].Item2}" ContentStringFormat="{}{0}%"/>
+
+                    <Image Grid.Column="1" Grid.Row="2" Margin="1" Stretch="UniformToFill" Source="{Binding LeagueTopBans[6].Item1.Ban}"/>
+                    <Rectangle Grid.Column="1" Grid.Row="2" Height="25" VerticalAlignment="Bottom" Fill="Black" Opacity=".6"/>
+                    <Label Grid.Column="1" Grid.Row="2" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding LeagueTopBans[6].Item2}" ContentStringFormat="{}{0}%"/>
+
+                    <Image Grid.Column="2" Grid.Row="2" Margin="1" Stretch="UniformToFill" Source="{Binding LeagueTopBans[4].Item1.Ban}"/>
+                    <Rectangle Grid.Column="2" Grid.Row="2" Height="25" VerticalAlignment="Bottom" Fill="Black" Opacity=".6"/>
+                    <Label Grid.Column="2" Grid.Row="2" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding LeagueTopBans[4].Item2}" ContentStringFormat="{}{0}%"/>
+
+                    <Image Grid.Column="3" Grid.Row="2" Margin="1" Stretch="UniformToFill" Source="{Binding LeagueTopBans[5].Item1.Ban}"/>
+                    <Rectangle Grid.Column="3" Grid.Row="2" Height="25" VerticalAlignment="Bottom" Fill="Black" Opacity=".6"/>
+                    <Label Grid.Column="3" Grid.Row="2" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding LeagueTopBans[5].Item2}" ContentStringFormat="{}{0}%"/>
+
+                    <Image Grid.Column="4" Grid.Row="2" Margin="1" Stretch="UniformToFill" Source="{Binding LeagueTopBans[7].Item1.Ban}"/>
+                    <Rectangle Grid.Column="4" Grid.Row="2" Height="25" VerticalAlignment="Bottom" Fill="Black" Opacity=".6"/>
+                    <Label Grid.Column="4" Grid.Row="2" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding LeagueTopBans[7].Item2}" ContentStringFormat="{}{0}%"/>
+
+                </Grid>
+
+                <!--Chaos Top Bans-->
+                <Grid Grid.Column="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="6"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="5"/>
+                    </Grid.RowDefinitions>
+
+                    <Rectangle Grid.ColumnSpan="6"
+                           Grid.RowSpan="4"
                            Fill="Black" 
                            Opacity=".3" 
                            Stroke="WhiteSmoke" 
                            StrokeThickness="3"/>
 
-                <!--<Line Grid.ColumnSpan="3"
-                      VerticalAlignment="Bottom"
-                      Opacity=".3"
-                      Stroke="WhiteSmoke"
-                      StrokeThickness="3"
-                      Stretch="Fill"
-                      X2="1"/>-->
+                    <Label Grid.ColumnSpan="6"
+                           Foreground="White"
+                           FontSize="18"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Content="TOP PICKS / BANS AGAINST"/>
 
-                
-               
+                    <Image Grid.Column="1" Grid.Row="1" Margin="1" Stretch="UniformToFill" Source="{Binding ChaosTopBans[0].Item1.Ban}"/>
+                    <Rectangle Grid.Column="1" Grid.Row="1" Height="25" VerticalAlignment="Bottom" Fill="Black" Opacity=".6"/>
+                    <Label Grid.Column="1" Grid.Row="1" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding ChaosTopBans[0].Item2}" ContentStringFormat="{}{0}%"/>
 
+                    <Image Grid.Column="2" Grid.Row="1" Margin="1" Stretch="UniformToFill" Source="{Binding ChaosTopBans[1].Item1.Ban}"/>
+                    <Rectangle Grid.Column="2" Grid.Row="1" Height="25" VerticalAlignment="Bottom" Fill="Black" Opacity=".6"/>
+                    <Label Grid.Column="2" Grid.Row="1" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding ChaosTopBans[1].Item2}" ContentStringFormat="{}{0}%"/>
+
+                    <Image Grid.Column="3" Grid.Row="1" Margin="1" Stretch="UniformToFill" Source="{Binding ChaosTopBans[2].Item1.Ban}"/>
+                    <Rectangle Grid.Column="3" Grid.Row="1" Height="25" VerticalAlignment="Bottom" Fill="Black" Opacity=".6"/>
+                    <Label Grid.Column="3" Grid.Row="1" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding ChaosTopBans[2].Item2}" ContentStringFormat="{}{0}%"/>
+
+                    <Image Grid.Column="4" Grid.Row="1" Margin="1" Stretch="UniformToFill" Source="{Binding ChaosTopBans[3].Item1.Ban}"/>
+                    <Rectangle Grid.Column="4" Grid.Row="1" Height="25" VerticalAlignment="Bottom" Fill="Black" Opacity=".6"/>
+                    <Label Grid.Column="4" Grid.Row="1" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding ChaosTopBans[3].Item2}" ContentStringFormat="{}{0}%"/>
+
+                    <Image Grid.Column="1" Grid.Row="2" Margin="1" Stretch="UniformToFill" Source="{Binding ChaosTopBans[4].Item1.Ban}"/>
+                    <Rectangle Grid.Column="1" Grid.Row="2" Height="25" VerticalAlignment="Bottom" Fill="Black" Opacity=".6"/>
+                    <Label Grid.Column="1" Grid.Row="2" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding ChaosTopBans[4].Item2}" ContentStringFormat="{}{0}%"/>
+
+                    <Image Grid.Column="2" Grid.Row="2" Margin="1" Stretch="UniformToFill" Source="{Binding ChaosTopBans[5].Item1.Ban}"/>
+                    <Rectangle Grid.Column="2" Grid.Row="2" Height="25" VerticalAlignment="Bottom" Fill="Black" Opacity=".6"/>
+                    <Label Grid.Column="2" Grid.Row="2" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding ChaosTopBans[5].Item2}" ContentStringFormat="{}{0}%"/>
+
+                    <Image Grid.Column="3" Grid.Row="2" Margin="1" Stretch="UniformToFill" Source="{Binding ChaosTopBans[6].Item1.Ban}"/>
+                    <Rectangle Grid.Column="3" Grid.Row="2" Height="25" VerticalAlignment="Bottom" Fill="Black" Opacity=".6"/>
+                    <Label Grid.Column="3" Grid.Row="2" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding ChaosTopBans[6].Item2}" ContentStringFormat="{}{0}%"/>
+
+                    <Image Grid.Column="4" Grid.Row="2" Margin="1" Stretch="UniformToFill" Source="{Binding ChaosTopBans[7].Item1.Ban}"/>
+                    <Rectangle Grid.Column="4" Grid.Row="2" Height="25" VerticalAlignment="Bottom" Fill="Black" Opacity=".6"/>
+                    <Label Grid.Column="4" Grid.Row="2" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="15" Content="{Binding ChaosTopBans[7].Item2}" ContentStringFormat="{}{0}%"/>
+
+                </Grid>
             </Grid>
         </Grid>
 

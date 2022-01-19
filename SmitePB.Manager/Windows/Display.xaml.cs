@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using SmitePB.Domain;
 using SmitePB.Manager.Services;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace SmitePB.Manager.Windows
 {
@@ -19,9 +20,8 @@ namespace SmitePB.Manager.Windows
         public bool[] LockedIn { get; private set; } = new bool[10];
         public God[] Bans { get; private set; } = new God[10];
         public Tuple<God, int>[] OrderTopBans { get; private set; } = new Tuple<God, int>[8];
-        public int[] OrderTopBanRates { get; private set; } = new int[8];
-        public God[] LeagueTopBans { get; } = new God[8];
-        public God[] ChaosTopBans { get; private set; } = new God[8];
+        public Tuple<God, int>[] LeagueTopBans { get; private set; } = new Tuple<God, int>[8];
+        public Tuple<God, int>[] ChaosTopBans { get; private set; } = new Tuple<God, int>[8];
         public int[] Wins { get; } = new int[2] { 0, 1 };
         public string[] PlayerNames { get; } = new string[10];
         public string BackgroundImage { get; }
@@ -43,7 +43,7 @@ namespace SmitePB.Manager.Windows
         private const int defaultWidth = 1920;
 
         public Team GetTeambyName(string name) => Teams.FirstOrDefault(x => x.DisplayName == name);
-        private God GetGodbyName(string name) => gods.FirstOrDefault(x => x.Name == name);
+        private God GetGodbyName(string name) => gods.FirstOrDefault(x => x.Name.ToUpper() == name.ToUpper());
 
         private readonly ApiService _apiService;
 
@@ -61,6 +61,7 @@ namespace SmitePB.Manager.Windows
             gods = FileService.GetGods();
 
             ClearPicksAndBans();
+            ConstructAsync();
            
             DataContext = this;
 
@@ -74,6 +75,32 @@ namespace SmitePB.Manager.Windows
 
             InitializeComponent();
         }
+
+        async void ConstructAsync()
+        {
+            LeagueTopBans = await GetTopPicks();
+            PropertyChanged?.Invoke(this, new(nameof(LeagueTopBans)));
+
+        }
+
+        public async Task<Tuple<God, int>[]> GetTopPicks(string teamName = "")
+        {
+            var topBans = await _apiService.GetTopPB(teamName);
+
+            if (topBans.Length < 8)
+            {
+                var none = GetGodbyName("NONE");
+                return new God[8].Select(x => new Tuple<God, int>(none, 0)).ToArray();
+            }
+            else
+            {
+                return 
+                    topBans
+                    .Select(x => new Tuple<God, int>(GetGodbyName(x.God), x.Count))
+                    .ToArray();
+            }
+        }
+
 
         public void SetGod(int slot, string godName)
         {
@@ -131,17 +158,7 @@ namespace SmitePB.Manager.Windows
             {
                 case 0:
                     Team0 = team;
-                    var orderTopBans = await _apiService.GetTopPBforTeam(teamName);
-
-                    if (orderTopBans.Length < 10)
-                    {
-                        var none = GetGodbyName("NONE");
-                        OrderTopBans = new God[8].Select(orderTopBans => new Tuple<God, int>(none, 0)).ToArray(); 
-                    }
-                    else
-                        OrderTopBans = orderTopBans
-                            .Select(x => new Tuple<God, int>(GetGodbyName(x.God.ToUpper()), x.Count))
-                            .ToArray();
+                    OrderTopBans = await GetTopPicks(teamName);
 
                     PropertyChanged?.Invoke(this, new(nameof(Team0)));
                     PropertyChanged?.Invoke(this, new(nameof(OrderTopBans)));
@@ -151,10 +168,10 @@ namespace SmitePB.Manager.Windows
 
                 case 1:
                     Team1 = team;
-                    ChaosTopBans = (await _apiService.GetTopPBforTeam(teamName))
-                       .Select(x => x is null ? GetGodbyName("None") : GetGodbyName(x.God))
-                       .ToArray();
+                    ChaosTopBans = await GetTopPicks(teamName);
+
                     PropertyChanged?.Invoke(this, new(nameof(Team1)));
+                    PropertyChanged?.Invoke(this, new(nameof(ChaosTopBans)));
                     break;
             }
         }

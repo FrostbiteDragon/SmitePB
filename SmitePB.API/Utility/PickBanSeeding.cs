@@ -29,8 +29,8 @@ namespace SmitePB.API
                     "Cupid",
                     "Scylla",
                     "Janus",
-                    "Camazots",
-                    "Bachus",
+                    "Camazotz",
+                    "Bacchus",
                     "Hera"
                 },
                 new string[]
@@ -51,26 +51,21 @@ namespace SmitePB.API
 
         public static async void SeedGames(this IApplicationBuilder builder)
         {
-            //var services = builder.ApplicationServices.CreateScope().ServiceProvider;
-            //var session = services.GetService<IAsyncDocumentSession>();
+            var services = builder.ApplicationServices.CreateScope().ServiceProvider;
+            var session = services.GetService<IAsyncDocumentSession>();
 
-            //var games = await session.Query<Game>().ToListAsync();
+            var games = await session.Query<Game>().ToListAsync();
 
-            //foreach (var game in games)
-            //{
-            //    foreach (var id in game.Picks.Concat(game.Bans))
-            //        session.Delete(id);
+            foreach (var game in games)
+            {
+                session.Delete(game);
+            }
+            await session.SaveChangesAsync();
 
-            //    session.Delete(game);
-            //}
-            //await session.SaveChangesAsync();
+            foreach (var gameResult in gameResults)
+                await PickBanService.SaveGamePBs(services, gameResult);
 
-            //foreach (var gameResult in gameResults)
-            //    await PickBanService.SaveGamePBs(services, gameResult);
-
-            //await session.SaveChangesAsync();
-
-            throw new NotImplementedException();
+            await session.SaveChangesAsync();
         }
     }
 }

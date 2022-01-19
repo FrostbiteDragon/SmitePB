@@ -19,7 +19,7 @@ namespace SmitePB.API.Controllers
         public async Task<IActionResult> PostGameResult([FromBody] GameResult gameResult)
         {
             await SaveGamePBs(Services, gameResult);
-            return Ok("Game saved stored.");
+            return Ok("Game saved.");
         }
 
         [HttpGet("stats/{god}")]

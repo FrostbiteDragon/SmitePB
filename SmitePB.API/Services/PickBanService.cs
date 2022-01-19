@@ -130,6 +130,7 @@ namespace SmitePB.API.Services
 
             var game = new Game(gameResult.OrderWon, gameResult.OrderTeamName, gameResult.ChaosTeamName, picks, bans);
             await session.StoreAsync(game);
+            await session.SaveChangesAsync();
         });
     }
 

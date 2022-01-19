@@ -62,7 +62,8 @@ namespace SmitePB.Manager.Windows
         {
             var comboBox = (ComboBox)sender;
             var slot = int.Parse((string)comboBox.Tag);
-            _display.SetGod(slot, (string)comboBox.SelectedItem);
+            if ((string)comboBox.SelectedItem is not null)
+                _display.SetGod(slot, (string)comboBox.SelectedItem);
 
             LockedIn[slot] = false;
             PropertyChanged?.Invoke(this, new(nameof(LockedIn)));
@@ -71,7 +72,8 @@ namespace SmitePB.Manager.Windows
         private void OnBanDropDownClosed(object sender, EventArgs e)
         {
             var comboBox = (ComboBox)sender;
-            _display.SetBan(int.Parse((string)comboBox.Tag), (string)comboBox.SelectedItem);
+            if ((string)comboBox.SelectedItem is not null)
+                _display.SetBan(int.Parse((string)comboBox.Tag), (string)comboBox.SelectedItem);
         }
 
         private void WindowMouseDown(object sender, MouseButtonEventArgs e)

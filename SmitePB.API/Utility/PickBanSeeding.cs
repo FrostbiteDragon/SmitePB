@@ -29,8 +29,8 @@ namespace SmitePB.API
                     "Cupid",
                     "Scylla",
                     "Janus",
-                    "Camazots",
-                    "Bachus",
+                    "Camazotz",
+                    "Bacchus",
                     "Hera"
                 },
                 new string[]
@@ -58,9 +58,6 @@ namespace SmitePB.API
 
             foreach (var game in games)
             {
-                foreach (var id in game.PickIds.Concat(game.BanIds))
-                    session.Delete(id);
-
                 session.Delete(game);
             }
             await session.SaveChangesAsync();

@@ -25,7 +25,7 @@ namespace SmitePB.API
                     "Achilles",
                     "Athena",
                     "Cliodhna",
-                    "Agni",
+                    "AGNI",
                     "Cupid",
                     "Scylla",
                     "Janus",
@@ -45,6 +45,68 @@ namespace SmitePB.API
                     "Arachne",
                     "Ares",
                     "Artemis"
+                }
+            ),
+            new GameResult(
+                false,
+                "Janitors",
+                "Disaster",
+                new string[]
+                {
+                    "Achilles",
+                    "Athena",
+                    "Cliodhna",
+                    "AGNI",
+                    "Cupid",
+                    "Scylla",
+                    "Janus",
+                    "Camazotz",
+                    "Bacchus",
+                    "Hera"
+                },
+                new string[]
+                {
+                    "Ah Puch",
+                    "Amaterasu",
+                    "Anhur",
+                    "Anubis",
+                    "Ao Kuang",
+                    "Aphrodite",
+                    "Apollo",
+                    "Arachne",
+                    "Ares",
+                    "Artemis"
+                }
+            ),
+             new GameResult(
+                false,
+                "ppp",
+                "pingdom",
+                new string[]
+                {
+                    "ZHONG KUI",
+                    "ZEUS",
+                    "YMIR",
+                    "YEMOJA",
+                    "XING TIAN",
+                    "XBALANQUE",
+                    "VULCAN",
+                    "VAMANA",
+                    "ULLR",
+                    "TYR"
+                },
+                new string[]
+                {
+                    "TSUKUYOMI",
+                    "TIAMAT",
+                    "THOTH",
+                    "THOR",
+                    "THE MORRIGAN",
+                    "THANATOS",
+                    "TERRA",
+                    "SYLVANUS",
+                    "SUSANO",
+                    "SUN WUKONG"
                 }
             )
         };

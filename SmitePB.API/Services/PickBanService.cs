@@ -14,25 +14,33 @@ namespace SmitePB.API.Services
     {
         public static Task<GodStats> GetGodStats(IServiceProvider services, string god) => AccessRaven(services, async session =>
         {
+            god = god.ToUpper();
+
             var globalGamesPlayed =
                 await session
                 .Query<Game>()
-                .CountAsync();
-            var gamesPlayed =
-                await session
-                .Query<Game>()
-                .Where(x => x.Picks.Any(x => x.God == god))
                 .CountAsync();
             var gamesBaned =
                 await session
                 .Query<Game>()
                 .Where(x => x.Bans.Any(x => x.God == god))
                 .CountAsync();
-            var wins =
+
+            var picks =
                 await session
                 .Query<Game>()
-                .Where(x => x.Picks.Any(x => x.God == god && x.Win == true))
-                .CountAsync();
+                .Select(x => new { x.Picks })
+                .ToArrayAsync();
+
+            var gamesPlayed =
+                picks
+                .Where(x => x.Picks.Any(x => x.God == god))
+                .Count();
+
+            var wins =
+                picks
+                .Where(x => x.Picks.Any(x => x.Win && x.God == god))
+                .Count();
 
             return new GodStats(
                 pickBanRate: globalGamesPlayed == 0 

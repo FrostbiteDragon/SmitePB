@@ -83,23 +83,27 @@ namespace SmitePB.Manager.Windows
 
         private void SwapTeamSides(object sender, RoutedEventArgs e)
         {
-            //swap teams
-            var selectedTeam0 = SelectedTeam0;
-            SelectedTeam0 = SelectedTeam1;
-            SelectedTeam1 = selectedTeam0;
-
-            //swap players
-            var team0Players = Players.Take(5);
-            Players = Players.TakeLast(5).Concat(team0Players).ToArray();
-
             //swap team wins
             var team0Wins = Team0WinDisplay.Text;
             Team0WinDisplay.Text = Team1WinDisplay.Text;
             Team1WinDisplay.Text = team0Wins;
 
-            PropertyChanged?.Invoke(this, new(nameof(Players)));
+            //swap teams
+            var selectedTeam0 = SelectedTeam0;
+            SelectedTeam0 = SelectedTeam1;
+            SelectedTeam1 = selectedTeam0;
+
+            //store current player names so they don't get overwriten by the team swap
+            var currentPlayers = Players;
+
             PropertyChanged?.Invoke(this, new(nameof(SelectedTeam0)));
             PropertyChanged?.Invoke(this, new(nameof(SelectedTeam1)));
+
+            //swap players
+            var team0Players = currentPlayers.Take(5);
+            Players = currentPlayers.TakeLast(5).Concat(team0Players).ToArray();
+
+            PropertyChanged?.Invoke(this, new(nameof(Players)));
         }
 
         private void OnTeamSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -107,17 +111,17 @@ namespace SmitePB.Manager.Windows
             var comboBox = (ComboBox)sender;
             var teamId = int.Parse((string)comboBox.Tag);
 
-            string[] GetPlayers(string teamName) => _display.GetTeambyName(teamName).Players;
+            var getPlayers = (string teamName) => _display.GetTeambyName(teamName).Players;
 
             Players = teamId switch
             {
-                0 => GetPlayers(SelectedTeam0)
+                0 => getPlayers(SelectedTeam0)
                     .Concat(Players.TakeLast(5))
                     .ToArray(),
 
                 1 => Players
                     .Take(5)
-                    .Concat(GetPlayers(SelectedTeam1))
+                    .Concat(getPlayers(SelectedTeam1))
                     .ToArray(),
 
                 _ => new string[10]

@@ -18,7 +18,7 @@ namespace SmitePB.Manager.Services
 
             foreach (var teamDirectory in teamDirectories)
             {
-                var teamDTO = JsonConvert.DeserializeObject<TeamDTO>(File.ReadAllText(Path.Combine(teamDirectory, "Team.json")));
+                var teamDTO = JsonConvert.DeserializeObject<TeamDTO>(File.ReadAllText(Path.Combine(teamDirectory, ".json")));
 
                 yield return new Team(
                     teamDTO.displayName, 

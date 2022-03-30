@@ -30,11 +30,8 @@ namespace SmitePB.API
         {
 
             services.AddControllers();
-            #if DEBUG
-                services.AddRavenDbDocStore();
-            #else
-                services.AddRavenDbDocStore(options => options.Certificate = new X509Certificate2("Client.pfx", "gll"));
-            #endif
+            services.AddRavenDbDocStore();
+            //services.AddRavenDbDocStore(options => options.Certificate = new X509Certificate2("Client.pfx", "gll"));
 
             services.AddRavenDbAsyncSession();
             services.AddSwaggerGen(c =>

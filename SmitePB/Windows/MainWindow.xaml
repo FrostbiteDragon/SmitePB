@@ -281,120 +281,91 @@
 
         <!--Pick/Bans-->
         <Grid Grid.Column="3" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0.25*"/>
+                <ColumnDefinition Width="0.25*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <!--Bans-->
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
+            
+            <!--Bans 1-->
+            <Label Foreground="White"
+                Grid.ColumnSpan="4"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontWeight="Bold"
+                FontSize="20"
+                Content="BANS 1"/>
 
-                </Grid.RowDefinitions>
+            <WrapPanel Grid.Row="1" Orientation="Horizontal">
+                <ComboBox Name="ban0" Width="140"
+                    IsTextSearchEnabled="True"
+                    IsEditable="True"
+                    PreviewTextInput="OnPreviewTextInput"
+                    Tag="0"
+                    SelectionChanged="OnSelectionChanged"
+                    DropDownClosed="OnBanDropDownClosed"
+                    Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                    ItemsSource="{Binding GodNames, Mode=OneWay}">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+            </WrapPanel>
+            <WrapPanel Grid.Row="2" Orientation="Horizontal">
+                <ComboBox Name="ban1" Width="140"
+                    IsTextSearchEnabled="True"
+                    IsEditable="True"
+                    PreviewTextInput="OnPreviewTextInput"
+                    Tag="1"
+                    SelectionChanged="OnSelectionChanged"
+                    DropDownClosed="OnBanDropDownClosed"
+                    Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                    ItemsSource="{Binding GodNames, Mode=OneWay}">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+            </WrapPanel>
+            <WrapPanel Grid.Row="3" Orientation="Horizontal" >
+                <ComboBox Name="ban2" Width="140"
+                    IsTextSearchEnabled="True"
+                    IsEditable="True"
+                    PreviewTextInput="OnPreviewTextInput"
+                    Tag="2"
+                    SelectionChanged="OnSelectionChanged"
+                    DropDownClosed="OnBanDropDownClosed"
+                    Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                    ItemsSource="{Binding GodNames, Mode=OneWay}">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+            </WrapPanel>
 
-                <Label Foreground="White"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   FontWeight="Bold"
-                   FontSize="20"
-                   Content="BANS" Grid.ColumnSpan="2" />
-
-                <WrapPanel Orientation="Horizontal" Grid.Row="1">
-                    <ComboBox Name="ban0" Width="140"
-                      IsTextSearchEnabled="True"
-                      IsEditable="True"
-                      PreviewTextInput="OnPreviewTextInput"
-                      Tag="0"
-                      SelectionChanged="OnSelectionChanged"
-                      DropDownClosed="OnBanDropDownClosed"
-                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
-                      ItemsSource="{Binding GodNames, Mode=OneWay}">
-                        <ComboBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <VirtualizingStackPanel />
-                            </ItemsPanelTemplate>
-                        </ComboBox.ItemsPanel>
-                    </ComboBox>
-                </WrapPanel>
-                <WrapPanel  Orientation="Horizontal" Grid.Row="2" Grid.Column="0">
-                    <ComboBox Name="ban1" Width="140"
-                      IsTextSearchEnabled="True"
-                      IsEditable="True"
-                      PreviewTextInput="OnPreviewTextInput"
-                      Tag="1"
-                      SelectionChanged="OnSelectionChanged"
-                      DropDownClosed="OnBanDropDownClosed"
-                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
-                      ItemsSource="{Binding GodNames, Mode=OneWay}">
-                        <ComboBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <VirtualizingStackPanel />
-                            </ItemsPanelTemplate>
-                        </ComboBox.ItemsPanel>
-                    </ComboBox>
-                </WrapPanel>
-                <WrapPanel  Orientation="Horizontal" Grid.Row="3" Grid.Column="0">
-                    <ComboBox Name="ban2" Width="140"
-                      IsTextSearchEnabled="True"
-                      IsEditable="True"
-                      PreviewTextInput="OnPreviewTextInput"
-                      Tag="2"
-                      SelectionChanged="OnSelectionChanged"
-                      DropDownClosed="OnBanDropDownClosed"
-                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
-                      ItemsSource="{Binding GodNames, Mode=OneWay}">
-                        <ComboBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <VirtualizingStackPanel />
-                            </ItemsPanelTemplate>
-                        </ComboBox.ItemsPanel>
-                    </ComboBox>
-                </WrapPanel>
-                <WrapPanel  Orientation="Horizontal" Grid.Row="4" Grid.Column="0">
-                    <ComboBox Name="ban3" Width="140"
-                      IsTextSearchEnabled="True"
-                      IsEditable="True"
-                      PreviewTextInput="OnPreviewTextInput"
-                      Tag="3"
-                      SelectionChanged="OnSelectionChanged"
-                      DropDownClosed="OnBanDropDownClosed"
-                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
-                      ItemsSource="{Binding GodNames, Mode=OneWay}">
-                        <ComboBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <VirtualizingStackPanel />
-                            </ItemsPanelTemplate>
-                        </ComboBox.ItemsPanel>
-                    </ComboBox>
-                </WrapPanel>
-                <WrapPanel  Orientation="Horizontal" Grid.Row="5" Grid.Column="0">
-                    <ComboBox Name="ban4" Width="140"
-                      IsTextSearchEnabled="True"
-                      IsEditable="True"
-                      PreviewTextInput="OnPreviewTextInput"
-                      Tag="4"
-                      SelectionChanged="OnSelectionChanged"
-                      DropDownClosed="OnBanDropDownClosed"
-                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
-                      ItemsSource="{Binding GodNames, Mode=OneWay}">
-                        <ComboBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <VirtualizingStackPanel />
-                            </ItemsPanelTemplate>
-                        </ComboBox.ItemsPanel>
-                    </ComboBox>
-                </WrapPanel>
-
-                <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+            <WrapPanel Grid.Column="3" Grid.Row="1" HorizontalAlignment="Right" Orientation="Horizontal">
                     <ComboBox Name="ban5" Width="140"
                       IsTextSearchEnabled="True"
                       IsEditable="True"
@@ -411,7 +382,7 @@
                         </ComboBox.ItemsPanel>
                     </ComboBox>
                 </WrapPanel>
-                <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="2" Grid.Column="1">
+            <WrapPanel Grid.Column="3" Grid.Row="2" HorizontalAlignment="Right" Orientation="Horizontal">
                     <ComboBox Name="ban6" Width="140"
                       IsTextSearchEnabled="True"
                       IsEditable="True"
@@ -428,7 +399,7 @@
                         </ComboBox.ItemsPanel>
                     </ComboBox>
                 </WrapPanel>
-                <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
+            <WrapPanel Grid.Column="3" Grid.Row="3" HorizontalAlignment="Right" Orientation="Horizontal">
                     <ComboBox Name="ban7" Width="140"
                       IsTextSearchEnabled="True"
                       IsEditable="True"
@@ -445,452 +416,493 @@
                         </ComboBox.ItemsPanel>
                     </ComboBox>
                 </WrapPanel>
-                <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="4" Grid.Column="1">
-                    <ComboBox Name="ban8" Width="140"
-                      IsTextSearchEnabled="True"
-                      IsEditable="True"
-                      PreviewTextInput="OnPreviewTextInput"
-                      Tag="8"
-                      SelectionChanged="OnSelectionChanged"
-                      DropDownClosed="OnBanDropDownClosed"
-                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
-                      ItemsSource="{Binding GodNames, Mode=OneWay}">
-                        <ComboBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <VirtualizingStackPanel />
-                            </ItemsPanelTemplate>
-                        </ComboBox.ItemsPanel>
-                    </ComboBox>
-                </WrapPanel>
-                <WrapPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="5" Grid.Column="1">
-                    <ComboBox Name="ban9" Width="140"
-                      IsTextSearchEnabled="True"
-                      IsEditable="True"
-                      PreviewTextInput="OnPreviewTextInput"
-                      Tag="9"
-                      SelectionChanged="OnSelectionChanged"
-                      DropDownClosed="OnBanDropDownClosed"
-                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
-                      ItemsSource="{Binding GodNames, Mode=OneWay}">
-                        <ComboBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <VirtualizingStackPanel />
-                            </ItemsPanelTemplate>
-                        </ComboBox.ItemsPanel>
-                    </ComboBox>
-                </WrapPanel>
-            </Grid>
-            <!--Picks-->
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width=".2*"/>
-                    <ColumnDefinition Width=".2*"/>
-                    <ColumnDefinition Width="auto"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-
-                </Grid.RowDefinitions>
-
-                <Label Foreground="White"
-                   HorizontalAlignment="Left"
+            
+            <!--Picks 1-->
+            <Label Grid.Row="4"
+                   Foreground="White"
+                   Grid.ColumnSpan="4" 
+                   HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    FontWeight="Bold"
                    FontSize="20"
-                   Content="PICKS" Grid.ColumnSpan="4" Margin="162,0,0,0"/>
+                   Content="PICKS 1"/>
 
-                <WrapPanel VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
-                    <ComboBox Name="pick0" 
-                        Width="140"
-                      IsTextSearchEnabled="True"
-                      IsEditable="True"
-                      PreviewTextInput="OnPreviewTextInput"
-                      Tag="0"
-                      SelectionChanged="OnSelectionChanged"
-                      DropDownClosed="OnPickDropDownClosed"
-                      ItemsSource="{Binding GodNames, Mode=OneWay}">
-                        <ComboBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <VirtualizingStackPanel />
-                            </ItemsPanelTemplate>
-                        </ComboBox.ItemsPanel>
-                    </ComboBox>
-                </WrapPanel>
-                <WrapPanel VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="2" Grid.Column="0">
-                    <ComboBox Name="pick1" 
-                              Width="140"
-                              IsTextSearchEnabled="True"
-                              IsEditable="True"
-                              PreviewTextInput="OnPreviewTextInput"
-                              Tag="1"
-                              SelectionChanged="OnSelectionChanged"
-                              DropDownClosed="OnPickDropDownClosed"
-                              Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
-                              ItemsSource="{Binding GodNames, Mode=OneWay}">    
-                        <ComboBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <VirtualizingStackPanel />
-                            </ItemsPanelTemplate>
-                        </ComboBox.ItemsPanel>
-                    </ComboBox>
-                </WrapPanel>
-                <WrapPanel VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="3" Grid.Column="0">
-                    <ComboBox Name="pick2" Width="140"
-                      IsTextSearchEnabled="True"
-                      IsEditable="True"
-                      PreviewTextInput="OnPreviewTextInput"
-                      Tag="2"
-                      SelectionChanged="OnSelectionChanged"
-                      DropDownClosed="OnPickDropDownClosed"
-                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
-                      ItemsSource="{Binding GodNames, Mode=OneWay}">
-                        <ComboBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <VirtualizingStackPanel />
-                            </ItemsPanelTemplate>
-                        </ComboBox.ItemsPanel>
-                    </ComboBox>
-                </WrapPanel>
-                <WrapPanel VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="4" Grid.Column="0">
-                    <ComboBox Name="pick3" Width="140"
-                      IsTextSearchEnabled="True"
-                      IsEditable="True"
-                      PreviewTextInput="OnPreviewTextInput"
-                      Tag="3"
-                      SelectionChanged="OnSelectionChanged"
-                      DropDownClosed="OnPickDropDownClosed"
-                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
-                      ItemsSource="{Binding GodNames, Mode=OneWay}">
-                        <ComboBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <VirtualizingStackPanel />
-                            </ItemsPanelTemplate>
-                        </ComboBox.ItemsPanel>
-                    </ComboBox>
-                </WrapPanel>
-                <WrapPanel VerticalAlignment="Center" Orientation="Horizontal" Grid.Row="5" Grid.Column="0">
-                    <ComboBox Name="pick4" Width="140"
-                      IsTextSearchEnabled="True"
-                      IsEditable="True"
-                      PreviewTextInput="OnPreviewTextInput"
-                      Tag="4"
-                      SelectionChanged="OnSelectionChanged"
-                      DropDownClosed="OnPickDropDownClosed"
-                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
-                      ItemsSource="{Binding GodNames, Mode=OneWay}">
-                        <ComboBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <VirtualizingStackPanel />
-                            </ItemsPanelTemplate>
-                        </ComboBox.ItemsPanel>
-                    </ComboBox>
-                </WrapPanel>
+            <WrapPanel Grid.Row="5" VerticalAlignment="Center" Orientation="Horizontal">
+                <ComboBox Name="pick0" 
+                    Width="140"
+                    IsTextSearchEnabled="True"
+                    IsEditable="True"
+                    PreviewTextInput="OnPreviewTextInput"
+                    Tag="0"
+                    SelectionChanged="OnSelectionChanged"
+                    DropDownClosed="OnPickDropDownClosed"
+                    ItemsSource="{Binding GodNames, Mode=OneWay}">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+            </WrapPanel>
+            <Button Grid.Column="1" Grid.Row="5" Click="OnLockedIn" Tag="0">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Label HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                FontFamily="{StaticResource IcoFont}"
+                                Foreground="White">
+                            <Label.Style>
+                                <Style TargetType="{x:Type Label}">
+                                    <Setter Property="Label.Content" Value="&#xf01b;" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding LockedIn[0]}" Value="True">
+                                            <Setter Property="Label.Content" Value="&#xf01a;" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <WrapPanel Grid.Row="6" VerticalAlignment="Center" Orientation="Horizontal">
+                <ComboBox Name="pick1" 
+                            Width="140"
+                            IsTextSearchEnabled="True"
+                            IsEditable="True"
+                            PreviewTextInput="OnPreviewTextInput"
+                            Tag="1"
+                            SelectionChanged="OnSelectionChanged"
+                            DropDownClosed="OnPickDropDownClosed"
+                            Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                            ItemsSource="{Binding GodNames, Mode=OneWay}">    
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+            </WrapPanel>
+            <Button Grid.Column="1" Grid.Row="6" Click="OnLockedIn" Tag="1">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Label HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                FontFamily="{StaticResource IcoFont}"
+                                Foreground="White">
+                            <Label.Style>
+                                <Style TargetType="{x:Type Label}">
+                                    <Setter Property="Label.Content" Value="&#xf01b;" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding LockedIn[1]}" Value="True">
+                                            <Setter Property="Label.Content" Value="&#xf01a;" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <WrapPanel Grid.Row="7" VerticalAlignment="Center" Orientation="Horizontal">
+                <ComboBox Name="pick2" Width="140"
+                    IsTextSearchEnabled="True"
+                    IsEditable="True"
+                    PreviewTextInput="OnPreviewTextInput"
+                    Tag="2"
+                    SelectionChanged="OnSelectionChanged"
+                    DropDownClosed="OnPickDropDownClosed"
+                    Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                    ItemsSource="{Binding GodNames, Mode=OneWay}">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+            </WrapPanel>
+            <Button Grid.Column="1" Grid.Row="7" Click="OnLockedIn" Tag="2">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Label HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                FontFamily="{StaticResource IcoFont}"
+                                Foreground="White">
+                            <Label.Style>
+                                <Style TargetType="{x:Type Label}">
+                                    <Setter Property="Label.Content" Value="&#xf01b;" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding LockedIn[2]}" Value="True">
+                                            <Setter Property="Label.Content" Value="&#xf01a;" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
 
-                <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="1" Grid.Column="3">
-                    <ComboBox Name="pick5" Width="140"
-                      IsTextSearchEnabled="True"
-                      IsEditable="True"
-                      PreviewTextInput="OnPreviewTextInput"
-                      Tag="5"
-                      SelectionChanged="OnSelectionChanged"
-                      DropDownClosed="OnPickDropDownClosed"
-                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
-                      ItemsSource="{Binding GodNames, Mode=OneWay}">
-                        <ComboBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <VirtualizingStackPanel />
-                            </ItemsPanelTemplate>
-                        </ComboBox.ItemsPanel>
-                    </ComboBox>
-                </WrapPanel>
-                <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="2" Grid.Column="3">
-                    <ComboBox Name="pick6" Width="140"
-                      IsTextSearchEnabled="True"
-                      IsEditable="True"
-                      PreviewTextInput="OnPreviewTextInput"
-                      Tag="6"
-                      SelectionChanged="OnSelectionChanged"
-                      DropDownClosed="OnPickDropDownClosed"
-                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
-                      ItemsSource="{Binding GodNames, Mode=OneWay}">
-                        <ComboBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <VirtualizingStackPanel />
-                            </ItemsPanelTemplate>
-                        </ComboBox.ItemsPanel>
-                    </ComboBox>
-                </WrapPanel>
-                <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="3" Grid.Column="3">
-                    <ComboBox Name="pick7" Width="140"
-                      IsTextSearchEnabled="True"
-                      IsEditable="True"
-                      PreviewTextInput="OnPreviewTextInput"
-                      Tag="7"
-                      SelectionChanged="OnSelectionChanged"
-                      DropDownClosed="OnPickDropDownClosed"
-                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
-                      ItemsSource="{Binding GodNames, Mode=OneWay}">
-                        <ComboBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <VirtualizingStackPanel />
-                            </ItemsPanelTemplate>
-                        </ComboBox.ItemsPanel>
-                    </ComboBox>
-                </WrapPanel>
-                <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="4" Grid.Column="3">
-                    <ComboBox Name="pick8" Width="140"
-                      IsTextSearchEnabled="True"
-                      IsEditable="True"
-                      PreviewTextInput="OnPreviewTextInput"
-                      Tag="8"
-                      SelectionChanged="OnSelectionChanged"
-                      DropDownClosed="OnPickDropDownClosed"
-                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
-                      ItemsSource="{Binding GodNames, Mode=OneWay}">
-                        <ComboBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <VirtualizingStackPanel />
-                            </ItemsPanelTemplate>
-                        </ComboBox.ItemsPanel>
-                    </ComboBox>
-                </WrapPanel>
-                <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="5" Grid.Column="3">
-                    <ComboBox Name="pick9" Width="140"
-                      IsTextSearchEnabled="True"
-                      IsEditable="True"
-                      PreviewTextInput="OnPreviewTextInput"
-                      Tag="9"
-                      SelectionChanged="OnSelectionChanged"
-                      DropDownClosed="OnPickDropDownClosed"
-                      Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
-                      ItemsSource="{Binding GodNames, Mode=OneWay}">
-                        <ComboBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <VirtualizingStackPanel />
-                            </ItemsPanelTemplate>
-                        </ComboBox.ItemsPanel>
-                    </ComboBox>
-                </WrapPanel>
+            <WrapPanel Grid.Column="3" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
+                <ComboBox Name="pick5" Width="140"
+                    IsTextSearchEnabled="True"
+                    IsEditable="True"
+                    PreviewTextInput="OnPreviewTextInput"
+                    Tag="5"
+                    SelectionChanged="OnSelectionChanged"
+                    DropDownClosed="OnPickDropDownClosed"
+                    Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                    ItemsSource="{Binding GodNames, Mode=OneWay}">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+            </WrapPanel>
+            <Button Grid.Column="2" Grid.Row="5" Click="OnLockedIn" Tag="5">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Label HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                FontFamily="{StaticResource IcoFont}"
+                                Foreground="White">
+                            <Label.Style>
+                                <Style TargetType="{x:Type Label}">
+                                    <Setter Property="Label.Content" Value="&#xf01b;" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding LockedIn[5]}" Value="True">
+                                            <Setter Property="Label.Content" Value="&#xf01a;" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <WrapPanel Grid.Column="3" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
+                <ComboBox Name="pick6" Width="140"
+                    IsTextSearchEnabled="True"
+                    IsEditable="True"
+                    PreviewTextInput="OnPreviewTextInput"
+                    Tag="6"
+                    SelectionChanged="OnSelectionChanged"
+                    DropDownClosed="OnPickDropDownClosed"
+                    Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                    ItemsSource="{Binding GodNames, Mode=OneWay}">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+            </WrapPanel>
+            <Button Grid.Column="2" Grid.Row="6" Click="OnLockedIn" Tag="6">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Label HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                FontFamily="{StaticResource IcoFont}"
+                                Foreground="White">
+                            <Label.Style>
+                                <Style TargetType="{x:Type Label}">
+                                    <Setter Property="Label.Content" Value="&#xf01b;" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding LockedIn[6]}" Value="True">
+                                            <Setter Property="Label.Content" Value="&#xf01a;" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <WrapPanel Grid.Column="3" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
+                <ComboBox Name="pick7" Width="140"
+                    IsTextSearchEnabled="True"
+                    IsEditable="True"
+                    PreviewTextInput="OnPreviewTextInput"
+                    Tag="7"
+                    SelectionChanged="OnSelectionChanged"
+                    DropDownClosed="OnPickDropDownClosed"
+                    Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                    ItemsSource="{Binding GodNames, Mode=OneWay}">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+            </WrapPanel>
+            <Button Grid.Column="2" Grid.Row="7" Click="OnLockedIn" Tag="7">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Label HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                FontFamily="{StaticResource IcoFont}"
+                                Foreground="White">
+                            <Label.Style>
+                                <Style TargetType="{x:Type Label}">
+                                    <Setter Property="Label.Content" Value="&#xf01b;" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding LockedIn[7]}" Value="True">
+                                            <Setter Property="Label.Content" Value="&#xf01a;" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
 
-                <Button Grid.Column="1" Grid.Row="1" Click="OnLockedIn" Tag="0">
-                    <Button.Template>
-                        <ControlTemplate>
-                            <Label HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   FontFamily="{StaticResource IcoFont}"
-                                   Foreground="White">
-                                <Label.Style>
-                                    <Style TargetType="{x:Type Label}">
-                                        <Setter Property="Label.Content" Value="&#xf01b;" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding LockedIn[0]}" Value="True">
-                                                <Setter Property="Label.Content" Value="&#xf01a;" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Label.Style>
-                            </Label>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <Button Grid.Column="1" Grid.Row="2" Click="OnLockedIn" Tag="1">
-                    <Button.Template>
-                        <ControlTemplate>
-                            <Label HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   FontFamily="{StaticResource IcoFont}"
-                                   Foreground="White">
-                                <Label.Style>
-                                    <Style TargetType="{x:Type Label}">
-                                        <Setter Property="Label.Content" Value="&#xf01b;" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding LockedIn[1]}" Value="True">
-                                                <Setter Property="Label.Content" Value="&#xf01a;" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Label.Style>
-                            </Label>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <Button Grid.Column="1" Grid.Row="3" Click="OnLockedIn" Tag="2">
-                    <Button.Template>
-                        <ControlTemplate>
-                            <Label HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   FontFamily="{StaticResource IcoFont}"
-                                   Foreground="White">
-                                <Label.Style>
-                                    <Style TargetType="{x:Type Label}">
-                                        <Setter Property="Label.Content" Value="&#xf01b;" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding LockedIn[2]}" Value="True">
-                                                <Setter Property="Label.Content" Value="&#xf01a;" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Label.Style>
-                            </Label>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <Button Grid.Column="1" Grid.Row="4" Click="OnLockedIn" Tag="3">
-                    <Button.Template>
-                        <ControlTemplate>
-                            <Label HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   FontFamily="{StaticResource IcoFont}"
-                                   Foreground="White">
-                                <Label.Style>
-                                    <Style TargetType="{x:Type Label}">
-                                        <Setter Property="Label.Content" Value="&#xf01b;" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding LockedIn[3]}" Value="True">
-                                                <Setter Property="Label.Content" Value="&#xf01a;" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Label.Style>
-                            </Label>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <Button Grid.Column="1" Grid.Row="5" Click="OnLockedIn" Tag="4">
-                    <Button.Template>
-                        <ControlTemplate>
-                            <Label HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
-                                   FontFamily="{StaticResource IcoFont}"
-                                   Foreground="White">
-                                <Label.Style>
-                                    <Style TargetType="{x:Type Label}">
-                                        <Setter Property="Label.Content" Value="&#xf01b;" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding LockedIn[4]}" Value="True">
-                                                <Setter Property="Label.Content" Value="&#xf01a;" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Label.Style>
-                            </Label>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
+            <!--Bans 2-->
+            <Label Grid.Row="8"
+                   Foreground="White"
+                   Grid.ColumnSpan="4" 
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontWeight="Bold"
+                   FontSize="20"
+                   Content="BANS 2"/>
 
-                <Button Grid.Column="2" Grid.Row="1" Click="OnLockedIn" Tag="5">
-                    <Button.Template>
-                        <ControlTemplate>
-                            <Label HorizontalAlignment="Right"
-                                   VerticalAlignment="Center"
-                                   FontFamily="{StaticResource IcoFont}"
-                                   Foreground="White">
-                                <Label.Style>
-                                    <Style TargetType="{x:Type Label}">
-                                        <Setter Property="Label.Content" Value="&#xf01b;" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding LockedIn[5]}" Value="True">
-                                                <Setter Property="Label.Content" Value="&#xf01a;" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Label.Style>
-                            </Label>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <Button Grid.Column="2" Grid.Row="2" Click="OnLockedIn" Tag="6">
-                    <Button.Template>
-                        <ControlTemplate>
-                            <Label HorizontalAlignment="Right"
-                                   VerticalAlignment="Center"
-                                   FontFamily="{StaticResource IcoFont}"
-                                   Foreground="White">
-                                <Label.Style>
-                                    <Style TargetType="{x:Type Label}">
-                                        <Setter Property="Label.Content" Value="&#xf01b;" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding LockedIn[6]}" Value="True">
-                                                <Setter Property="Label.Content" Value="&#xf01a;" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Label.Style>
-                            </Label>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <Button Grid.Column="2" Grid.Row="3" Click="OnLockedIn" Tag="7">
-                    <Button.Template>
-                        <ControlTemplate>
-                            <Label HorizontalAlignment="Right"
-                                   VerticalAlignment="Center"
-                                   FontFamily="{StaticResource IcoFont}"
-                                   Foreground="White">
-                                <Label.Style>
-                                    <Style TargetType="{x:Type Label}">
-                                        <Setter Property="Label.Content" Value="&#xf01b;" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding LockedIn[7]}" Value="True">
-                                                <Setter Property="Label.Content" Value="&#xf01a;" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Label.Style>
-                            </Label>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <Button Grid.Column="2" Grid.Row="4" Click="OnLockedIn" Tag="8">
-                    <Button.Template>
-                        <ControlTemplate>
-                            <Label HorizontalAlignment="Right"
-                                   VerticalAlignment="Center"
-                                   FontFamily="{StaticResource IcoFont}"
-                                   Foreground="White">
-                                <Label.Style>
-                                    <Style TargetType="{x:Type Label}">
-                                        <Setter Property="Label.Content" Value="&#xf01b;" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding LockedIn[8]}" Value="True">
-                                                <Setter Property="Label.Content" Value="&#xf01a;" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Label.Style>
-                            </Label>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <Button Grid.Column="2" Grid.Row="5" Click="OnLockedIn" Tag="9">
-                    <Button.Template>
-                        <ControlTemplate>
-                            <Label HorizontalAlignment="Right"
-                                   VerticalAlignment="Center"
-                                   FontFamily="{StaticResource IcoFont}"
-                                   Foreground="White">
-                                <Label.Style>
-                                    <Style TargetType="{x:Type Label}">
-                                        <Setter Property="Label.Content" Value="&#xf01b;" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding LockedIn[9]}" Value="True">
-                                                <Setter Property="Label.Content" Value="&#xf01a;" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Label.Style>
-                            </Label>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
+            <WrapPanel Grid.Row="9" Orientation="Horizontal">
+                <ComboBox Name="ban3" Width="140"
+                    IsTextSearchEnabled="True"
+                    IsEditable="True"
+                    PreviewTextInput="OnPreviewTextInput"
+                    Tag="3"
+                    SelectionChanged="OnSelectionChanged"
+                    DropDownClosed="OnBanDropDownClosed"
+                    Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                    ItemsSource="{Binding GodNames, Mode=OneWay}">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+            </WrapPanel>
+            <WrapPanel Grid.Row="10" Orientation="Horizontal">
+                <ComboBox Name="ban4" Width="140"
+                    IsTextSearchEnabled="True"
+                    IsEditable="True"
+                    PreviewTextInput="OnPreviewTextInput"
+                    Tag="4"
+                    SelectionChanged="OnSelectionChanged"
+                    DropDownClosed="OnBanDropDownClosed"
+                    Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                    ItemsSource="{Binding GodNames, Mode=OneWay}">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+            </WrapPanel>
 
-            </Grid>
+            <WrapPanel Grid.Column="3" Grid.Row="9" HorizontalAlignment="Right" Orientation="Horizontal">
+                <ComboBox Name="ban8" Width="140"
+                    IsTextSearchEnabled="True"
+                    IsEditable="True"
+                    PreviewTextInput="OnPreviewTextInput"
+                    Tag="8"
+                    SelectionChanged="OnSelectionChanged"
+                    DropDownClosed="OnBanDropDownClosed"
+                    Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                    ItemsSource="{Binding GodNames, Mode=OneWay}">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+            </WrapPanel>
+            <WrapPanel Grid.Column="3" Grid.Row="10" HorizontalAlignment="Right" Orientation="Horizontal">
+                <ComboBox Name="ban9" Width="140"
+                    IsTextSearchEnabled="True"
+                    IsEditable="True"
+                    PreviewTextInput="OnPreviewTextInput"
+                    Tag="9"
+                    SelectionChanged="OnSelectionChanged"
+                    DropDownClosed="OnBanDropDownClosed"
+                    Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                    ItemsSource="{Binding GodNames, Mode=OneWay}">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+            </WrapPanel>
+            
+            <!--Picks 2-->
+            <Label Grid.Row="11"
+                   Foreground="White"
+                   Grid.ColumnSpan="4" 
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontWeight="Bold"
+                   FontSize="20"
+                   Content="PICKS 2"/>
+
+            <WrapPanel Grid.Row="12" VerticalAlignment="Center" Orientation="Horizontal">
+                <ComboBox Name="pick3" Width="140"
+                    IsTextSearchEnabled="True"
+                    IsEditable="True"
+                    PreviewTextInput="OnPreviewTextInput"
+                    Tag="3"
+                    SelectionChanged="OnSelectionChanged"
+                    DropDownClosed="OnPickDropDownClosed"
+                    Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                    ItemsSource="{Binding GodNames, Mode=OneWay}">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+            </WrapPanel>
+            <Button Grid.Column="1" Grid.Row="12" Click="OnLockedIn" Tag="3">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Label HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                FontFamily="{StaticResource IcoFont}"
+                                Foreground="White">
+                            <Label.Style>
+                                <Style TargetType="{x:Type Label}">
+                                    <Setter Property="Label.Content" Value="&#xf01b;" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding LockedIn[3]}" Value="True">
+                                            <Setter Property="Label.Content" Value="&#xf01a;" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <WrapPanel Grid.Row="13" VerticalAlignment="Center" Orientation="Horizontal">
+                <ComboBox Name="pick4" Width="140"
+                    IsTextSearchEnabled="True"
+                    IsEditable="True"
+                    PreviewTextInput="OnPreviewTextInput"
+                    Tag="4"
+                    SelectionChanged="OnSelectionChanged"
+                    DropDownClosed="OnPickDropDownClosed"
+                    Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                    ItemsSource="{Binding GodNames, Mode=OneWay}">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+            </WrapPanel>
+            <Button Grid.Column="1" Grid.Row="13" Click="OnLockedIn" Tag="4">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Label HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                FontFamily="{StaticResource IcoFont}"
+                                Foreground="White">
+                            <Label.Style>
+                                <Style TargetType="{x:Type Label}">
+                                    <Setter Property="Label.Content" Value="&#xf01b;" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding LockedIn[4]}" Value="True">
+                                            <Setter Property="Label.Content" Value="&#xf01a;" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+
+            <WrapPanel Grid.Column="3" Grid.Row="12" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
+                <ComboBox Name="pick8" Width="140"
+                    IsTextSearchEnabled="True"
+                    IsEditable="True"
+                    PreviewTextInput="OnPreviewTextInput"
+                    Tag="8"
+                    SelectionChanged="OnSelectionChanged"
+                    DropDownClosed="OnPickDropDownClosed"
+                    Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                    ItemsSource="{Binding GodNames, Mode=OneWay}">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+            </WrapPanel>
+            <Button Grid.Column="2" Grid.Row="12" Click="OnLockedIn" Tag="8">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Label HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                FontFamily="{StaticResource IcoFont}"
+                                Foreground="White">
+                            <Label.Style>
+                                <Style TargetType="{x:Type Label}">
+                                    <Setter Property="Label.Content" Value="&#xf01b;" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding LockedIn[8]}" Value="True">
+                                            <Setter Property="Label.Content" Value="&#xf01a;" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <WrapPanel Grid.Column="3" Grid.Row="13" VerticalAlignment="Center" HorizontalAlignment="Right" Orientation="Horizontal">
+                <ComboBox Name="pick9" Width="140"
+                    IsTextSearchEnabled="True"
+                    IsEditable="True"
+                    PreviewTextInput="OnPreviewTextInput"
+                    Tag="9"
+                    SelectionChanged="OnSelectionChanged"
+                    DropDownClosed="OnPickDropDownClosed"
+                    Text="{Binding Path=SearchBoxText, Mode=TwoWay}"
+                    ItemsSource="{Binding GodNames, Mode=OneWay}">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+            </WrapPanel>
+            <Button Grid.Column="2" Grid.Row="13" Click="OnLockedIn" Tag="9">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Label HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                FontFamily="{StaticResource IcoFont}"
+                                Foreground="White">
+                            <Label.Style>
+                                <Style TargetType="{x:Type Label}">
+                                    <Setter Property="Label.Content" Value="&#xf01b;" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding LockedIn[9]}" Value="True">
+                                            <Setter Property="Label.Content" Value="&#xf01a;" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Label.Style>
+                        </Label>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            
         </Grid>
     </Grid>
 </Window>

@@ -310,7 +310,7 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 FontWeight="Bold"
-                FontSize="20"
+                FontSize="18"
                 Content="BANS 1"/>
 
             <WrapPanel Grid.Row="1" Orientation="Horizontal">
@@ -424,7 +424,7 @@
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    FontWeight="Bold"
-                   FontSize="20"
+                   FontSize="18"
                    Content="PICKS 1"/>
 
             <WrapPanel Grid.Row="5" VerticalAlignment="Center" Orientation="Horizontal">
@@ -665,7 +665,7 @@
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    FontWeight="Bold"
-                   FontSize="20"
+                   FontSize="18"
                    Content="BANS 2"/>
 
             <WrapPanel Grid.Row="9" Orientation="Horizontal">
@@ -745,7 +745,7 @@
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    FontWeight="Bold"
-                   FontSize="20"
+                   FontSize="18"
                    Content="PICKS 2"/>
 
             <WrapPanel Grid.Row="12" VerticalAlignment="Center" Orientation="Horizontal">
